@@ -1,3 +1,48 @@
-name: Test
-theme: jekyll-theme-hacker
+# Site Settings
+title: Hndoss
+email: hndoss@gmail.com
+description: Collection of Dev Stuffs
+baseurl: ""
+# url: "https://hndoss.github.io"
+url: ""
+# google_analytics: "UA-XXXXXXXX-X"
+
+# User Settings
+username: Hndoss
+user_description: There is always a way.
+disqus_username: disqus_VdhhuFTr1I
+
+# Social Media
+# Remove the item if you don't need it
+github_username: hndoss
+facebook_username: hrosalesmarquez
+twitter_username: hndoss
+# instagram_username: hndoss
+# linkedin_username: linkedin_username
+# medium_username: medium_username
+
+# Build settings
 markdown: kramdown
+highlighter: rouge
+permalink: /:title/
+paginate: 12
+paginate_path: "/page/:num/"
+svg_color: "#ff0a16"
+
+# Plugins
+plugins:
+  - jemoji
+  - jekyll-paginate
+
+# Links to include in menu navigation
+# For external links add external: true
+links:
+  - title: Home
+    url: /
+  - title: About
+    url: /about/
+  - title: Contact
+    url: /contact/
+
+# Exclude my node related stuff
+exclude: ['package.json', 'src', 'node_modules']
