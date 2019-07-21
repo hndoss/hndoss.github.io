@@ -4,24 +4,18 @@ layout: main
 
 <main class="home" id="post" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
     <div id="grid" class="row flex-grid">
-        {% for post in paginator.posts %}
+    {% for post in site.posts %}
+        {% if post.category == page.category %}
             <article class="box-item" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
-                <span class="category">
-                    <a href="{{ site.url }}{{ site.baseurl }}/category/{{ post.category }}">
-                        <span>{{ post.category }}</span>
-                    </a>
-                </span>
                 <div class="box-body">
-                    <div class="cover">
-                        {% include new-post-tag.html date=post.date %}
-                        <a href="{{ post.url | prepend: site.baseurl }}" {%if isnewpost %}class="new-post"{% endif %}>
-                            {% if post.image %}
+                    {% if post.image %}
+                        <div class="cover">
+                            {% include new-post-tag.html date=post.date %}
+                            <a href="{{ post.url | prepend: site.baseurl }}" {%if isnewpost %}class="new-post"{% endif %}>
                                 <img src="/assets/img/placeholder.png" data-url="{{ post.image }}" class="preload">
-                            {% else %}
-                                <img src="/assets/img/placeholder.png" data-url="/assets/img/off.jpg" class="preload">
-                            {% endif %}
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    {% endif %}
                     <div class="box-info">
                         <meta itemprop="datePublished" content="{{ post.date | date_to_xmlschema }}">
                         <time itemprop="datePublished" datetime="{{ post.date | date_to_xmlschema }}" class="date">
@@ -43,7 +37,9 @@ layout: main
                     </div>
                 </div>
             </article>
-        {% endfor %}
+        {% endif %}
+    {% endfor %}
     </div>
-    {% include pagination.html %}
 </main>
+
+
