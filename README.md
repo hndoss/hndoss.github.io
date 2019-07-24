@@ -163,5 +163,7 @@ Did you like my work? Buy me a beer :)
 
 # How to Run Jekyll Locally
 ```
+export PATH=${PATH}:${HOME}/.gem/ruby/2.6.0/bin
 bundle exec jekyll serve
+
 ```
