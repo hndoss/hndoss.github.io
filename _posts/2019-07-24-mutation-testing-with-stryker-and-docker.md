@@ -38,12 +38,12 @@ We are going to replace [Karma](https://www.npmjs.com/package/karma) with [Jest]
     --save-dev
 ```
 
-* Add jest configuration
+* Add Jest configuration.
 ```
 echo "import 'jest-preset-angular';" > setupJest.ts
 ```
 
-* Append Jest config in package.json
+* Append Jest config in package.json.
 ```
 ...
 ,
@@ -54,12 +54,12 @@ echo "import 'jest-preset-angular';" > setupJest.ts
 ...
 ```
 
-* Replace "test": "ng test" in package.json with
+* Replace "test": "ng test" in package.json with:
 ```
 "test": "jest",
 ```
 
-* Remove Karma
+* Remove Karma.
 ```
 npm uninstall karma \
     karma-chrome-launcher \
@@ -68,7 +68,7 @@ npm uninstall karma \
 rm src/test.ts 
 rm src/karma.conf.js
 ```
-* update src/tsconfig.spec.json
+* Update src/tsconfig.spec.json.
 ```
 {
     "extends": "../tsconfig.json",
@@ -87,7 +87,7 @@ rm src/karma.conf.js
 }
 ```
 
-* Add a valid stryker.conf.js on the project's root directory
+* Add a valid `stryker.conf.js` on the project's root directory.
 ```
 module.exports = function(config) {
     config.set({
@@ -116,7 +116,7 @@ docker run \
     --rm -ti \
     hndoss/stryker-js:11-alpine run
 ```
-* Check the results in `reports/`
+* Check the results in `reports/`.
 
 ```
 Ran all tests for this mutant.
