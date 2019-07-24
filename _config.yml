@@ -3,9 +3,8 @@ title: Hndoss
 email: hndoss@gmail.com
 description: Collection of Dev Stuffs
 baseurl: ""
-# url: "https://hndoss.github.io"
-url: ""
-# google_analytics: "UA-XXXXXXXX-X"
+url: "https://hndoss.github.io"
+google_analytics: "UA-144580764-1"
 
 # User Settings
 username: Hndoss
