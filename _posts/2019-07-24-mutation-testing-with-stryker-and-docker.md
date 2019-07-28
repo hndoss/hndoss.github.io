@@ -15,7 +15,6 @@ Following an approach with [Docker](https://www.docker.com/), I found it easier 
 ## Pre-requisites:
 * angular-cli
 * nodejs
-* Jest
 
 We are going to replace [Karma](https://www.npmjs.com/package/karma) with [Jest](https://jestjs.io/). Why should we do that? Well, [this](https://www.xfive.co/blog/testing-angular-faster-jest) blog entry has a great explanation.
 
