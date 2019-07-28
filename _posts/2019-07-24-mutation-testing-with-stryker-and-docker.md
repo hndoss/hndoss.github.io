@@ -3,7 +3,7 @@ layout: post
 title: "Mutation Testing with Stryker and Docker"
 description: Get started right away with mutation testing. Tests for your tests.
 image: 'https://cdn.pixabay.com/photo/2018/10/21/14/57/parrot-3762988_960_720.jpg'
-twitter_text: How code coverage of 100% could mean only 60% is tested.
+twitter_text: How code coverage of 100 percentage could mean only 60 percent is tested.
 category: 'blog'
 introduction: How do we know that we are writing quality code? How do we know that we are writing good tests?
 ---
