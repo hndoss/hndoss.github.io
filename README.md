@@ -165,5 +165,4 @@ Did you like my work? Buy me a beer :)
 ```
 export PATH=${PATH}:${HOME}/.gem/ruby/2.6.0/bin
 bundle exec jekyll serve
-
 ```
