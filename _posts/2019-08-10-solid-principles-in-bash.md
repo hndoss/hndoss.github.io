@@ -113,13 +113,35 @@ find $1 -iname *.jpeg \
 ```
 #!/bin/bash
 
-function main(){
-    find $1 -iname *.jpeg \
-        -exec cp {} /tmp && \
-        echo {} >> /tmp/index.txt \;
+target_directory="${1}" # saves the first input in a variable.
+target_format="${2}"    # saves the second input in a variable.
+output_directory="${3}" # saves the third input in a variable.
+
+function create_output_directory(){
+    file="${1}"
+    file_absolute_path="$(readlink -f ${file})"
+
+    mkdir -p "${output_directory}/output/${file_absolute_path//.\/}"
 }
 
-main $@
+# function copy_files(){
+
+# }
+
+# function add_file_to_index(){
+
+# }
+
+function main(){
+
+}
+
+main "${@}"
+# find ${target_directory} -name "*.${target_format}" \
+#    -exec create_output_directory {} \; \
+#     \; \
+#    -exec cp {} "${output_directory}/output$(readlink -f {})" \; \
+#    -exec echo {} >> "${output_directory}"/index.txt \;
 ```
 
 ## Conclusion
