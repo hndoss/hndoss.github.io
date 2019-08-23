@@ -19,6 +19,7 @@ Following an approach with [Docker](https://www.docker.com/), I found it easier 
 We are going to replace [Karma](https://www.npmjs.com/package/karma) with [Jest](https://jestjs.io/). Why should we do that? Well, [this](https://www.xfive.co/blog/testing-angular-faster-jest) blog entry has a great explanation.
 
 ---
+
 ## Steps:
 
 * Start a dummy Angular project.
@@ -139,3 +140,6 @@ Mutation testing requires a lot of compute resources and it is time consuming. D
 <br>
 <br>
 An example is hosted [here](https://github.com/hndoss/bear) and the dockerfile we used is [here](https://github.com/hndoss/stryker-js-11-alpine). If you have an idea about how to improve it, you are just about a Pull Request to cooperate.
+
+## TL;DR
+To feel safe and make sure you don't break anything during development, add tests to your project. Then, add mutation tests to verify the status of your tests and ensure their quality. If you don't want to waste your time with dependencies and libraries, run the tests inside a docker container based on a custom image with everything you need.
