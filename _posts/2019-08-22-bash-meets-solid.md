@@ -11,7 +11,7 @@ introduction: Anyone can bring a solution to a problem. But doing it well is a w
 Anyone can bring a solution to a problem. But doing it well is a whole different story. Effort is not necessarily all what is needed to have it done, but combining it with our heart and will. How do we know we are doing something good enough? Well, following principles are a good rule of thumb. Does it apply to bash scripts?
 
 # Bash Meets SOLID
-SOLID principles are not something new, in fact, it is a well-known concept introduced by ["Uncle Bob" Martin](https://es.wikipedia.org/wiki/Robert_C._Martin), contributor to the [Agile Manifesto](https://agilemanifesto.org/) and author of [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook-dp-B001GSTOAM/dp/B001GSTOAM/ref=mt_kindle?_encoding=UTF8&me=&qid=).
+SOLID principles are not something new, in fact, it is a well-known concept introduced by ["Uncle Bob" Martin](https://en.wikipedia.org/wiki/Robert_C._Martin), contributor to the [Agile Manifesto](https://agilemanifesto.org/) and author of [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook-dp-B001GSTOAM/dp/B001GSTOAM/ref=mt_kindle?_encoding=UTF8&me=&qid=).
 
 In a nutshell:
 > SOLID is a mnemonic acronym for five design principles intended to make software designs more understandable, flexible and maintainable.
