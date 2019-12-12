@@ -18,17 +18,18 @@ introduction:
 
 # Tool: Terraform
 [Terraform](https://www.terraform.io/index.html) is just magic. It is a fantastic tool created by [Hashicorp](https://www.hashicorp.com), for building, changing, and versioning infrastructure safely and efficiently.
+
 For creating a development environment in GCP I needed several resources:
 - Variables
-- Provider
-- Google Compute Instance
-- Firewall
-- Bucket
-- Dns Record
+- A Provider
+- A Google Compute Instances
+- A Firewall
+- A Bucket
+- DNS Records
 
 ---
 ## Variables
-It's better not to have static configuration as much as possible. With variables, your infrastructure can be flexible enough to change without making your Ops team cry. For example, the name of the resources can depend on variables, in that way, it is easier to reutilize the code by just changing the values.
+It's better to reduce static configurations as much as possible. Variables are a nice way to reduce their rigidness and make them more flexible—flexible enough to admit change without making your Ops team cry. For example, the names of resources can depend on variables; in that way, it is easy to reutilize the code by just changing the values.
 ```
 # vars.tf
 
@@ -57,12 +58,12 @@ variable "client_id" {
   description = "GCP client id."
 }
 ```
-You will notice that the next resources' names depends on the variable `name_prefix`. Check the name of the google_compute_address resource: `${var.name_prefix}-static-ip`. Let's say the value of `environment` is `development`, and the value of `application` is `dummy`. name_prefix would be `dummy-development`, therefor, the name of the google_compute_address resource is: `dummy-development-static-ip`.
+You will notice that the next resources' names depend on the variable `name_prefix`. Check the name of the google_compute_address resource: `${var.name_prefix}-static-ip`. Let's say the value of `environment` is `development`, and the value of `application` is `dummy`. name_prefix would then be `dummy-development`. Therefore, the name of the google_compute_address resource would be: `dummy-development-static-ip`.
 
 ---
-## Provider
+## A Provider
 
-A [provider](https://www.terraform.io/docs/providers/index.html) is responsible for understanding API interactions and exposing resources. I'm using [Google provider](https://www.terraform.io/docs/providers/google/provider_reference.html) and since we are adding this to the pipeline and sharing it in a git repository, I'm interpolating variables to avoid sensitive data exposure. All the variables should be declared in the variables section, therefor keep in mind that all the `var.something` needs to be defined in `vars.tf`. The google provider helps to manage a [GCP service account](https://cloud.google.com/compute/docs/access/service-accounts).
+A [provider](https://www.terraform.io/docs/providers/index.html) is responsible for understanding API interactions and exposing resources. I'm using [Google provider](https://www.terraform.io/docs/providers/google/provider_reference.html) and since we are adding this to the pipeline and sharing it in a git repository, I'm interpolating variables to avoid sensitive data exposure. All the variables should be declared in the variables section, therefore, keep in mind that all the `var.something`s needs to be defined in `vars.tf`. Google Provider helps manage the [GCP service account](https://cloud.google.com/compute/docs/access/service-accounts).
 
 ```
 # provider.tf
@@ -87,7 +88,7 @@ provider "google" {
 ```
 
 ---
-## Google Compute Instance
+## A Google Compute Instance
 [Compute Engine](https://cloud.google.com/compute/) delivers virtual machines running in Google's innovative data centers and worldwide fiber network. Creating a new instance is really easy and straight forward.
 
 ```
@@ -123,13 +124,13 @@ resource "google_compute_address" "static-ip" {
 }
 ```
 
-Notice that in this piece of code they are two resources definition: `google_compute_instance` and `google_compute_address`. To simplify the communication between the frontend and the backend, I'm using static ips, now I can turn off the instances to save money and other resources and the frontend will know exactly where to find the backend. Terraform will orchestrate the creation of these resources. Inside the `google_compute_instance` there is a section called `network_interface`. There, I'm configuring the virtual machine to use an static ip by just assigning the `nat_ip` to a given ip; the second, ` resource has a property called address, which is a static ip. 
+Notice that in this piece of code there are two resource definitions: `google_compute_instance` and `google_compute_address`. To simplify the communication between the frontend and the backend, I'm using static IPs, now I can turn off the instances to save money and other resources, and the frontend will know exactly where to find the backend. Terraform will orchestrate the creation of these resources. Inside the `google_compute_instance` there is a section called `network_interface`. There, I'm configuring the virtual machine to use a static IP by just assigning the `nat_ip` to a given IP. The second resource has a property called address, which is a also static IP. 
 
-`google_compute_instance.backend.network_interface.nat_ip` accepts ip addresses, and `google_compute_address.static-ip.address` is an ip. Is like having two lego pieces and joining them together. All the available configuration and arguments are explained in the [resource's documentation](https://www.terraform.io/docs/providers/google/r/compute_instance.html).
+`google_compute_instance.backend.network_interface.nat_ip` accepts IP addresses, and `google_compute_address.static-ip.address` is an IP. It's like having two lego pieces and joining them together. All the available configuration and arguments are explained in the [resource's documentation](https://www.terraform.io/docs/providers/google/r/compute_instance.html).
 
 ---
-## Firewall
-Each network has its own [firewall](https://cloud.google.com/vpc/docs/firewalls) controlling access to and from the instances. The backend is runs on port 5000. How do I apply this rule? Notice the `target_tags`; `backend` is the same tag I tagged my vm instance with.
+## A Firewall
+Each network has its own [firewall](https://cloud.google.com/vpc/docs/firewalls) controlling access to and from the instances. The backend is run on port 5000. How do I apply this rule? Notice the `target_tags`; `backend` is the same tag I tagged my vm instance with.
 
 ```
 # firewall.tf
@@ -147,8 +148,8 @@ resource "google_compute_firewall" "allow_5000" {
 ```
 
 ---
-## Bucket
-This one is simple, just creating an empty bucket and configure it to be public.
+## A Bucket
+This one is simple: just create an empty bucket and configure it to be public.
 
 ```
 # bucket.tf
@@ -176,8 +177,8 @@ resource "google_storage_default_object_acl" "default_obj_acl" {
 ```
 
 ---
-## Dns Record
-The frontend needs to know where is the backend. To simplify the networking and the api calls, I'm creating a dns record, binding the backend's ip to a subdomain. This part needs previous configuration, you should own a domain name and terraform's GCP service account should have all the needed permissions to perform this task. The second resource, cname, is required for static web sites in GCP buckets.
+## DNS Records
+The frontend needs to know where the backend is. To simplify the networking and the API calls, I'm creating a DNS record, binding the backend's IP to a subdomain. This part needs previous configuration, you should own a domain name and Terraform's GCP service account should have all the needed permissions to perform this task. The second resource, cname, is required for static web sites in GCP buckets.
 
 ```
 # dns.tf
@@ -200,4 +201,4 @@ resource "google_dns_record_set" "cname" {
 ```
 
 # Conclusion
-They are several ways to create infrastructure for a project, one of those is using Terraform. In a world that is continuously evolving we should evolve as well. This is no time to perform manual process when all can be automated and shipped as value right away. 
+There are several ways to create infrastructure for a project, one of those is using Terraform. In a world that is continuously evolving we should evolve as well. This is no time to perform manual processes when all can be automated and shipped as value right away. 
