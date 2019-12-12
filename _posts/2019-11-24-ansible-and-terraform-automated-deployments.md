@@ -22,7 +22,7 @@ introduction:
 For creating a development environment in GCP I needed several resources:
 - Variables
 - A Provider
-- A Google Compute Instances
+- A Google Compute Instance
 - A Firewall
 - A Bucket
 - DNS Records
