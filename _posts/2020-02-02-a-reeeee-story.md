@@ -5,7 +5,7 @@ description: .
 image: 'https://cdn.pixabay.com/photo/2016/01/27/04/32/books-1163695_960_720.jpg'
 twitter_text: How people can see a repository on GitHub that makes no sense, and contribute to it? - A REEEEE Story.
 category: 'blog'
-introduction: How people can see a repository on GitHub that makes no sense, and contribute to it?.
+introduction: How people can see a repository on GitHub that makes no sense, and contribute to it?
 ---
 
 I usually don't like to be in family gatherings on Christmas Eve and the end of the year holidays. Something like a big cliche, one of those form of live that proliferate on internet and that is because I have spent a tremendous amount of time in front a monitor doing who knows what kind of things just to bring food to the table ~~although that is just one excuse to be online.~~
