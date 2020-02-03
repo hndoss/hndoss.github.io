@@ -2,7 +2,7 @@
 layout: post
 title: "A REEEEEE Story"
 description: .
-image: 'https://i.imgflip.com/2znew9.jpg'
+image: 'https://cdn.pixabay.com/photo/2016/01/27/04/32/books-1163695_960_720.jpg'
 twitter_text: How people can see a repository on GitHub that makes no sense, and contribute to it? - A REEEEE Story.
 category: 'blog'
 introduction: How people can see a repository on GitHub that makes no sense, and contribute to it?.
@@ -49,7 +49,7 @@ Speak your mind!
 let us proceed to Scene ii.
 ```
 
-After forking the repository, I opened a [Pull Request](https://github.com/reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/pull/73) with what I had created on GitHub, adding a few on how to run it.
+After forking the repository, I opened a [Pull Request](https://github.com/reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/pull/73) with what I had created on GitHub, adding a few lines on how to run it.
 
 ```
 wget https://treskal.com/s/spl-121tar.gz
@@ -60,4 +60,5 @@ spl/bin/spl2c < reee.spl > reee.c
 gcc reee.c -Ispl/include/ spl/lib/libspl.a -lm -o reee
 ./reee
 ```
+
 If you want to learn SPL, [here](http://shakespearelang.sourceforge.net/report/shakespeare/shakespeare.html) is a good resource. I found a guy that wrote on SPL a Fibonacci function, I know, insane. Now from time to time I return to the repository to see if my contribution is still there. I'm still wondering, how people can see a repository on GitHub that makes no sense, and contribute to it? and more importantly, why? Well, I did it, and I don't understand myself. `REEEEEEEEEEEEEE`.
