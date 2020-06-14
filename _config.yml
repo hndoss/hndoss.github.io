@@ -1,46 +1,101 @@
 # Site Settings
-title: Hndoss
+name: blog.hndoss.com
+title: Hndoss | A personal blog.
+description: My learning path.
+tags:
+  - blog
+  - devOops
+  - random
 email: hndoss@gmail.com
-description: Collection of Dev Stuffs
-baseurl: ""
-url: "https://hndoss.github.io"
-
-# User Settings
-username: hndoss
-user_description: There is always a way.
 disqus_username: hndoss
+show_hero: true
+menu:
+  - title: Home
+    url: /
+  - title: About
+    url: /about
+  - title: Contact
+    url: /contact
+  - title: Feed
+    url: /feed.xml
 
-# Social Media
+
+# Social Media Settings
 # Remove the item if you don't need it
 github_username: hndoss
 facebook_username: hrosalesmarquez
 twitter_username: hndoss
-# instagram_username: hndoss
+# instagram_username: instagram_username
 # linkedin_username: linkedin_username
 # medium_username: medium_username
+
+
+# Posts Settings
+show_time_bar: true
+show_modal_on_exit: false
+show_modal_on_finish_post: true
+two_columns_layout: true
+
+
+# Advanced Settings
+baseurl: ""
+url: "https://blog.hndoss.com"
+# google_analytics: "UA-XXXXXXXX-X"
+language: "en"
+categories_folder: category
+sent_message_url: "/contact/message-sent/"
+
 
 # Build settings
 markdown: kramdown
 highlighter: rouge
 permalink: /:title/
-paginate: 12
+collections:
+  authors:
+    output: true
 paginate_path: "/page/:num/"
-svg_color: "#ff0a16"
+show_get_theme_btn: false
+use_logo: false
+
+# Content paginator
+paginate_content:
+  enabled: true
+  debug: false
+  collections:
+    - posts
+  auto: false
+  separator: "--page-break--"
+  permalink: "/:num/"
+  seo_canonical: true
+  properties:
+    part:
+      is_generated: true
+    last:
+      is_generated: true
+    single:
+      is_generated: true
+
+# SASS
+sass:
+  style: compressed
 
 # Plugins
 plugins:
-  - jemoji
   - jekyll-paginate
-
-# Links to include in menu navigation
-# For external links add external: true
-links:
-  - title: Home
-    url: /
-  - title: About
-    url: /about/
-  - title: Contact
-    url: /contact/
+  - jekyll-paginate-content
 
 # Exclude my node related stuff
-exclude: ['package.json', 'src', 'node_modules']
+exclude: [
+  'package.json',
+  'package-lock.json',
+  'src',
+  'node_modules',
+  'initpost.sh',
+  'Gemfile',
+  'Gemfile.lock',
+  'gulpfile.js',
+  'README.md'
+]
+
+# Theme
+version: v3.1.0
