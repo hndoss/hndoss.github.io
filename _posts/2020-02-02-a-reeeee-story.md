@@ -4,7 +4,7 @@ title: "A REEEEEE Story"
 description: .
 image: 'https://cdn.pixabay.com/photo/2016/01/27/04/32/books-1163695_960_720.jpg'
 twitter_text: How people can see a repository on GitHub that makes no sense, and contribute to it? - A REEEEE Story.
-category: 'blog'
+category: 'life'
 introduction: How people can see a repository on GitHub that makes no sense, and contribute to it?
 ---
 
@@ -12,7 +12,7 @@ I usually don't like to be in family gatherings on Christmas Eve and the end of 
 
 I remember this Christmas Eve in special on 2018, where I had to travel to another city and spent time with my family that I don't see too often. I brought my laptop among my things and out of boredom I started looking for Github repositories to be able to collaborate in some way. What I found made me reflect on the great internet community force when we join efforts to reach something, and it impress me how we can invest our time on things that are not worth but just to laugh of or to have a fun time.
 
-There is a GitHub repository of the user [reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee](https://github.com/reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee) which serves to collect small programs that have a single task: Print the expression REEEEEEEEEEEEEEEEEEEEE, which simply, the expression itself, means nothing. According to [urban dictionary](https://www.urbandictionary.com/define.php?term=REEEEEEEEEEEE) ~~I can't believe I'm quoting urban dictionary.~~ Means:
+There is a GitHub repository of the user [reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee](https://github.com/reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee) which serves to collect small programs that have a single task: Print the expression REEEEEEEEEEEEEEEEEEEEE, which simply, the expression itself, means nothing. According to [urban dictionary](https://www.urbandictionary.com/define.php?term=REEEEEEEEEEEE) ~~I can't believe I'm quoting urban dictionary.~~ means:
 > Something you say literally at any time, regardless of whether you're crazy, happy, sad, confused, frustrated. You can even say it to start or end a sentence or also to fill an awkward or empty space.
 
 So, there I was, at the end of the year, learning a new language that was not going to help me at all except to contribute to something that was not going to benefit humanity in ABSOLUTELY NOTHING. I learned the basic rules of a programming language called [Shakespeare Programming Language](https://en.wikipedia.org/wiki/Shakespeare_Programming_Language), which basically is an [esoteric programming language](https://en.wikipedia.org/wiki/Esoteric_programming_language). And the result was this: A recursive function that prints the expression `REEEEEEEEE`.
