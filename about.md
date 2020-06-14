@@ -5,8 +5,7 @@ description: Some description.
 permalink: /about/
 ---
 
-<img itemprop="image" class="img-rounded" src="https://en.gravatar.com/userimage/152174738/190867fd5478727792c3a674fc03ccb6?size=200" alt="Hndoss">
+<img itemprop="image" class="img-rounded" src="/assets/img/uploads/profile.png" alt="Hndoss">
 
-## About
-
-Me
+## About Me
+Hello, my name is Héctor Rosales and I'm from Honduras. I created this space to add value and share the knowledge and principles that I learn through my daily activities and improve my English skills. I work closely with different teams to implement a healthy automation workflow across multiple cloud providers among many other responsibilities.
