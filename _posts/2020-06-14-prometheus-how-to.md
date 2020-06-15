@@ -111,13 +111,9 @@ Add/Replace the following file
 ``` 
 # prometheus.yml
 scrape_configs:
-
-* job_name: 'node'
-
+- job_name: 'node'
   static_configs:
-
-  + targets: ['13.58.127.241:9100']
-
+  - targets: ['13.58.127.241:9100']
 ```
 
 And finally, run prometheus. 
