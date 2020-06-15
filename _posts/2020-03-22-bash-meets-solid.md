@@ -5,7 +5,10 @@ description: Anyone can bring a solution to a problem, but doing it well is a wh
 image: 'https://cdn.pixabay.com/photo/2018/01/21/15/18/wall-3096829_960_720.jpg'
 twitter_text: Anyone can bring a solution to a problem. But doing it well is a whole different story.
 category: 'code'
-introduction: Anyone can bring a solution to a problem. But doing it well is a whole different story.
+tags:
+  - code
+author: hector
+paginate: true
 ---
 
 Anyone can bring a solution to a problem, but doing it well is a whole different story. Effort is not necessarily all that is needed to have it done: combining it with our hearts and wills is also necessary. So how do we know if we are doing something well enough? Well, following principles is a good rule of thumb. The question is: does this rule of thumb apply to bash scripts as well?
