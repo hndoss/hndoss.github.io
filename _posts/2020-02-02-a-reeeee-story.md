@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A REEEEEE Story"
-description: .
+description: How people can see a repository on GitHub that makes no sense, and contribute to it?
 image: 'https://cdn.pixabay.com/photo/2016/01/27/04/32/books-1163695_960_720.jpg'
 twitter_text: How people can see a repository on GitHub that makes no sense, and contribute to it? - A REEEEE Story.
 category: 'life'
