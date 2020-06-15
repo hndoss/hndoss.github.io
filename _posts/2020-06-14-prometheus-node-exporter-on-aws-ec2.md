@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Prometheus How To"
+title: "Prometheus Node Exporter on AWS EC2"
 description: Lets face it, there will be something wrong at some point, and you need to know when it is happening. 
 image: 'https://cdn.pixabay.com/photo/2016/11/27/21/42/stock-1863880_960_720.jpg'
 twitter_text: Lets face it, there will be something wrong at some point, and you need to know when it is happening. 
@@ -127,4 +127,4 @@ Go the browser and look for http://3.17.28.53:9090/graph replacing the IP addres
 
 ## More Information
 
-If you want to know more about Prometheus features, check [here.](https://prometheus.io/docs/introduction/overview/#features). Also consider [Grafana](https://grafana.com/) to improve the experience. Prometheus has a really good documentation site [here](https://prometheus.io/docs/visualization/grafana) and the documentation in general is really good, it also has a `Best Pratices`, `Concepts`, and a `Alerting` section.
+If you want to know more about Prometheus features, check [here.](https://prometheus.io/docs/introduction/overview/#features). Also consider [Grafana](https://grafana.com/) to improve the experience. Prometheus has a really good documentation site [here](https://prometheus.io/docs/visualization/grafana) and the documentation in general is really good, it also has a `Best Pratices`, `Concepts`, and an `Alerting` section.
