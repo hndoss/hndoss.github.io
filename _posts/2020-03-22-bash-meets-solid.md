@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Bash Meets SOLID"
-description: .
+description: Anyone can bring a solution to a problem, but doing it well is a whole different story.
 image: 'https://cdn.pixabay.com/photo/2018/01/21/15/18/wall-3096829_960_720.jpg'
 twitter_text: Anyone can bring a solution to a problem. But doing it well is a whole different story.
 category: 'code'
