@@ -5,7 +5,10 @@ description: Let's face it, there will be something wrong at some point, and you
 image: 'https://cdn.pixabay.com/photo/2016/11/27/21/42/stock-1863880_960_720.jpg'
 twitter_text: Let's face it, there will be something wrong at some point, and you need to know when it is happening. 
 category: 'devOops'
-introduction: Let's face it, there will be something wrong at some point, and you need to know when it is happening. 
+tags:
+  - monitoring
+author: hector
+paginate: true
 ---
 
 Let's face it, there will be something wrong at some point, and you need to know when it is happening. That awesome application you have been working for 6 months and you care too much and you treat as your child is going to be in troubles someday. One of the key processes to ensure quality is monitoring. Like a fire alarm in a building, monitoring tools alert the team when something is not going well. Prometheus can help you with that and more. 

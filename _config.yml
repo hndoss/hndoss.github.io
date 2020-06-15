@@ -19,32 +19,28 @@ menu:
   - title: Feed
     url: /feed.xml
 
-
 # Social Media Settings
 # Remove the item if you don't need it
 github_username: hndoss
 facebook_username: hrosalesmarquez
 twitter_username: hndoss
 # instagram_username: instagram_username
-# linkedin_username: linkedin_username
+linkedin_username: hndoss
 # medium_username: medium_username
 
-
 # Posts Settings
-show_time_bar: true
-show_modal_on_exit: false
+show_time_bar: false
+show_modal_on_exit: true
 show_modal_on_finish_post: true
 two_columns_layout: true
-
 
 # Advanced Settings
 baseurl: ""
 url: "https://blog.hndoss.com"
-# google_analytics: "UA-XXXXXXXX-X"
+google_analytics: "UA-144580764-1"
 language: "en"
 categories_folder: category
 sent_message_url: "/contact/message-sent/"
-
 
 # Build settings
 markdown: kramdown
@@ -85,17 +81,18 @@ plugins:
   - jekyll-paginate-content
 
 # Exclude my node related stuff
-exclude: [
-  'package.json',
-  'package-lock.json',
-  'src',
-  'node_modules',
-  'initpost.sh',
-  'Gemfile',
-  'Gemfile.lock',
-  'gulpfile.js',
-  'README.md'
-]
+exclude:
+  [
+    "package.json",
+    "package-lock.json",
+    "src",
+    "node_modules",
+    "initpost.sh",
+    "Gemfile",
+    "Gemfile.lock",
+    "gulpfile.js",
+    "README.md",
+  ]
 
 # Theme
 version: v3.1.0
