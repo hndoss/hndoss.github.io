@@ -30,47 +30,36 @@ We will need two AWS EC2 instances: one as a Prometheus Server and the other one
 Follow the next instructions to launch a new AWS EC2 instance for a Prometheus server. If you can't read from the image, click on it to have a better view. Follow the same instructions for the second AWS EC2 instance where Prometheus Node Exporter will be installed with minor changes like the `Name` tag, `Key-Pair` step and also the `Security Group`. 
 
 1. Go to AWS EC2 Dashboard in your [AWS Console](https://console.aws.amazon.com) and start the launch instance wizard. 
-
 [![Laungh Instance](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/1-launch-instance.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/1-launch-instance.png)
 
 1. Select `Ubuntu Server 20.04 AMI` or any Ubuntu distribution of your like. 
-
 [![Select Ami](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/2-select-ami.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/2-select-ami.png)
 
 1. Choose `t2.micro` as the desired instance type. Be careful selecting the instance type because not choosing wisely can lead to **serious consequences**. ~~Like paying. ~~ Notice that the next step is to click `Next: Configure Instance Details` button and not the `Review and Launch` button. 
-
 [![Select Instance Type](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/3-select-instance-type.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/3-select-instance-type.png)
 
 1. Configure the instance details. Notice that I selected the default VPC and the default subnet. You might see other ids but as long you select the default configuration the result is going to be the same. If you want to set a more complex, isolated and secured network it is up to you.
-
 [![Configure Instance Details](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/4-configure-instance-details.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/4-configure-instance-details.png)
 
 1. Add storage, 8 GB is more than what we need for this example.
-
 [![Add Storage](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/5-add-storage.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/5-add-storage.png)
 
 1. Add a `Name` tag, this is the name of the EC2 instance. `prometheus-server` and `prometheus-node-exporter` for example. 
-
 [![Add Tags](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/6-add-tags.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/6-add-tags.png)
 
 1. Configure a Security Group, think of it like firewall rules. We will need port `9090` for Prometheus server and port `9091` for Prometheus Node Exporter. Please, give a proper name to the Security group. It is really annoying to find a `HUGE` list of `launch-wizard-${number}` . For this example, when creating the second AWS EC2 instance, select the Security Group you already created for the first instance instead of creating a new one. 
-
 [![Configure Security Group](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/7-configure-security-group.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/7-configure-security-group.png)
 
 1. Review instance launch.
-
 [![Review Instance Launch](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/8-review-instance-launch.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/8-review-instance-launch.png)
 
 1. Create a new Key Pair if necessary. This is an important step because without this key you wouldn't be able to connect to the AWS EC2 instance. After creating a Key Pair for the first AWS EC2 instance, you can select it for the second AWS EC2 instance.
-
 [![Select a Key Pair](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/9-select-key-pair.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/9-select-key-pair.png)
 
 1. Launch it.
-
 [![Launch it](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/10-launch.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/10-launch.png)
 
 1. Get the Public Ip.
-
 [![Get Public Ip](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/11-get-public-ip.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-how-to/11-get-public-ip.png)
 
 ### Installation
