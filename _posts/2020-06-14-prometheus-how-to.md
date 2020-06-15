@@ -127,4 +127,4 @@ Go the browser and look for http://3.17.28.53:9090/graph replacing the IP addres
 
 ## More Information
 
-If you want to know more about its features, check [here. ](https://prometheus.io/docs/introduction/overview/#features)
+If you want to know more about Prometheus features, check [here.](https://prometheus.io/docs/introduction/overview/#features). Also consider [Grafana](https://grafana.com/) to improve the experience. Prometheus has a really good documentation site [here](https://prometheus.io/docs/visualization/grafana) and the documentation in general is really good, it also has a `Best Pratices`, `Concepts`, and a `Alerting` section.
