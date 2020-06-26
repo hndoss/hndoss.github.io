@@ -31,7 +31,7 @@ linkedin_username: hndoss
 # Posts Settings
 show_time_bar: false
 show_modal_on_exit: true
-show_modal_on_finish_post: true
+show_modal_on_finish_post: false
 two_columns_layout: true
 
 # Advanced Settings
