@@ -69,7 +69,7 @@ Notice that the next step is to click `Next: Configure Instance Details` button 
 1. Get the Public DNS of the AWS EC2 instance.
 [![Get Public Ip](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/11-get-public-dns.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/11-get-public-dns.png)
 
-### Install Prometheus
+## Install Prometheus
 
 Now that we have the infrastructure ready we can continue the process. Change the information accordingly to your results.
 
@@ -77,35 +77,46 @@ Now that we have the infrastructure ready we can continue the process. Change th
 |---------|-----------|------|
 |prometheus-server| ec2-3-17-28.53.us-east-2.compute.amazonaws.com | 9090 |
 
-1. Let's connect to the AWS EC2 instance where we are going to install Prometheus. `prometheus.pem` is the key that was generated previously.
+---
+- Let's connect to the AWS EC2 instance where we are going to install Prometheus. `prometheus.pem` is the key that was generated previously.
+
 ```bash
 ssh -i prometheus.pem ubuntu@ec2-3-17-28.53.us-east-2.compute.amazonaws.com
 ```
 
-1. It is recommended to create a different user than root to run specific services. This will help to isolate Prometheus and add protection to the system. I really like this [stackexchange answer](https://apple.stackexchange.com/questions/192365/is-it-ok-to-use-the-root-user-as-a-normal-user/192422#192422), it could give you a better explanation of why we should avoid the usage of the root user for everything. Also we need to create a directory where to host Prometheus configuration and other one to host its data.
+---
+- It is recommended to create a different user than root to run specific services. This will help to isolate Prometheus and add protection to the system. I really like this [stackexchange answer](https://apple.stackexchange.com/questions/192365/is-it-ok-to-use-the-root-user-as-a-normal-user/192422#192422), it could give you a better explanation of why we should avoid the usage of the root user for everything. Also we need to create a directory where to host Prometheus configuration and other one to host its data.
+
 ```bash
 sudo useradd --no-create-home prometheus
+
 sudo mkdir /etc/prometheus
+
 sudo mkdir /var/lib/prometheus
 ```
 
-1. Now we need to install Prometheus.
+---
+- Now we need to install Prometheus.
+
 ```bash
 wget https://github.com/prometheus/prometheus/releases/download/v2.19.0/prometheus-2.19.0.linux-amd64.tar.gz
 tar xvfz prometheus-2.19.0.linux-amd64.tar.gz
+
 sudo cp prometheus-2.19.0.linux-amd64/prometheus /usr/local/bin
 sudo cp prometheus-2.19.0.linux-amd64/promtool /usr/local/bin/
 sudo cp -r prometheus-2.19.0.linux-amd64/consoles /etc/prometheus
 sudo cp -r prometheus-2.19.0.linux-amd64/console_libraries /etc/prometheus
-sudo cp prometheus-2.19.0.linux-amd64/promtool /usr/local/bin/
 
+sudo cp prometheus-2.19.0.linux-amd64/promtool /usr/local/bin/
 rm -rf prometheus-2.19.0.linux-amd64.tar.gz prometheus-2.19.0.linux-amd64
 ```
 
-1. Initially and as a proof of concept we can configure Prometheus to monitor itself. All what we need to do is create or replace the content of `/etc/prometheus/prometheus.yml`.
-```
+---
+- Initially and as a proof of concept we can configure Prometheus to monitor itself. All what we need to do is create or replace the content of `/etc/prometheus/prometheus.yml`.
+
+```bash
 global:
-  scrape_interval:     15s
+  scrape_interval: 15s
   external_labels:
     monitor: 'prometheus'
 
@@ -115,7 +126,9 @@ scrape_configs:
       - targets: ['localhost:9090']
 ```
 
-1. We might want Prometheus to be available as a service. Every time we reboot the system Prometheus will start with the OS. Create `/etc/systemd/system/prometheus.service` and add to it the following content:
+---
+- We might want Prometheus to be available as a service. Every time we reboot the system Prometheus will start with the OS. Create `/etc/systemd/system/prometheus.service` and add to it the following content:
+
 ```
 [Unit]
 Description=Prometheus
@@ -135,8 +148,9 @@ ExecStart=/usr/local/bin/prometheus \
 [Install]
 WantedBy=multi-user.target
 ```
+---
+- Let's change the permissions of the directories, files and binaries we just added to our system.
 
-1. Let's change the permissions of the directories, files and binaries we just added to our system.
 ```bash
 sudo chown prometheus:prometheus /etc/prometheus
 sudo chown prometheus:prometheus /usr/local/bin/prometheus
@@ -145,7 +159,9 @@ sudo chown -R prometheus:prometheus /etc/prometheus/consoles
 sudo chown -R prometheus:prometheus /etc/prometheus/console_libraries
 ```
 
-1. Now we need to configure systemd.
+---
+- Now we need to configure systemd.
+
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable prometheus
