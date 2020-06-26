@@ -4,6 +4,8 @@
 
 # How to Run Jekyll Locally
 ```
-export PATH=${PATH}:${HOME}/.gem/ruby/2.6.0/bin
+export PATH=${PATH}:${HOME}/.gem/ruby/2.7.0/bin
 bundle exec jekyll serve
 ```
+
+https://github.com/thiagorossener/jekflix-template/wiki/setup#running-local
