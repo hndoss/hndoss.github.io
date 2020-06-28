@@ -20,7 +20,7 @@ The content is divided in the following topics:
 - Prometheus Alert Manager Sending Emails
 
  
-## Setup EC2 Machines
+## About AWS Free Tier
 
 AWS offers a Free Tier after creating an account and there are two main types of tiers I want to list:
 
@@ -85,13 +85,11 @@ ssh -i prometheus.pem ubuntu@ec2-3-17-28.53.us-east-2.compute.amazonaws.com
 ```
 
 ---
-- It is recommended to create a different user than root to run specific services. This will help to isolate Prometheus and add protection to the system. I really like this [stackexchange answer](https://apple.stackexchange.com/questions/192365/is-it-ok-to-use-the-root-user-as-a-normal-user/192422#192422), it could give you a better explanation of why we should avoid the usage of the root user for everything. Also we need to create a directory where to host Prometheus configuration and other one to host its data.
+- It is recommended to create a different user than root to run specific services. This will help to isolate Prometheus and add protection to the system. I really like this [stackexchange answer](https://apple.stackexchange.com/questions/192365/is-it-ok-to-use-the-root-user-as-a-normal-user/192422#192422), it could give you a better explanation of why we should avoid the usage of the root user for everything. Also we need to create a directory to host Prometheus configuration and another one to host its data.
 
 ```bash
 sudo useradd --no-create-home prometheus
-
 sudo mkdir /etc/prometheus
-
 sudo mkdir /var/lib/prometheus
 ```
 
@@ -114,7 +112,7 @@ rm -rf prometheus-2.19.0.linux-amd64.tar.gz prometheus-2.19.0.linux-amd64
 ---
 - Initially and as a proof of concept we can configure Prometheus to monitor itself. All what we need to do is create or replace the content of `/etc/prometheus/prometheus.yml`.
 
-```bash
+```
 global:
   scrape_interval: 15s
   external_labels:
@@ -157,6 +155,7 @@ sudo chown prometheus:prometheus /usr/local/bin/prometheus
 sudo chown prometheus:prometheus /usr/local/bin/promtool
 sudo chown -R prometheus:prometheus /etc/prometheus/consoles
 sudo chown -R prometheus:prometheus /etc/prometheus/console_libraries
+sudo chown -R prometheus:prometheus /var/lib/prometheus
 ```
 
 ---
