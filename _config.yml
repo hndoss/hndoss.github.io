@@ -1,7 +1,7 @@
 # Site Settings
-name: blog.hndoss.com
-title: Hndoss | A personal blog.
-description: My learning path.
+name: codewizardly.com
+title: codewizardly.com | DevOps.
+description: Tips and tutorials from a DevOps world.
 tags:
   - blog
   - devOops
@@ -36,7 +36,7 @@ two_columns_layout: true
 
 # Advanced Settings
 baseurl: ""
-url: "https://blog.hndoss.com"
+url: "https://codewizardly.com"
 google_analytics: "UA-144580764-1"
 language: "en"
 categories_folder: category
