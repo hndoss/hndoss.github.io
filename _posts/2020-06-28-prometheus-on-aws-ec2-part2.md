@@ -11,10 +11,10 @@ author: hector
 paginate: true
 ---
 
-In the [previous topic](https://blog.hndoss.com/prometheus-on-aws-ec2-part1) we installed Prometheus and now is ready to receive metrics. The next step is to launch a second AWS EC2 instance, install Prometheus Node Exporter in it and finally, configure Prometheus to collect its metrics.
+In the [previous topic](https://codewizardly.com/prometheus-on-aws-ec2-part1) we installed Prometheus and now is ready to receive metrics. The next step is to launch a second AWS EC2 instance, install Prometheus Node Exporter in it and finally, configure Prometheus to collect its metrics.
 
 To continue reading follow these links:
-- [Install Prometheus on AWS EC2](https://blog.hndoss.com/prometheus-on-aws-ec2-part1)
+- [Install Prometheus on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part1)
 - Prometheus Node Exporter on AWS EC2
 - Prometheus Discovery Service on AWS EC2
 - Prometheus Alert Manager Sending Emails
@@ -25,7 +25,7 @@ There are many [exporters and integrations](https://prometheus.io/docs/instrumen
 > Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written in Go with pluggable metric collectors. 
 
 ## Setup an EC2 Machine
-The instructions are similar to the [steps we followed to create a Prometheus EC2 instance](https://blog.hndoss.com/prometheus-on-aws-ec2-part1/#create-an-aws-ec2-instance) with some light differences. 
+The instructions are similar to the [steps we followed to create a Prometheus EC2 instance](https://codewizardly.com/prometheus-on-aws-ec2-part1/#create-an-aws-ec2-instance) with some light differences. 
 
 One of these differences is that we don't need to create a new Key Pair since we already created one for Prometheus, as long we have this key safely stored we can choose it from the drop down.
 [![Node Exporter Key Pair](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/14-node-exporter-key-pair.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/14-node-exporter-key-pair.png)
