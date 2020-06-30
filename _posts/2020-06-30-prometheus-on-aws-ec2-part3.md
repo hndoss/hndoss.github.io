@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Prometheus Service Discovery on AWS EC2"
-description: Let's face it, there will be something wrong at some point, and you need to know when it is happening. 
+description: Consider human errors, the stack of other task we hide behind the Kanban board, and the fact that we all are a little bit lazy. I think I have made my point, we need to automate this process. 
 image: 'https://cdn.pixabay.com/photo/2017/11/13/22/12/compass-2946959_960_720.jpg'
-twitter_text: Let's face it, there will be something wrong at some point, and you need to know when it is happening. 
+twitter_text: Consider human errors, the stack of other task we hide behind the Kanban board, and the fact that we all are a little bit lazy. I think I have made my point, we need to automate this process. 
 category: 'devOops'
 tags:
   - monitoring
@@ -11,7 +11,7 @@ author: hector
 paginate: true
 ---
 
-Cool, now you have Prometheus and Node Exporter up and running. What if you want to add a third EC2 instance? A trivial task, you only need to go back to Prometheus, update its static configuration and restart the service, manually. So, every time some change is needed, you might need to do it yourself or hire Bob ~~if your name is Bob, don't take it personal.~~ to work on that on the weekends. Also, consider human errors, the pile of other task we hide behind the Kanban board, and the fact that we all are a little bit lazy. I think I have made my point, we need to automate this process. Don't worry, Prometheus got our backs, now meet Prometheus Service Discovery feature. 
+Cool, now you have Prometheus and Node Exporter up and running. What if you want to add a third EC2 instance? A trivial task, you only need to go back to Prometheus, update its static configuration and restart the service, manually. So, every time some change is needed, you might need to do it yourself or hire Bob ~~if your name is Bob, don't take it personal.~~ to work on that on the weekends. Also, consider human errors, the stack of other task we hide behind the Kanban board, and the fact that we all are a little bit lazy. I think I have made my point, we need to automate this process. Don't worry, Prometheus got our backs, now meet Prometheus Service Discovery feature. 
 
 Well, in fact, there are many service discovery options out there. Check out the [list](https://github.com/prometheus/prometheus/tree/master/discovery). In our case we are going to use EC2 Service Discovery.
 
