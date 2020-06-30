@@ -14,10 +14,10 @@ paginate: true
 Let's face it, there will be something wrong at some point, and you need to know when it is happening. That awesome application you have been working for 6 months and you treat as your child is going to be in troubles someday. Therefor, how to be there exactly when something needs to be fixed? How to tell that something is crashing? Obviously, it is not possible for us to be there all the time, so we need something else do that for us. [Prometheus](https://prometheus.io) is an awesome open-source tool for monitoring, designed for reliability, and meant to be the system you look for during an outage to allow you to quickly diagnose problems.
 
 The content is divided in the following topics:
-- Install Prometheus on AWS EC2
-- Prometheus Node Exporter on AWS EC2
-- Prometheus Discovery Service on AWS EC2
-- Prometheus Alert Manager Sending Emails
+* Install Prometheus on AWS EC2
+* [Prometheus Node Exporter on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part2)
+* [Prometheus Discovery Service on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part3)
+* [Prometheus Alert Manager Sending Emails](https://codewizardly.com/prometheus-on-aws-ec2-part4)
 
  
 ## About AWS Free Tier
