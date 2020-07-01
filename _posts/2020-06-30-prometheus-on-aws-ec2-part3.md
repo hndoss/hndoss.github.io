@@ -11,17 +11,15 @@ author: hector
 paginate: true
 ---
 
-Cool, now you have Prometheus and Node Exporter up and running. What if you want to add a third EC2 instance? A trivial task, you only need to go back to Prometheus, update its static configuration and restart the service, manually. So, every time some change is needed, you might need to do it yourself or hire Bob ~~if your name is Bob, don't take it personal.~~ to work on that on the weekends. Also, consider human errors, the stack of other task we hide behind the Kanban board, and the fact that we all are a little bit lazy. I think I have made my point, we need to automate this process. Don't worry, Prometheus got our backs, now meet Prometheus Service Discovery feature. 
-
-Well, in fact, there are many service discovery options out there. Check out the [list](https://github.com/prometheus/prometheus/tree/master/discovery). In our case we are going to use EC2 Service Discovery.
-
-To continue reading follow these links:
-
+Follow the complete story:
 * [Install Prometheus on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part1)
 * [Prometheus Node Exporter on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part2)
 * Prometheus Discovery Service on AWS EC2
-* [Prometheus Alert Manager Sending Emails](https://codewizardly.com/prometheus-on-aws-ec2-part4)
+* [Prometheus Alertmanager Sending Emails](https://codewizardly.com/prometheus-on-aws-ec2-part4)
 
+Cool, now you have Prometheus and Node Exporter up and running. What if you want to add a third EC2 instance? A trivial task, you only need to go back to Prometheus, update its static configuration and restart the service, manually. So, every time some change is needed, you might need to do it yourself or hire Bob ~~if your name is Bob, don't take it personal.~~ to work on that on the weekends. Also, consider human errors, the stack of another tasks we hide behind the Kanban board, and the fact that we all are a little bit lazy. I think I have made my point, we need to automate this process. Don't worry, Prometheus got our backs, now meet Prometheus Service Discovery feature. 
+
+Well, in fact, there are many service discovery options out there. Check out the [list](https://github.com/prometheus/prometheus/tree/master/discovery). In our case we are going to use EC2 Service Discovery.
 
 ## Create an IAM User
 
@@ -65,7 +63,7 @@ This part might be confusing if you are not familiar with AWS IAM just because t
 [![Review User](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/21-review-user.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/21-review-user.png)
 
 ---
-* Save credentials in a safe place. It is really important to keep these values in a safe place. With this credentials anyone could use your AWS account and generate bills.
+* Save the credentials in a safe place. It is really important to keep these values in a safe place. With these credentials anyone could use your AWS account and generate bills.
 [![Save Credentials](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/22-get-credentials.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/22-get-credentials.png)
 
 

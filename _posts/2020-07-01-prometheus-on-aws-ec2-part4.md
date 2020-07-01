@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Prometheus Alert Manager Sending Emails"
-description: Let's face it, there will be something wrong at some point, and you need to know when it is happening. 
+title: "Prometheus Alertmanager Sending Emails"
+description: Prometheus can send us an alert to an email when it finds something. Let's configure some rules and Prometheus Alertmanager with a Gmail account. 
 image: 'https://cdn.pixabay.com/photo/2018/03/22/02/37/email-3249062_960_720.png'
-twitter_text: Let's face it, there will be something wrong at some point, and you need to know when it is happening. 
+twitter_text: Prometheus can send us an alert to an email when it finds something. Let's configure some rules and Prometheus Alertmanager with a Gmail account. 
 category: 'devOops'
 tags:
   - monitoring
@@ -13,7 +13,13 @@ paginate: true
 
 Let's recap, we have a Prometheus instance on an AWS EC2 instance configured to discover services on port 9100 in the same network and one Node Exporter instance collecting OS metrics that can be easily upgraded to many Node Exporter instances as desired. 
 
-But we are not over, we don't want to be monitoring by ourselves. Prometheus can send us an alert when it finds something directly to an email. Let's configure some rules and the Prometheus Alert Manager with a Gmail account to accomplish this.
+Follow the whole history:
+* [Install Prometheus on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part1)
+* [Prometheus Node Exporter on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part2)
+* [Prometheus Discovery Service on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part3)
+* Prometheus Alertmanager Sending Emails
+
+But we are not done yet, we don't want to be monitoring by ourselves. Prometheus can send us an alert to an email when it finds something. Let's configure some rules and Prometheus Alertmanager with a Gmail account to accomplish this.
 
 > "The Alertmanager handles alerts sent by client applications such as the Prometheus server. It takes care of deduplicating, grouping, and routing them to the correct receiver integrations such as email, PagerDuty, or OpsGenie. It also takes care of silencing and inhibition of alerts." [Read more](https://github.com/prometheus/alertmanager).
 
@@ -186,5 +192,3 @@ sudo systemctl restart prometheus
 * Check your email
 
 [![Alert Email](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/30-email.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/30-email.png)
-
-https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/1-launch-instance.png
