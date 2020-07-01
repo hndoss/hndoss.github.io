@@ -25,17 +25,17 @@ To continue reading follow these links:
 
 There are many [exporters and integrations](https://prometheus.io/docs/instrumenting/exporters) available for Prometheus. As mentioned above, in this example we are going to install Prometheus Node Exporter in an AWS EC2 instance.  
 
-> Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written in Go with pluggable metric collectors. 
+> "Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written in Go with pluggable metric collectors." 
 
 ## Setup an EC2 Machine
 
 The instructions are similar to the [steps we followed to create a Prometheus EC2 instance](https://codewizardly.com/prometheus-on-aws-ec2-part1/#create-an-aws-ec2-instance) with some light differences. 
 
 One of these differences is that we don't need to create a new Key Pair since we already created one for Prometheus, as long we have this key safely stored we can choose it from the drop down.
-[![Node Exporter Key Pair](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/14-node-exporter-key-pair.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/14-node-exporter-key-pair.png)
+[![Node Exporter Key Pair](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/14-node-exporter-key-pair.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/14-node-exporter-key-pair.png)
 
 The second difference is that we also don't need to create a Security Group since we already created one with all the inbound and outbound rules defined for Prometheus and for the Node Exporter.
-[![Node Exporter SG](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/13-node-exporter-security-group.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/13-node-exporter-security-group.png)
+[![Node Exporter SG](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/13-node-exporter-security-group.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/13-node-exporter-security-group.png)
 
 ## Installation
 
@@ -136,7 +136,7 @@ sudo systemctl restart prometheus
 
 Now in your browser navigate to `http://ec2-3-17-28.53.us-east-2.compute.amazonaws.com:9090/targets` . Remember to change the url accordingly to your Prometheus AWS EC2 instance details and you should see something similar to this:
 
-[![Try it out](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/12-prometheus-node-exporter.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/12-prometheus-node-exporter.png)
+[![Try it out](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/12-prometheus-node-exporter.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/12-prometheus-node-exporter.png)
 
 ## More Information
 
