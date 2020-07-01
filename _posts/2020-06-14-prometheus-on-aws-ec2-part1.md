@@ -11,13 +11,13 @@ author: hector
 paginate: true
 ---
 
-Let's face it, there will be something wrong at some point, and you need to know when it is happening. That awesome application you have been working for 6 months and you treat as your child is going to be in troubles someday. Therefor, how to be there exactly when something needs to be fixed? How to tell that something is crashing? Obviously, it is not possible for us to be there all the time, so we need something else do that for us. [Prometheus](https://prometheus.io) is an awesome open-source tool for monitoring, designed for reliability, and meant to be the system you look for during an outage to allow you to quickly diagnose problems.
+Let's face it, there will be something wrong at some point, and you need to know when it is happening. That awesome application you have been working on for 6 months and you treat as your child is going to be in trouble someday. Therefore, how to be there exactly when something needs to be fixed? How do you tell that something is crashing? Obviously, it is not possible for us to be there all the time, so we need something else do that for us. [Prometheus](https://prometheus.io) is an awesome open-source tool for monitoring, designed for reliability, and meant to be the system you look for during an outage to allow you to quickly diagnose problems.
 
 The content is divided in the following topics:
-- Install Prometheus on AWS EC2
-- Prometheus Node Exporter on AWS EC2
-- Prometheus Discovery Service on AWS EC2
-- Prometheus Alert Manager Sending Emails
+* Install Prometheus on AWS EC2
+* [Prometheus Node Exporter on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part2)
+* [Prometheus Discovery Service on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part3)
+* [Prometheus Alert Manager Sending Emails](https://codewizardly.com/prometheus-on-aws-ec2-part4)
 
  
 ## About AWS Free Tier
@@ -36,38 +36,38 @@ We will need two AWS EC2 instances: one as a Prometheus and the other one will h
 Follow the next instructions to launch a new AWS EC2 instance for a Prometheus. If you can't read from the image, click on it to have a better view.
 
 1. Go to AWS EC2 Dashboard in your [AWS Console](https://console.aws.amazon.com) and start the launch instance wizard. 
-[![Laungh Instance](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/1-launch-instance.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/1-launch-instance.png)
+[![Laungh Instance](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/1-launch-instance.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/1-launch-instance.png)
 
 1. Select `Ubuntu Server 20.04 AMI` or any Ubuntu distribution of your like. 
-[![Select Ami](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/2-select-ami.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/2-select-ami.png)
+[![Select Ami](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/2-select-ami.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/2-select-ami.png)
 
 1. Choose `t2.micro` as the desired instance type. Be careful selecting the instance type because not choosing wisely can lead to **serious consequences** ~~(like paying)~~.   
 Notice that the next step is to click `Next: Configure Instance Details` button and not the `Review and Launch` button. 
-[![Select Instance Type](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/3-select-instance-type.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/3-select-instance-type.png)
+[![Select Instance Type](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/3-select-instance-type.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/3-select-instance-type.png)
 
 1. Configure the instance details. Notice that I selected the default VPC and the default subnet. You might see other ids but as long you select the default configuration the result is going to be the same. If you want to set a more complex, isolated and secured network it is up to you.
-[![Configure Instance Details](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/4-configure-instance-details.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/4-configure-instance-details.png)
+[![Configure Instance Details](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/4-configure-instance-details.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/4-configure-instance-details.png)
 
 1. Add storage, 8 GB is more than what we need for this example.
-[![Add Storage](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/5-add-storage.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/5-add-storage.png)
+[![Add Storage](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/5-add-storage.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/5-add-storage.png)
 
 1. Add a `Name` tag, this is the name of the EC2 instance. `prometheus-server`. 
-[![Add Tags](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/6-add-tags.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/6-add-tags.png)
+[![Add Tags](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/6-add-tags.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/6-add-tags.png)
 
-1. Configure a Security Group. Think of it like firewall rules. We will need port `9090` for Prometheus and port `9091` for Prometheus Node Exporter. For this example, we are going to use a single Security Group for all the AWS EC2 instances to keep it simple.
-[![Configure Security Group](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/7-configure-security-group.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/7-configure-security-group.png)
+1. Configure a Security Group. Think of it like firewall rules. We will need port `9090` for Prometheus, port `9091` for Prometheus Node Exporter and finally, port `9093` for the Alertmanager. For this example, we are going to use a single Security Group for all the AWS EC2 instances to keep it simple.
+[![Configure Security Group](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/7-configure-security-group.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/7-configure-security-group.png)
 
 1. Review instance launch.
-[![Review Instance Launch](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/8-review-instance-launch.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/8-review-instance-launch.png)
+[![Review Instance Launch](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/8-review-instance-launch.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/8-review-instance-launch.png)
 
 1. Create a new Key Pair if necessary. This is an important step because without this key you wouldn't be able to connect to the AWS EC2 instance.
-[![Select a Key Pair](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/9-select-key-pair.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/9-select-key-pair.png)
+[![Select a Key Pair](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/9-select-key-pair.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/9-select-key-pair.png)
 
 1. Launch it.
-[![Launch it](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/10-launch.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/10-launch.png)
+[![Launch it](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/10-launch.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/10-launch.png)
 
 1. Get the Public DNS of the AWS EC2 instance.
-[![Get Public Ip](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/11-get-public-dns.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2020-06-14-prometheus-on-aws-ec2-part1/11-get-public-dns.png)
+[![Get Public Ip](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/11-get-public-dns.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/11-get-public-dns.png)
 
 ## Install Prometheus
 
