@@ -19,7 +19,7 @@ To continue reading follow these links:
 * [Install Prometheus on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part1)
 * Prometheus Node Exporter on AWS EC2
 * [Prometheus Discovery Service on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part3)
-* [Prometheus Alert Manager Sending Emails](https://codewizardly.com/prometheus-on-aws-ec2-part4)
+* [Prometheus Alertmanager Sending Emails](https://codewizardly.com/prometheus-on-aws-ec2-part4)
 
 # Prometheus Node Exporter
 

@@ -17,7 +17,7 @@ The content is divided in the following topics:
 * Install Prometheus on AWS EC2
 * [Prometheus Node Exporter on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part2)
 * [Prometheus Discovery Service on AWS EC2](https://codewizardly.com/prometheus-on-aws-ec2-part3)
-* [Prometheus Alert Manager Sending Emails](https://codewizardly.com/prometheus-on-aws-ec2-part4)
+* [Prometheus Alertmanager Sending Emails](https://codewizardly.com/prometheus-on-aws-ec2-part4)
 
  
 ## About AWS Free Tier
