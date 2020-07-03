@@ -23,36 +23,6 @@ But we are not done yet, we don't want to be monitoring by ourselves. Prometheus
 
 > "The Alertmanager handles alerts sent by client applications such as the Prometheus server. It takes care of deduplicating, grouping, and routing them to the correct receiver integrations such as email, PagerDuty, or OpsGenie. It also takes care of silencing and inhibition of alerts." [Read more](https://github.com/prometheus/alertmanager).
 
-
-## Generate an App Password
-
-* Go to your account: [https://myaccount.google.com](https://myaccount.google.com)
-
-* From the left menu select **Security**
-
-[![Security](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/24-security.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/24-security.png)
-
-* Select the Signing in to Google panel select **App Passwords**. 
-
-For this step it is also required the following:
-1. 2fa Verification is set up for your account.
-1. 2fa Verification is not set up for security keys only.
-1. Your account is not through work, school, or other organization.
-1. You’ve not turned on Advanced Protection for your account.
-
-[![App Passwords](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/25-app-passwords.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/25-app-passwords.png)
-
-* Create a new App password.
-
-![[Select App Device](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/26-select-app-device.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/26-select-app-device.png)
-
-* Choose a custom name for the App password.
-
-[![Custom Name](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/27-custom-name.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/27-custom-name.png)
-
-* Save the App password in a safe place.
-[![Save Credentials](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/28-save-credentials.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/28-save-credentials.png)
-
 ## Install Alertmanager
 
 * Login in the Prometheus instance. Don't forget to replace this line with your configuration. 
@@ -90,7 +60,7 @@ receivers:
     smarthost: smtp.gmail.com:587
     auth_username: YOUR_EMAIL_ADDRESS
     auth_identity: YOUR_EMAIL_ADDRESS
-    auth_password: APP_PASSWORD_YOU_GENERATED
+    auth_password: YOUR_EMAIL_PASSWORD
 ```
 
 ---
@@ -124,7 +94,39 @@ sudo systemctl enable alertmanager
 sudo systemctl start alertmanager
 ```
 
-## Create Rules
+## Generate an App Password
+You could use an App password if you don't feel comfortable writing your e-mail's password in plain text or if you have 2FA enabled. 
+> An App Password is a 16-digit passcode that gives a non-Google app or device permission to access your Google Account. App Passwords can only be used with accounts that have 2-Step Verification turned on.
+
+
+* Go to your account: [https://myaccount.google.com](https://myaccount.google.com)
+
+* From the left menu select **Security**
+
+[![Security](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/24-security.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/24-security.png)
+
+* Select the Signing in to Google panel select **App Passwords**. 
+
+For this step it is also required the following:
+1. 2fa Verification is set up for your account.
+1. 2fa Verification is not set up for security keys only.
+1. Your account is not through work, school, or other organization.
+1. You’ve not turned on Advanced Protection for your account.
+
+[![App Passwords](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/25-app-passwords.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/25-app-passwords.png)
+
+* Create a new App password.
+
+![[Select App Device](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/26-select-app-device.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/26-select-app-device.png)
+
+* Choose a custom name for the App password.
+
+[![Custom Name](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/27-custom-name.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/27-custom-name.png)
+
+* Save the App password in a safe place.
+[![Save Credentials](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/28-save-credentials.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/28-save-credentials.png)
+
+## Create a Rule
 
 This is just a simple alert rule. In a nutshell it alerts when an instance has been down for more than 3 minutes. Add this file at `/etc/prometheus/rules.yml`.
 
