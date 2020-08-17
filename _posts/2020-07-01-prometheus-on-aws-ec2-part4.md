@@ -4,7 +4,7 @@ title: "Prometheus Alertmanager Sending Emails"
 description: Prometheus can send us an alert to an email when it finds something. Let's configure some rules and Prometheus Alertmanager with a Gmail account. 
 image: 'https://cdn.pixabay.com/photo/2018/03/22/02/37/email-3249062_960_720.png'
 twitter_text: Prometheus can send us an alert to an email when it finds something. Let's configure some rules and Prometheus Alertmanager with a Gmail account. 
-category: 'devOops'
+category: 'devops'
 tags:
   - monitoring
 author: hector
