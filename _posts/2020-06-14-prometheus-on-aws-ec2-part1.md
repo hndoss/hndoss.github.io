@@ -4,7 +4,7 @@ title: "Install Prometheus on AWS EC2"
 description: Let's face it, there will be something wrong at some point, and you need to know when it is happening. 
 image: 'https://cdn.pixabay.com/photo/2016/11/27/21/42/stock-1863880_960_720.jpg'
 twitter_text: Let's face it, there will be something wrong at some point, and you need to know when it is happening. 
-category: 'devOops'
+category: 'devops'
 tags:
   - monitoring
 author: hector

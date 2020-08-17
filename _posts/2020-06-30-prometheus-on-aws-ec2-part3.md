@@ -4,7 +4,7 @@ title: "Prometheus Service Discovery on AWS EC2"
 description: Consider human errors, the stack of other task we hide behind the Kanban board, and the fact that we all are a little bit lazy. I think I have made my point, we need to automate this process. 
 image: 'https://cdn.pixabay.com/photo/2017/11/13/22/12/compass-2946959_960_720.jpg'
 twitter_text: Consider human errors, the stack of other task we hide behind the Kanban board, and the fact that we all are a little bit lazy. I think I have made my point, we need to automate this process. 
-category: 'devOops'
+category: 'devops'
 tags:
   - monitoring
 author: hector

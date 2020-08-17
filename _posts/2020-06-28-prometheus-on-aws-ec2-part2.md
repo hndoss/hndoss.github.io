@@ -4,7 +4,7 @@ title: "Prometheus Node Exporter on AWS EC2"
 description: In the previous topic we installed Prometheus and now is ready to receive metrics.
 image: 'https://images.pexels.com/photos/256219/pexels-photo-256219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
 twitter_text: In the previous topic we installed Prometheus and now is ready to receive metrics.
-category: 'devOops'
+category: 'devops'
 tags:
  - monitoring
 
