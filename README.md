@@ -7,5 +7,3 @@
 export PATH=${PATH}:${HOME}/.gem/ruby/2.7.0/bin
 bundle exec jekyll serve
 ```
-
-https://github.com/thiagorossener/jekflix-template/wiki/setup#running-local
