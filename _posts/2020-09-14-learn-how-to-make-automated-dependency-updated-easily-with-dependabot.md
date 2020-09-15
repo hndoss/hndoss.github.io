@@ -1,14 +1,12 @@
 ---
 layout: post
-title: 'Learn How To Make Automated Dependency Updates Easily With Dependabot'
-description: 'A dependable robot who'll keep your dependencies up to date for you.' 
-image: 'https://cdn.pixabay.com/photo/2017/05/10/19/29/robot-2301646_960_720.jpg'
-twitter_text: 'Because staying up to date is the most secure strategy.'
-category: 'devops'
+title: Learn How To Make Automated Dependency Updates Easily With Dependabot
+description: A dependable robot who"ll keep your dependencies up to date for you.
+image: https://cdn.pixabay.com/photo/2017/05/10/19/29/robot-2301646_960_720.jpg
+twitter_text: Because staying up to date is the most secure strategy.
+category: devops
 tags:
-
-  + monitoring
-
+  - monitoring
 author: hector
 paginate: true
 ---
@@ -31,7 +29,7 @@ On a daily basis or in a time stipulated by the user, Dependabot looks for any o
 
 To start using Dependabot [connect a GitHub account](https://app.dependabot.com/auth/sign-up) to it, but since Dependabot is moving natively into GitHub we can setup the configuration in `.github/dependabot.yml` file in a repository. What I like about this is the simplicity and how easy to read this file is.
 
-```yaml
+```
 version: 2
 updates:
   - package-ecosystem: npm
