@@ -11,7 +11,7 @@ author: hector
 paginate: true
 ---
 
-Hacktoberfest is a celebration that consist in contributing to open source projects on GitHub sponsored by [Digital Ocean](https://www.digitalocean.com/), [intel](https://www.intel.in) and [Dev](https://dev.to/). Contributing is very beneficial because it helps you to develop your skills at the same time you help others, building your confidence as a developer, it gives you a nice resume and also the opportunity to meet new and talented people. If you want to know more details about Hacktoberfest 2020, you can check the [official site](https://hacktoberfest.digitalocean.com/details) for this event.
+Hacktoberfest is a celebration sponsored by [Digital Ocean](https://www.digitalocean.com/), [intel](https://www.intel.in) and [Dev](https://dev.to/) that consist in contributing to open source projects on GitHub. Contributing is very beneficial because it helps you to develop your skills at the same time you help others, building your confidence as a developer, it gives you a nice resume and also the opportunity to meet new and talented people. If you want to know more details about Hacktoberfest 2020, you can check the [official site](https://hacktoberfest.digitalocean.com/details) for this event.
 
 To encourage participation, Digital Ocean is giving a prize to whose that are able to complete 4 Pull Requests applying [the rules of the event](https://hacktoberfest.digitalocean.com/#rules). The first 70,000 participants who successfully complete the challenge will be eligible to receive a prize.
 
@@ -21,15 +21,15 @@ To encourage participation, Digital Ocean is giving a prize to whose that are ab
 - **Plant a Tree**   
 Digital Ocean in partnership with [Tree-Nation](https://tree-nation.com/), introduced the option to plant a tree instead of receiving a T-shirt as a reward. Tree-Nation is the largest reforestation platform allowing citizens and companies to plant trees all around the world.
 
-- **More Swags**   
+- **More Swag**   
 And in top of that, there is a bunch of other companies and groups initiative to encourage the community to join by giving their own swags. [crweiner](https://github.com/crweiner) created a [list of all the goodies](https://hacktoberfestswaglist.com).
 > This repo seeks to document all of the companies giving away swag for Hacktoberfest 2020 and how you can get your hands on some free gifts for your time and help.
 
 ## Get Started
-All what you need is a GitHub account and to be [registered in the fest](https://hacktoberfest.digitalocean.com/login). After doing that, submit at least four valid pull requests between October 1-31 to public GitHub repository with `Hacktoberfest` as topic. You can track your progress visiting [hacktoberfest.digitalocean.com](hacktoberfest.digitalocean.com) and remember, you will have to submit at least four pull requests to receive a prize.
+All what you need is a GitHub account and to be [registered in the fest](https://hacktoberfest.digitalocean.com/login). After doing that, submit at least four valid pull requests between October 1-31 to public GitHub repositories with `Hacktoberfest` as topic. You can track your progress visiting [hacktoberfest.digitalocean.com](hacktoberfest.digitalocean.com) and remember, you will have to submit at least four pull requests to receive a prize.
 
 ## Stop Right There
-Hold your horses. This event is meant to engage the community into collaboration with meaningful Pull Requests. The [shitoverfest](https://twitter.com/shitoberfest) Twitter account is a living proof of what a poor follow of the code of conduct can do, and even youtubers like  [Eddie Jaoude](https://www.youtube.com/watch?v=h5zJAfmTgPI) are starting to react this as well.
+Hold your horses. This event is meant to engage the community into collaboration with meaningful Pull Requests. The [shitoverfest](https://twitter.com/shitoberfest) Twitter account is a living proof of what a poor follow of the code of conduct can do, and even youtubers like  [Eddie Jaoude](https://www.youtube.com/watch?v=h5zJAfmTgPI) are starting to react to this as well.
 > Hacktoberfest is a great time to get people involved in Open Source! Being involved in Open Source can help you up skill, network and accelerate your career. However, this year had a lot of spammy pull requests. In this video I will pick out some funny spammy pull requests.
 
 Spam is an interesting thing. You can be sending spam without noticing it. These are my first attempts to participate in Hacktoberfest 2020:
@@ -49,7 +49,7 @@ Therefore, I really recommend to read the [quality standards](https://hacktoberf
 Digital Ocean has useful resources to help the community to start collaborating in no time. You can be a [beginner](https://hacktoberfest.digitalocean.com/details#beginners), [maintainer](https://hacktoberfest.digitalocean.com/details#maintainers), [organizer](https://hacktoberfest.digitalocean.com/details#organizers) or even a [company](https://hacktoberfest.digitalocean.com/details#companies). If you are a organizer or want to be one, Digital Ocean has a [Event Organizer Kit](https://hacktoberfest.digitalocean.com/eventkit) available for free.
 
 ## My Collaborations
-At the end, I was able to make a few PR by the time this article was published, I leave it here as example.
+At the end, I was able to make a few PRs by the time this article was published, I'm leaving them here as example.
 - [DataStructures-and-Algorithms - Add GitHub Actions workflow](https://github.com/hacktoberfest2k20/DataStructures-and-Algorithms/pull/188)
 - [ping-identity-exporter - Add Dockerfile](https://github.com/mjavier2k/ping-identity-exporter/pull/2)
 - [react-paypal-js - Add github actions status badge](https://github.com/paypal/react-paypal-js/pull/39)
