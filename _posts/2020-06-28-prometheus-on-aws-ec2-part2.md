@@ -90,7 +90,7 @@ WantedBy=multi-user.target
 
 ---
 * Configure systemd.
-``` 
+``` bash
 sudo systemctl daemon-reload
 sudo systemctl enable node-exporter
 sudo systemctl start node-exporter
@@ -128,7 +128,7 @@ Remember that `ec2-13-58-127-241.us-east-2.compute.amazonaws.com` is the DNS val
 
 ---
 * Restart Prometheus service.
-``` 
+``` bash
 sudo systemctl restart prometheus
 ```
 

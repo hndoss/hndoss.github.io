@@ -54,7 +54,7 @@ Notice that the next step is to click `Next: Configure Instance Details` button 
 1. Add a `Name` tag, this is the name of the EC2 instance. `prometheus-server`. 
 [![Add Tags](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/6-add-tags.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/6-add-tags.png)
 
-1. Configure a Security Group. Think of it like firewall rules. We will need port `9090` for Prometheus, port `9091` for Prometheus Node Exporter and finally, port `9093` for the Alertmanager. For this example, we are going to use a single Security Group for all the AWS EC2 instances to keep it simple.
+1. Configure a Security Group. Think of it like firewall rules. We will need port `9090` for Prometheus, port `9100` for Prometheus Node Exporter and finally, port `9093` for the Alertmanager. For this example, we are going to use a single Security Group for all the AWS EC2 instances to keep it simple.
 [![Configure Security Group](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/7-configure-security-group.png)](https://hndoss-blog-bucket.s3.amazonaws.com/prometheus-on-aws-ec2/7-configure-security-group.png)
 
 1. Review instance launch.
