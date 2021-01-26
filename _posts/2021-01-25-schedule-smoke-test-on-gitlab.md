@@ -11,19 +11,19 @@ author: hector
 paginate: true
 ---
 
-A [Smoke test](https://softwaretestingfundamentals.com/smoke-testing) is a type of software testing that comprises of a non-exhaustive set of tests that aim at ensuring that the most important functions work. Ideally, smoke tests should run after the deployment is completed and cache should not interfere in the process.
+A [Smoke test](https://softwaretestingfundamentals.com/smoke-testing) is a type of software testing that comprises of a non-exhaustive set of tests that aim at ensuring that the most important functions work. Ideally, smoke tests should be trigger after a deployment is complete and the cache not interfere with the process.
 
-The main idea is to run the smoke tests 15 minutes after a deployment took place in the pipeline with the finality to ensure that the deployment went as expected. Waiting 15 minutes could be a complex task if doing it with a responsible usage of resources is something wanted. The easiest approach is simply add to the pipeline a sleep that last for 15 minutes long, however, they would be 15 minutes that the pipeline will be active, therefore, we could be wasting resources that will be missed in the future (CI minutes). 
+The main idea is to run smoke tests after a pipeline deployment has been carried out in order to make sure it came out as expected. Waiting a certain amount of time after the event can be complex if you want to do it with a responsible use of resources. The easiest approach is to simply add a sleep that last 15 minutes to the pipeline, however it would be precious time for the pipeline to be up, hence we could be wasting resources that will be missed in the future ([CI minutes](https://about.gitlab.com/pricing/faq-consumption-cicd)). 
 
-So, we will create a scheduled pipeline using the GitLab API so that it is scheduled to run every 15 minutes. This pipeline will be in charge of running the 
-smoke tests. Then, when the smoke tests have finished, we will use the GitLab API again to deactivate the scheduled pipeline and in this way, the smoke tests will only run once, 15 minutes after every deployment have finished.
+So we will create a scheduled pipeline using the GitLab API so that it is scheduled to run every 15 minutes. This pipeline will be in charge of executing the 
+smoke tests. Then when the smoke tests have finished we will use the GitLab API again to deactivate the scheduled pipeline making the smoke tests to run only once, 15 minutes after every deployment has finished.
 
 ## GitLab Token
 In first place we will need to authenticate ourselves at the moment to make the call to the API GITLAB. Therefore the first step is to create a token with the sufficient permissions. Go to [your personal profile and then to access tokens](https://gitlab.com/-/profile/personal_access_tokens).
 
 [![Access Tokens](https://hndoss-blog-bucket.s3.amazonaws.com/2021-01-25-schedule-smoke-test-on-gitlab/acces-tokens.png)](https://gitlab.com/-/profile/personal_access_tokens)
 
-After clicking on the `Create personal access token` button, you will get token. Needless to say, this token is very sensitive. Anyone with access to it can make a lot of damage, so we must be careful. Now, we will save the token as an environment variable in our CI / CD variables.
+After clicking on the `Create personal access token` button, you will get token. Needless to say, this token is very sensitive. Make sure you don't ever share them publicly, commit it to a public repository or let anybody has access. Now, we will save the token as an environment variable in our CI / CD variables.
 
 [![GitLab Variable](https://hndoss-blog-bucket.s3.amazonaws.com/2021-01-25-schedule-smoke-test-on-gitlab/gitlab-variable.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2021-01-25-schedule-smoke-test-on-gitlab/gitlab-variable.png)
 
@@ -39,14 +39,14 @@ curl --location --request POST "https://gitlab.com/api/v4/projects/<project_id>/
 You can find more information reading the [official documentation](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables).
 
 ### Calculating Time After 15 Minutes
-Date is a command available in virtually all linux distributions because is part of [GNU coreutils](https://www.gnu.org/software/coreutils). With this tool, adding 15 minutes to the current time is very simple:
+Date is a command available in virtually all linux distributions since is part of [GNU coreutils](https://www.gnu.org/software/coreutils). With it, adding 15 minutes to the current time is very simple:
 
 ```bash
 AFTER_15_MINUTES=$(date -d '15 mins')
 echo "${AFTER_15_MINUTES}"
 ```
 
-Now we need a script to simplify and abstract the scheduling, activation and deactivation of the pipeline
+Now we need a script to simplify and abstract the scheduling, activation and deactivation of the pipeline:
 
 ```bash
 #!/bin/bash
