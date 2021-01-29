@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Schedule A Smoke Tests Run With GitLab API
+title: Schedule Smoke Tests Run With GitLab API
 description: Run smoke tests after 15 minutes without sleep.
 image: https://cdn.pixabay.com/photo/2012/12/09/00/16/abstract-69124_960_720.jpg
 twitter_text: Schedule a Smoke Tests pipeline with GitLab API and Personal Access Tokens.
@@ -96,6 +96,7 @@ smoke-test:
   stage: smoke-test
   script:
     - apk add curl coreutils
+    - run smoke tests # npm run smoke-tests for example
     - sh ci/activate_smoke_test_scheduled_pipeline.sh false
   only: 
     - schedules
