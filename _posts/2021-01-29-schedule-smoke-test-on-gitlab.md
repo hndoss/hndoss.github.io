@@ -11,9 +11,9 @@ author: hector
 paginate: true
 ---
 
-A [Smoke test](https://softwaretestingfundamentals.com/smoke-testing) is a type of software testing that comprises of a non-exhaustive set of tests that aim at ensuring that the most important functions work. Ideally, smoke tests should be trigger after a deployment is complete and the cache not interfere with the process.
+A [Smoke test](https://softwaretestingfundamentals.com/smoke-testing) is a type of software testing that comprises of a non-exhaustive set of tests that aim at ensuring that the most important functions work. Ideally, smoke tests should be triggered after a deployment is complete and the cache not interfere with the process.
 
-The main idea is to run smoke tests after a pipeline deployment has been carried out in order to make sure it came out as expected. Waiting a certain amount of time after the event can be complex if you want to do it with a responsible use of resources. The easiest approach is to simply add a sleep that last 15 minutes to the pipeline, however it would be precious time for the pipeline to be up, hence we could be wasting resources that will be missed in the future ([CI minutes](https://about.gitlab.com/pricing/faq-consumption-cicd)). 
+The main idea is to run smoke tests after a pipeline deployment has been carried out in order to make sure it came out as expected. Waiting a certain amount of time after the event can be complex if you want to do it with a responsible use of resources. The easiest approach is to simply add a sleep that lasts 15 minutes to the pipeline, however it would be precious time for the pipeline to be up, hence we could be wasting resources that will be missed in the future ([CI minutes](https://about.gitlab.com/pricing/faq-consumption-cicd)). 
 
 So we will create a scheduled pipeline using the GitLab API so that it is scheduled to run every 15 minutes. This pipeline will be in charge of executing the 
 smoke tests. Then when the smoke tests have finished we will use the GitLab API again to deactivate the scheduled pipeline making the smoke tests to run only once, 15 minutes after every deployment has finished.
@@ -23,7 +23,7 @@ In first place we will need to authenticate ourselves at the moment to make the 
 
 [![Access Tokens](https://hndoss-blog-bucket.s3.amazonaws.com/2021-01-25-schedule-smoke-test-on-gitlab/acces-tokens.png)](https://gitlab.com/-/profile/personal_access_tokens)
 
-After clicking on the `Create personal access token` button, you will get token. Needless to say, this token is very sensitive. Make sure you don't ever share them publicly, commit it to a public repository or let anybody has access. Now, we will save the token as an environment variable in our CI / CD variables.
+After clicking on the `Create personal access token` button, you will get a token. Needless to say, this token is very sensitive. Make sure you don't ever share them publicly, commit it to a public repository or let anybody have access. Now, we will save the token as an environment variable in our CI / CD variables.
 
 [![GitLab Variable](https://hndoss-blog-bucket.s3.amazonaws.com/2021-01-25-schedule-smoke-test-on-gitlab/gitlab-variable.png)](https://hndoss-blog-bucket.s3.amazonaws.com/2021-01-25-schedule-smoke-test-on-gitlab/gitlab-variable.png)
 
