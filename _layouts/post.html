@@ -55,6 +55,8 @@
                             </li>
                         {% endfor %}
                     </ul>
+
+                    {% include subscription.html %}
                 </aside>
             {% endif %}
 
@@ -76,7 +78,7 @@
             {% include modal.html title="Don't go yet!" subtitle="You may also like..." closed=true showOnExit=true %}
         {% endif %}
 
-        {% include subscription.html %}
+        <!-- {% include subscription.html %} -->
         {% include share.html %}
         {% include author.html %}
         {% include comments.html %}

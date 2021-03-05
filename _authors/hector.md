@@ -8,8 +8,7 @@ bio: There is always a way.
 github_username: hndoss
 facebook_username: hrosalesmarquez
 twitter_username: hndoss
-# instagram_username: thiagorossener
-# linkedin_username: thiagorossener
-# medium_username: thiagorossener
+instagram_username: hndoss91
+linkedin_username: hndoss
 ---
 
