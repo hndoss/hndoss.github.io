@@ -104,7 +104,7 @@ resource "null_resource" "cluster_update" {
 
 ## TL;DR
 
-Even though Terraform's stateful nature is great in most cases there are certainly cases where adjustments are required. This is a workaround and they are other ways to do it, like running the command right after running Terraform and force the deployment directly from the pipeline but I prefer this way since it allows to use the same variables and resources properties already available in Terraform. Try it out and let me know if you find better ways to manage this situation.
+Even though Terraform's stateful nature is great in most cases there are certainly cases where adjustments are required. You can make use of the resources available in Terraform such as `null resource` and `local-exec` as a workaround and they are many other ways to accomplish it, like executing the command right after running Terraform and force the deployment directly from the pipeline. Try the local-exec approach and let me know if you find better ways to manage this situation.
 
 ---
 More links:
