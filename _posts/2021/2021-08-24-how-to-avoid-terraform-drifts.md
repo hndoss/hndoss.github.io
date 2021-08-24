@@ -62,7 +62,7 @@ Knowing where the changes are coming from can determine the best course of actio
 
 ### Caused By Changes in the Code
 
-This is the most common type of change and it is the one that you should be able to track. Often this affect to teams that are not levearing automation and applying changes without a centralized pipeline or haven't a clear deployment flow. 
+This is the most common type of change and it is the one that you should be able to track. Often this affects teams that are not leveraging automation and applying changes without a centralized pipeline or haven't a clear deployment flow. 
 
 - Draw a diagram of the process to help you to understand and spot bottlenecks and pitfalls
 - Optionally follow [Hashicorp's recommended workflow Part 3.3](https://www.terraform.io/docs/cloud/guides/recommended-practices/part3.3.html) to use Terraform Cloud
