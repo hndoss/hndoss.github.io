@@ -41,7 +41,7 @@ Visit the following links to learn more about the process:
 
 ## Better Terraform Modules
 
-With Terraform modules it is possible to create reusable pieces of infrastructure that can be used in multiple Terraform runs without having to repeat the same code and the end result is a more maintainable and reusable infrastructure. Infrastructure as Code (IaC) is a great way to manage your infrastructure and since all the workloads are defined in code, the same rules for managing any kind of code can be applied in order to improve the quality of it. By reducing amount of code and making it more maintainable, you can also reduce the amount of time it takes to deploy the infrastructure reducing toil and error, and therefore reducing the number of drifts in the infrastructure. 
+With Terraform modules it is possible to create reusable pieces of infrastructure that can be used in multiple Terraform runs without having to repeat the same code and the end result is a more maintainable and reusable infrastructure. Infrastructure as Code (IaC) is a great way to manage your infrastructure and since all the workloads are defined in code, the same rules for managing any kind of code can be applied in order to improve its quality. By reducing the amount of code and making it more maintainable, you can also reduce the amount of time it takes to deploy the infrastructure reducing toil and error, and therefore reducing the number of drifts in the infrastructure. 
 
 Keep in mind the following general principles:
 - [KISS. Keep It Simple, Stupid](https://en.wikipedia.org/wiki/KISS_principle)
