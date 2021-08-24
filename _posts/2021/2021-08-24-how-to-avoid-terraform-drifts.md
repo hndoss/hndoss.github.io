@@ -76,7 +76,7 @@ The cloud itself change sometimes for good and sometimes for bad reasons. These 
 
 ### Caused Manual Changes Directly in the Infrastructure
 
-This is a real burden. It is not always possible to track the changes made by the infrastructure directly or at least it is time consuming. Applying changes directoly might seem like the easiest option for one-off tasks, but for recurring operations it is a big consumer of valuable engineering time making it difficult to track and manage changes. 
+This is a real burden. It is not always possible to track the changes made by the infrastructure directly or at least it is time-consuming. Applying changes directly might seem like the easiest option for one-off tasks, but for recurring operations, it is a big consumer of valuable engineering time making it difficult to track and manage changes. 
 
 - Use a tool like [Terraformer](https://github.com/GoogleCloudPlatform/terraformer) to generate a Terraform configuration from the Cloud provider like a reverse Terraform
 - Study the Hashicorp's tutorial in how to [Manage Resource Drift](https://learn.hashicorp.com/tutorials/terraform/resource-drift#run-a-refresh-only-plan). It shows how to import a Terraform configuration from a Cloud provider and how to use the `terraform refresh` command to apply the changes.
