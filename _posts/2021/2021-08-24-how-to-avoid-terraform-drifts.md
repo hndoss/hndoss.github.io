@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What Is Terraform Drift And How To Avoid It?
-description: h
+description: Solving Terraform drifts is like washing a huge pile of dishes that never ends. In a real environment at any scale mitigate drifts is not an easy task.
 image: https://cdn.pixabay.com/photo/2017/04/06/17/23/buggy-2208873_960_720.jpg
 twitter_text: What Is Terraform Drift And How To Avoid It?
 category: devops
