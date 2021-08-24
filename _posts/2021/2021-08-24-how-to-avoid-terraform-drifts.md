@@ -69,7 +69,7 @@ This is the most common type of change and it is the one that you should be able
 
 ### Caused By the Context
 
-The cloud itself change sometimes for good and sometimes for bad reasons. These kind of changes are not always easy to track since it is commonly out of the scope of the code and the Cloud provider is the responsable. 
+The cloud itself changes sometimes for good and sometimes for bad reasons. These kind of changes are not always easy to track since it is commonly out of the scope of the code and the Cloud provider is the responsible. 
 
 - Keep up-to-date with the latest communication and updates from the Cloud provider
 - Use the meta-argument [lifecycle](https://www.terraform.io/docs/language/meta-arguments/lifecycle.html) to `ignore_changes` when a resource is created with references to data that may change in the future, but should not affect said resource after its creation
