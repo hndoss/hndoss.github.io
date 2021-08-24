@@ -13,7 +13,7 @@ paginate: true
 
 > Drift is the term for when the real-world state of your infrastructure differs from the state defined in your configuration
 
-Have you ever been about to finish washing the dishes and suddenly someone puts a dirty glass and some pots of the last meal in front of you, then you have to clean the glass and the pots, and then the scene repeats itself over and over again? Solving Terraform drifts is like washing a huge pile of dishes that never ends. In a real environment at any scale mitigate drifts is not an easy task.
+Have you ever been about to finish washing the dishes and suddenly someone puts a dirty glass and some pots of the last meal in front of you? Then you have to clean the glass and the pots, and then the scene repeats itself over and over again. Solving Terraform drifts is like washing a huge pile of dishes that never ends. In a real environment at any scale mitigate drifts is not an easy task.
 
 Let's take a look at how we can avoid or reduce the drifts in our Terraform configurations.
 
