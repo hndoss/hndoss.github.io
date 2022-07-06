@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Configuire Multi Git Accounts On Linux
+title: Configure Multi Git Accounts On Linux
 description: Setup multi accounts for git
 image: https://cdn.pixabay.com/photo/2019/08/30/07/38/psychology-4440675_960_720.jpg
 twitter_text: Manage multiple accounts with custom configuration files
