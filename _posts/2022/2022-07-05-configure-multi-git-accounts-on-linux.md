@@ -53,4 +53,4 @@ cat > ~/.gitconfig << EOF
 EOF
 ```
 
- As a result, you will be able to use the an account for your job, and you will be able to use a separate account for personal projects. Depending on the directory you are in, you will be able to load the correct configuration file automatically.
+ As a result, you will be able to use one account for your job, and a separate one for personal projects. Depending on the directory you are in, you will be able to load the correct configuration file automatically.
