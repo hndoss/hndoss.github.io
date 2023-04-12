@@ -164,6 +164,7 @@ sudo chown -R prometheus:prometheus /var/lib/prometheus
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable prometheus
+sudo systemctl start prometheus
 ```
 
 Good job, now we have everything in place but the setup is not complete, we need metrics to feed our brand new Prometheus instance. In the next section we will learn how to setup a node exporter in a second AWS EC2 instance.
