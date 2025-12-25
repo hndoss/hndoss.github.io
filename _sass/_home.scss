@@ -1,8 +1,11 @@
+// Terminal-style home page
 .home {
   @include mainFont(400);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-top: rem(80px);
+  background-color: $terminal-bg;
+  min-height: 100vh;
 
   @include media(">=sm") {
     padding-top: rem(100px);
@@ -23,14 +26,23 @@
   flex-flow: row wrap;
 }
 
+// Category title with terminal prefix
 .title-category {
-  font-size: rem(32px);
+  font-size: rem(24px);
   margin: 0 0 rem(40px);
   padding: 0 rem(23px);
   text-transform: lowercase;
-  color: #fff;
+  color: $terminal-green;
+  @include mainFont(400);
+
+  &::before {
+    content: "$ ls -la ./";
+    color: $terminal-dim;
+    margin-right: rem(5px);
+  }
 }
 
+// Terminal-style post cards
 .box-item {
   flex: 1 0 $itemMinWidth;
   margin: 0 0 rem(30px);
@@ -39,13 +51,14 @@
   transition: all 0.3s;
   position: relative;
   z-index: 1;
+  background-color: $terminal-card-bg;
+  border: 1px solid rgba($terminal-green, 0.2);
+  border-radius: 0;
 
   @include media(">=sm") {
     margin: 0 rem($itemMargin) rem(30px);
   }
 
-  // Note 1: This complex calc right here is what makes the leftover box items
-  // have the same width than their siblings.
   @for $n from 2 through $maxItemsPerRow {
     $resolution: (2 * $rowMargin) + ($n * $itemMinWidth);
     @include media(">=#{$resolution}") {
@@ -53,30 +66,34 @@
     }
   }
 
-  // Note 2: This sets the maximum number of box items per row.
   @include media(">=#{(2 * $rowMargin) + ($maxItemsPerRow * $itemMinWidth)}") {
     flex: 1 0 calc(100%/#{$maxItemsPerRow} - #{$itemMargin * 2});
   }
 
   &:hover {
     z-index: 2;
-    transform: scale(1.1);
+    transform: scale(1.02);
+    border-color: $terminal-green;
+    box-shadow: 0 0 20px rgba($terminal-green, 0.3), inset 0 0 20px rgba($terminal-green, 0.05);
 
     img {
-      -webkit-filter: grayscale(100%);
-      filter: grayscale(100%);
-      transform: scale(1.05);
+      filter: grayscale(100%) brightness(0.8) sepia(100%) hue-rotate(70deg) saturate(500%);
     }
 
     .box-body {
       time,
       p {
-        color: $accentDark;
+        color: $terminal-green;
+      }
+
+      h2 {
+        @include glowText($terminal-green);
       }
 
       .cover {
         .new-post-tag {
-          background-color: #000;
+          background-color: $terminal-green;
+          color: $terminal-bg;
         }
 
         .read-icon {
@@ -95,13 +112,23 @@
     display: block;
     height: rem(36px);
     line-height: rem(36px);
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: rem(18px);
+    text-transform: lowercase;
+    font-weight: 400;
+    font-size: rem(14px);
     padding: 0 rem(15px);
+    border-bottom: 1px solid rgba($terminal-green, 0.1);
+
+    &::before {
+      content: "./";
+      color: $terminal-dim;
+    }
 
     a {
-      color: $accentDark;
+      color: $terminal-cyan;
+
+      &:hover {
+        @include glowText($terminal-cyan);
+      }
     }
   }
 
@@ -110,59 +137,71 @@
       width: 100%;
       height: auto;
       margin: 0 auto;
-      transition: all 0.2s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      filter: grayscale(70%) brightness(0.9);
     }
 
     time {
       font-weight: 300;
-      font-size: rem(16px);
-      color: darken($lightGray, 50%);
+      font-size: rem(14px);
+      color: $terminal-dim;
       pointer-events: none;
+
+      &::before {
+        content: "// ";
+        color: $terminal-dim;
+      }
     }
 
     h2 {
       margin: rem(10px) 0;
-      font-size: rem(24px);
-      @include mainFont(800);
-      color: $accentDark;
-      line-height: rem(30px);
+      font-size: rem(20px);
+      @include mainFont(500);
+      color: $terminal-green;
+      line-height: rem(28px);
     }
 
     p {
-      margin: 0 0 rem(30px);
-      color: darken($lightGray, 20%);
-      font-size: rem(17px);
-      line-height: rem(26px);
+      margin: 0 0 rem(20px);
+      color: $texts;
+      font-size: rem(14px);
+      line-height: rem(22px);
     }
 
     .tags a {
-      height: rem(30px);
-      line-height: rem(26px);
-      color: $accentDark;
-      padding: 0 rem(10px);
-      border: 1px solid $accentDark;
-      border-radius: 15px;
+      height: rem(26px);
+      line-height: rem(22px);
+      color: $terminal-amber;
+      padding: 0 rem(8px);
+      border: 1px solid $terminal-amber;
+      border-radius: 0;
       display: inline-block;
-      margin: 0 rem(10px) rem(10px) 0;
+      margin: 0 rem(8px) rem(8px) 0;
       z-index: 50;
+      font-size: rem(12px);
+
+      &::before {
+        content: "#";
+      }
 
       &:hover {
-        color: $primaryDark;
-        background: $accentDark;
-        border-color: $accentDark;
+        color: $terminal-bg;
+        background: $terminal-amber;
+        border-color: $terminal-amber;
       }
     }
 
     .cover {
       position: relative;
       display: block;
+      overflow: hidden;
 
       .loader {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate3d(-50%, -50%, 0);
-        color: $themeColor;
+        color: $terminal-green;
         z-index: 1;
       }
 
@@ -174,39 +213,49 @@
       .new-post-tag {
         text-transform: uppercase;
         display: inline-block;
-        background: $themeColor;
-        color: #fff;
-        font-size: rem(13px);
+        background: $terminal-green;
+        color: $terminal-bg;
+        font-size: rem(11px);
         font-weight: 700;
-        line-height: rem(24px);
+        line-height: rem(20px);
         padding: 0 rem(8px);
         position: absolute;
         bottom: rem(8px);
         left: 0;
         z-index: 3;
+        letter-spacing: 1px;
+
+        &::before {
+          content: "[";
+        }
+
+        &::after {
+          content: "]";
+        }
       }
 
       .read-icon {
         opacity: 0;
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: rgba($terminal-bg, 0.9);
         display: flex;
         align-items: center;
         justify-content: center;
         content: "";
         width: rem(80px);
         height: rem(80px);
-        border-radius: 40px;
+        border-radius: 0;
         position: absolute;
         top: 50%;
         left: 50%;
         margin-top: rem(-40px);
         margin-left: rem(-40px);
-        border: 2px solid #fff;
-        color: $themeColor;
+        border: 1px solid $terminal-green;
+        color: $terminal-green;
         z-index: 4;
 
         svg {
           width: rem(48px);
+          fill: $terminal-green;
         }
       }
     }
@@ -214,5 +263,6 @@
 
   .box-info {
     padding: rem(15px);
+    background-color: rgba($terminal-bg, 0.5);
   }
 }

@@ -28,13 +28,15 @@ body.has-push-menu {
   }
 }
 
+// Terminal-style sidebar menu
 aside.sidebar {
   position: fixed;
-  width: rem(240px);
+  width: rem(280px);
   height: 100%;
   top: 0;
-  left: rem(-240px);
-  background-color: $accentDark;
+  left: rem(-280px);
+  background-color: $terminal-bg;
+  border-right: 1px solid rgba($terminal-green, 0.3);
   z-index: 20;
 
   @include media(">=sm") {
@@ -48,13 +50,19 @@ aside.sidebar {
   h2 {
     margin: 0 rem(20px) 0;
     @include mainFont(400);
-    font-size: rem(18px);
-    color: $primaryDark;
-    border-bottom: 1px solid $primaryDark;
+    font-size: rem(14px);
+    color: $terminal-green;
+    border-bottom: 1px solid rgba($terminal-green, 0.3);
     line-height: 50px;
+    text-transform: lowercase;
+
+    &::before {
+      content: "$ cat ";
+      color: $terminal-dim;
+    }
 
     @include media(">=sm") {
-      font-size: rem(20px);
+      font-size: rem(16px);
     }
   }
 
@@ -74,14 +82,27 @@ aside.sidebar {
         a {
           width: 100%;
           display: block;
-          padding: rem(15px) rem(20px);
+          padding: rem(12px) rem(20px);
           text-decoration: none;
-          @include mainFont(300);
-          color: $primaryDark;
+          @include mainFont(400);
+          color: $terminal-green;
+          font-size: rem(14px);
+          border-left: 2px solid transparent;
+          transition: all 0.2s ease;
+
+          &::before {
+            content: "> ";
+            color: $terminal-dim;
+          }
 
           &:hover {
-            color: $accentDark;
-            background: $themeColor;
+            color: $terminal-bg;
+            background: $terminal-green;
+            border-left-color: $terminal-cyan;
+
+            &::before {
+              color: $terminal-bg;
+            }
           }
         }
       }

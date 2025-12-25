@@ -1,55 +1,177 @@
-pre {
-  background: #282a36;
-  width: 100%;
-  padding: rem(20px) 0;
-  color: $accentDark;
-  margin: rem(30px) 0;
-  font-size: rem(14px);
+// Terminal-style code blocks with window chrome
+// Includes terminal buttons, title bar, and copy functionality
+
+pre span {
+  line-height: 1.6rem;
+  font-family: "JetBrains Mono", "Fira Code", "Monaco", "Consolas", monospace;
+}
+
+// Terminal window wrapper (added by JS)
+.terminal-window {
+  @include center(rem(800px));
+  margin: rem(20px) auto;
+  padding: 0 rem(20px);
+  position: relative;
 
   @include media(">=sm") {
-    font-size: rem(16px);
-    padding: rem(40px) 0;
-    margin: rem(50px) 0;
+    margin: rem(29px) auto;
+    padding: 0;
   }
 
-  code {
-    @include center(rem(800px));
-    padding: 0 rem(20px);
+  // Linux-style terminal title bar
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1a1a1a;
+    border: 1px solid $terminal-green;
+    border-bottom: none;
+    border-radius: 0;
+    padding: rem(6px) rem(12px);
+  }
 
-    @include media("<sm") {
-      overflow-x: scroll;
+  // Linux terminal prompt
+  .terminal-prompt {
+    display: flex;
+    align-items: center;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: rem(13px);
+    color: #888888;
+
+    &::before {
+      content: "user@linux";
+      color: $terminal-cyan;
+    }
+
+    &::after {
+      content: ":~$";
+      color: #888888;
     }
   }
 
-  span {
-    line-height: 1.5rem;
-    font-family: "Monaco", "Consolas", "Menlo", monospace;
+  // Copy button - now part of header flex
+  .terminal-copy {
+    background: rgba($terminal-green, 0.1);
+    border: 1px solid $terminal-green;
+    color: $terminal-green;
+    padding: rem(3px) rem(10px);
+    font-size: rem(11px);
+    cursor: pointer;
+    border-radius: 0;
+    @include mainFont(400);
+    transition: all 0.2s ease;
+    margin-left: rem(15px);
+
+    &:hover {
+      background: $terminal-green;
+      color: $terminal-bg;
+    }
+
+    &.copied {
+      background: $terminal-green;
+      color: $terminal-bg;
+    }
+  }
+
+  // The actual code block
+  pre {
+    overflow-x: auto;
+    background-color: #0a0a0a;
+    border: 1px solid $terminal-green;
+    border-top: none;
+    border-radius: 0;
+    padding: rem(30px) rem(35px);
+    margin: 0;
+    position: relative;
+
+    code {
+      display: block;
+      background: transparent;
+      border: none;
+      padding: 0;
+      font-size: rem(13px);
+      line-height: 1.7;
+      color: $texts;
+      font-family: "JetBrains Mono", "Fira Code", "Monaco", "Consolas", monospace;
+      white-space: pre;
+      overflow-x: auto;
+
+      @include media(">=sm") {
+        font-size: rem(14px);
+      }
+    }
   }
 }
 
+// Legacy .highlight wrapper (Rouge syntax highlighting)
 .highlight {
-  margin: rem(20px) 0;
+  @include center(rem(800px));
+  margin: rem(20px) auto;
+  padding: 0 rem(20px);
 
   @include media(">=sm") {
     word-wrap: break-word;
-    margin: rem(29px) 0;
+    margin: rem(29px) auto;
+    padding: 0;
+  }
+
+  // When wrapped in terminal-window, remove extra margins
+  .terminal-window & {
+    margin: 0;
+    padding: 0;
+    max-width: none;
+  }
+
+  pre {
+    overflow-x: auto;
+    background-color: #0a0a0a;
+    border: 1px solid $terminal-green;
+    border-radius: 0;
+    padding: rem(30px) rem(35px) !important;
+    margin: 0;
+    position: relative;
+
+    // When inside terminal-window, adjust styling
+    .terminal-window & {
+      border-top: none;
+      padding: rem(30px) rem(35px) !important;
+    }
+
+    code {
+      display: block;
+      background: transparent;
+      border: none;
+      padding: 0;
+      font-size: rem(13px);
+      line-height: 1.7;
+      color: $texts;
+      font-family: "JetBrains Mono", "Fira Code", "Monaco", "Consolas", monospace;
+      white-space: pre;
+      overflow-x: auto;
+
+      @include media(">=sm") {
+        font-size: rem(14px);
+      }
+    }
   }
 
   .hll {
-    background-color: #282a36;
+    background-color: rgba($terminal-green, 0.1);
   }
 
+  // Syntax highlighting colors
   .c,     // Comment
   .cm,    // Comment.Multiline
   .cp,    // Comment.Preproc
   .c1,    // Comment.Single
   .cs {   // Comment.Special
-    color: #6272a4;
+    color: #6a737d;
+    font-style: italic;
   }
 
   .err {  // Error
-    color: #ff5555;
-    background-color: #282a36;
+    color: $terminal-red;
+    background-color: rgba($terminal-red, 0.1);
   }
 
   .kc,    // Keyword.Constant
@@ -57,22 +179,22 @@ pre {
   .kr,    // Keyword.Reserved
   .kt,    // Keyword.Type
   .no {   // Name.Constant
-    color: #66d9ef;
+    color: $terminal-cyan;
   }
 
-  .l,     // Literal 
+  .l,     // Literal
   .mf,    // Literal.Number.Float
   .mh,    // Literal.Number.Hex
   .mi,    // Literal.Number.Integer
   .mo,    // Literal.Number.Oct
   .se,    // Literal.String.Escape
   .il {   // Literal.Number.Integer.Long
-    color: #ae81ff;
+    color: #bd93f9;
   }
 
   .p,     // Punctuation
   .nx {   // Name.Other
-    color: #f7f7f2;
+    color: #b0b0b0;
   }
 
   .ni,    // Name.Entity
@@ -84,11 +206,11 @@ pre {
   .vc,    // Name.Variable.Class
   .vg,    // Name.Variable.Global
   .vi {   // Name.Variable.Instance
-    color: #50fa7b;
+    color: $terminal-green;
   }
 
   .nl {   // Name.Label
-    color: #8be9fd;
+    color: $terminal-cyan;
   }
 
   .n,     // Name
@@ -127,7 +249,7 @@ pre {
   .s1,     // Literal.String.Single
   .ss,     // Literal.String.Symbol
   .vglnk { // Link
-    color: #f1fa8c;
+    color: $terminal-amber;
   }
 
   .na,    // Name.Attribute
@@ -135,6 +257,7 @@ pre {
   .nd,    // Name.Decorator
   .ne,    // Name.Exception
   .nf {   // Name.Function
-    color: #50fa7b;
+    color: $terminal-green;
+    text-shadow: 0 0 3px rgba($terminal-green, 0.3);
   }
 }

@@ -1,7 +1,18 @@
+// Terminal/Hacker Theme Colors
 $theme: (
-  themeColor: #ff0a16,
-  primaryDark: #141414,
-  accentDark: #ffffff,
-  lightGray: #f2f2f2,
-  texts: #333333
+  themeColor: #00ff41,       // Matrix green - primary accent
+  primaryDark: #0a0a0a,      // Near-black background
+  accentDark: #00ff41,       // Green text/accents
+  lightGray: #1a1a1a,        // Slightly lighter dark for cards
+  texts: #b0b0b0             // Muted gray for secondary text
 );
+
+// Additional terminal colors
+$terminal-green: #00ff41;
+$terminal-cyan: #00d4ff;
+$terminal-amber: #ffb000;
+$terminal-red: #ff3333;
+$terminal-dim: #4a4a4a;
+$terminal-bg: #0a0a0a;
+$terminal-card-bg: #0d0d0d;
+$scanline-color: rgba(0, 255, 65, 0.03);
