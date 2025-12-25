@@ -1,22 +1,32 @@
-<header class="bar-header">
-    <a id="menu" role="button">
-        <svg id="open" class="icon-menu"><use xlink:href="#icon-menu"></use></svg>
+<header class="bar-header terminal-header">
+    <a id="menu" role="button" class="terminal-menu-btn">
+        <span class="menu-icon">[=]</span>
     </a>
-    <h1 class="logo">
-        <a href="{{ site.baseurl }}/">
-            {% if site.use_logo %}
-                {% include logo.html %}
-            {% else %}
-                {{ site.name }} <span class="version">{{ site.version }}</span>
-            {% endif %}
+    <h1 class="logo terminal-prompt">
+        <!-- Static version for mobile -->
+        <a href="{{ site.baseurl }}/" class="terminal-static">
+            <span class="prompt-user">visitor</span><span class="prompt-at">@</span><span class="prompt-host">{{ site.name | downcase | replace: '.', '' }}</span><span class="prompt-colon">:</span><span class="prompt-path">~</span><span class="prompt-dollar">$</span>{% if page.layout == 'post' %}<span class="prompt-command"> cd</span><span class="prompt-arg"> ./{{ page.category | default: 'posts' }}/{{ page.title | slugify }}</span>{% elsif page.layout == 'category' %}<span class="prompt-command"> ls -la</span><span class="prompt-arg"> ./{{ page.slug }}/</span>{% endif %}<span class="cursor">|</span>
         </a>
+        <!-- Interactive version for desktop -->
+        <div class="terminal-interactive">
+            <span class="prompt-user">visitor</span><span class="prompt-at">@</span><span class="prompt-host">{{ site.name | downcase | replace: '.', '' }}</span><span class="prompt-colon">:</span><span class="prompt-path">~</span><span class="prompt-dollar">$</span>
+            <input type="text"
+                   id="terminal-input"
+                   class="terminal-input"
+                   autocomplete="off"
+                   spellcheck="false"
+                   data-current-path="{% if page.layout == 'post' %}{{ page.category | default: 'posts' }}/{{ page.title | slugify }}{% elsif page.layout == 'category' %}{{ page.slug }}{% else %}~{% endif %}"
+                   data-current-category="{% if page.layout == 'post' %}{{ page.category | default: 'posts' }}{% elsif page.layout == 'category' %}{{ page.slug }}{% else %}{% endif %}"
+                   value="{% if page.layout == 'post' %}cd ./{{ page.category | default: 'posts' }}/{{ page.title | slugify }}{% elsif page.layout == 'category' %}ls ./{{ page.slug }}/{% endif %}"><span class="cursor terminal-cursor">|</span>
+            <!-- Dropdown for fuzzy suggestions -->
+            <div id="terminal-dropdown" class="terminal-dropdown"></div>
+            <!-- Inline ls output -->
+            <div id="terminal-ls-output" class="terminal-ls-output"></div>
+        </div>
     </h1>
-    <a id="search" class="dosearch" role="button">
-        <svg class="icon-search"><use xlink:href="#icon-search"></use></svg>
+    <a id="search" class="dosearch terminal-search" role="button">
+        <span class="search-icon">[/]</span>
     </a>
-    {% if site.show_get_theme_btn %}
-        <a href="https://github.com/thiagorossener/jekflix-template" class="get-theme" role="button">Search</a>
-    {% endif %}
 </header>
 
 <div id="mask" class="overlay"></div>
