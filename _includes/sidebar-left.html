@@ -4,6 +4,9 @@
     <span class="prompt-user">user@linux</span><span class="prompt-separator">:</span><span class="prompt-path">~</span><span class="prompt-symbol">$</span> tree ~/blog
   </div>
   <div class="panel-content tree-content">
+    <div class="tree-item tree-home">
+      <a href="{{ site.baseurl }}/">home/</a>
+    </div>
     {% assign categories = site.categories | sort %}
     {% assign total_categories = categories | size %}
     {% assign counter = 0 %}
@@ -11,7 +14,7 @@
       {% assign counter = counter | plus: 1 %}
       {% assign cat_name = category[0] %}
       {% assign cat_posts = category[1] %}
-      <div class="tree-item">
+      <div class="tree-item tree-child">
         {% if counter == total_categories %}
         <span class="tree-branch">└──</span>
         {% else %}
