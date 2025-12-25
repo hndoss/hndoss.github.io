@@ -1,50 +1,69 @@
+// Terminal-style comments section
 .comments {
   @include center(rem(800px));
   padding: 0 rem(20px);
-  
+
   h3 {
     margin: 0 0 rem(30px);
-    font-size: rem(30px);
+    font-size: rem(20px);
+    color: $terminal-green;
+    @include mainFont(400);
+
+    &::before {
+      content: "/* ";
+      color: $terminal-dim;
+    }
+
+    &::after {
+      content: " */";
+      color: $terminal-dim;
+    }
   }
 }
 
+// Terminal-style footer
 footer {
-  @include center(rem(800px));
-  border-top: 1px solid darken($accentDark, 10%);
-  background: $accentDark;
-  padding: rem(20px) rem(25px);
+  @include center(rem(900px));
+  border-top: 1px solid $terminal-green;
+  background: #0d0d0d;
+  padding: rem(30px) rem(25px);
   margin-top: rem(50px);
-  margin-bottom: rem(120px);
-  @include mainFont(300);
+  margin-bottom: rem(80px);
+  @include mainFont(400);
 
   @include media(">=sm") {
-    margin-top: rem(100px);
+    margin-top: rem(80px);
   }
 
   p {
     text-decoration: none;
-    color: $primaryDark;
-    font-size: rem(16px);
-    line-height: rem(25px);
+    color: #c0c0c0;
+    font-size: rem(14px);
+    line-height: rem(28px);
+    text-align: center;
   }
 
   span {
-    font-weight: 700;
+    font-weight: 500;
+    color: $terminal-green;
+    @include glowText($terminal-green);
   }
 
   svg {
     @include size(28, 28);
     display: inline-block;
     vertical-align: middle;
-    margin-right: rem(10px);
+    margin-right: rem(12px);
+    fill: $terminal-cyan;
+    transition: all 0.3s ease;
 
     @include media(">=sm") {
-      margin-right: rem(20px);
+      margin-right: rem(18px);
     }
 
     &.love {
-      @include size(20, 20);
-      fill: $themeColor;
+      @include size(18, 18);
+      fill: #ff6b6b;
       margin-top: rem(-2px);
       margin-left: rem(3px);
       margin-right: rem(3px);
@@ -53,17 +72,31 @@ footer {
 
   a {
     display: inline-block;
-    fill: #808080;
     transition: all 0.3s ease;
     text-decoration: none;
-    color: #808080;
-    
-    &:hover {
-      fill: $themeColor;
+    color: $terminal-cyan;
+
+    svg {
+      fill: $terminal-cyan;
     }
-    
-    &.creator:hover {
-      text-decoration: underline;
+
+    &:hover {
+      color: $terminal-green;
+      @include glowText($terminal-green);
+
+      svg {
+        fill: $terminal-green;
+        filter: drop-shadow(0 0 5px rgba($terminal-green, 0.7));
+      }
+    }
+
+    &.creator {
+      color: $terminal-green;
+
+      &:hover {
+        text-decoration: none;
+        @include glowText($terminal-green);
+      }
     }
   }
 
@@ -72,15 +105,23 @@ footer {
     list-style-type: none;
 
     li {
-      margin-bottom: rem(10px);
+      margin-bottom: rem(8px);
+
+      &::before {
+        content: "~/ ";
+        color: $terminal-green;
+        font-size: rem(12px);
+      }
     }
 
     a {
       text-decoration: none;
-      font-size: rem(15px);
-      
+      font-size: rem(14px);
+      color: $terminal-cyan;
+
       &:hover {
-        text-decoration: underline;
+        text-decoration: none;
+        color: $terminal-green;
       }
     }
   }
@@ -88,11 +129,11 @@ footer {
 
 .main-page {
   footer {
-    background: $primaryDark;
-    border-top: 1px solid lighten($primaryDark, 10%);
-    
+    background: #0d0d0d;
+    border-top: 1px solid $terminal-green;
+
     p {
-      color: $accentDark;
+      color: #c0c0c0;
     }
   }
 }
