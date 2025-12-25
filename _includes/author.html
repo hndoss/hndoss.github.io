@@ -1,49 +1,49 @@
 {% assign author = site.authors | where: "name", page.author | first %}
 {% if author %}
-  <section class="author">
-    <div class="details">
-      {% if author.photo %}
-        <img class="img-rounded" src="{{ author.photo }}" alt="{{ author.display_name }}">
-      {% else %}
-        <img class="img-rounded" src="/assets/img/user.jpg" alt="{{ author.display_name }}">
-      {% endif %}
-      <p class="def">{{ site.translations.text.author | default: "Author" }}</p>
-      <h3 class="name">
-        <a href="{{ author.url }}">{{ author.display_name }}</a>
-      </h3>
-      <p class="desc">{{ author.bio }}</p>
-      <p>
-        {% if author.github_username %}
-          <a href="https://github.com/{{ author.github_username }}" title="Github">
-            <svg><use xlink:href="#icon-github"></use></svg>
-          </a>
-        {% endif %}
-        {% if author.facebook_username %}
-          <a href="https://www.facebook.com/{{ author.facebook_username }}" title="Facebook">
-            <svg><use xlink:href="#icon-facebook"></use></svg>
-          </a>
-        {% endif %}
-        {% if author.twitter_username %}
-          <a href="https://twitter.com/{{ author.twitter_username }}" title="Twitter">
-            <svg><use xlink:href="#icon-twitter"></use></svg>
-          </a>
-        {% endif %}
-        {% if author.medium_username %}
-          <a href="https://medium.com/@{{ author.medium_username }}" title="Medium">
-            <svg><use xlink:href="#icon-medium"></use></svg>
-          </a>
-        {% endif %}
-        {% if author.instagram_username %}
-          <a href="https://www.instagram.com/{{ author.instagram_username }}" title="Instagram">
-            <svg><use xlink:href="#icon-instagram"></use></svg>
-          </a>
-        {% endif %}
-        {% if author.linkedin_username %}
-          <a href="https://www.linkedin.com/in/{{ author.linkedin_username }}" title="LinkedIn">
-            <svg><use xlink:href="#icon-linkedin"></use></svg>
-          </a>
-        {% endif %}
-      </p>
+  <section class="author-env">
+    <div class="env-terminal">
+      <div class="env-header">
+        <span class="prompt-user">user@linux</span><span class="prompt-separator">:</span><span class="prompt-path">~</span><span class="prompt-symbol">$</span> <span class="prompt-cmd">cat</span> <span class="prompt-arg">~/.author</span>
+      </div>
+      <div class="env-output">
+        <div class="author-info">
+          <div class="author-name">{{ author.display_name }}</div>
+          <div class="author-role">{{ author.position }}</div>
+          <div class="author-bio">{{ author.bio }}</div>
+        </div>
+        <div class="author-links">
+          {% if author.github_username %}
+            <a href="https://github.com/{{ author.github_username }}" title="Github">
+              <svg><use xlink:href="#icon-github"></use></svg>
+            </a>
+          {% endif %}
+          {% if author.facebook_username %}
+            <a href="https://www.facebook.com/{{ author.facebook_username }}" title="Facebook">
+              <svg><use xlink:href="#icon-facebook"></use></svg>
+            </a>
+          {% endif %}
+          {% if author.twitter_username %}
+            <a href="https://twitter.com/{{ author.twitter_username }}" title="Twitter">
+              <svg><use xlink:href="#icon-twitter"></use></svg>
+            </a>
+          {% endif %}
+          {% if author.medium_username %}
+            <a href="https://medium.com/@{{ author.medium_username }}" title="Medium">
+              <svg><use xlink:href="#icon-medium"></use></svg>
+            </a>
+          {% endif %}
+          {% if author.instagram_username %}
+            <a href="https://www.instagram.com/{{ author.instagram_username }}" title="Instagram">
+              <svg><use xlink:href="#icon-instagram"></use></svg>
+            </a>
+          {% endif %}
+          {% if author.linkedin_username %}
+            <a href="https://www.linkedin.com/in/{{ author.linkedin_username }}" title="LinkedIn">
+              <svg><use xlink:href="#icon-linkedin"></use></svg>
+            </a>
+          {% endif %}
+        </div>
+      </div>
     </div>
   </section>
 

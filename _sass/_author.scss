@@ -1,91 +1,100 @@
-.author {
-  background: $lightGray;
-  display: table;
-  width: 100%;
-  padding: rem(40px) 0;
-  margin: rem(40px) 0;
+// Terminal author section
+.author-env {
+  @include center(rem(800px));
+  margin: rem(40px) auto;
+  padding: 0 rem(20px);
 
   @include media(">=sm") {
-    padding: rem(50px) 0;
+    padding: 0;
   }
 
-  .details {
-    margin: auto;
-    max-width: rem(800px);
-    padding: 0 rem(20px);
+  .env-terminal {
+    background: $terminal-card-bg;
+    border: 1px solid $terminal-green;
+  }
 
-    @include media("<sm") {
-      text-align: center;
+  .env-header {
+    background: #1a1a1a;
+    border-bottom: 1px solid $terminal-green;
+    padding: rem(10px) rem(15px);
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: rem(13px);
+    color: #888888;
+
+    .prompt-user {
+      color: $terminal-cyan;
+    }
+
+    .prompt-separator,
+    .prompt-symbol {
+      color: #888888;
+    }
+
+    .prompt-path {
+      color: $terminal-green;
+    }
+
+    .prompt-cmd {
+      color: #888888;
+    }
+
+    .prompt-arg {
+      color: #888888;
     }
   }
 
-  svg {
-    @include size(25, 25);
-    margin-right: rem(10px);
+  .env-output {
+    padding: rem(25px);
   }
 
-  a {
-    fill: darken($lightGray, 30%);
-    text-decoration: none;
-    border: none;
-    transition: all 0.3s;
-
-    &:hover {
-      fill: $themeColor;
-    }
+  .author-info {
+    margin-bottom: rem(20px);
   }
 
-  img {
-    width: rem(150px);
-    border-radius: 50%;
-    display: block;
-    margin: auto;
-
-    @include media(">=sm") {
-      width: rem(180px);
-      float: left;
-      margin-right: 3.125rem;
-    }
+  .author-name {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: rem(20px);
+    color: $terminal-green;
+    @include glowText($terminal-green);
+    margin-bottom: rem(5px);
   }
 
-  .def {
-    color: gray;
-    font-size: rem(18px);
-    @include mainFont(300);
-    margin: rem(10px);
-
-    @include media(">=sm") {
-      margin: 0;
-    }
+  .author-role {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: rem(14px);
+    color: $terminal-cyan;
+    margin-bottom: rem(10px);
   }
 
-  .name {
-    margin: 0;
+  .author-bio {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: rem(14px);
+    color: #c0c0c0;
+    line-height: 1.6;
+  }
+
+  .author-links {
+    padding-top: rem(15px);
+    border-top: 1px solid rgba($terminal-green, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(15px);
 
     a {
-      @include mainFont();
-      text-decoration: none;
-      color: black;
-      font-size: rem(30px);
+      display: inline-block;
+      transition: all 0.2s;
 
-      @include media(">=sm") {
-        font-size: rem(45px);
+      svg {
+        width: rem(24px);
+        height: rem(24px);
+        fill: $terminal-cyan;
+        transition: all 0.2s;
       }
 
-      &:hover {
-        color: $texts;
+      &:hover svg {
+        fill: $terminal-green;
+        filter: drop-shadow(0 0 5px rgba($terminal-green, 0.7));
       }
-    }
-  }
-
-  .desc {
-    @include mainFont(300);
-    margin: rem(10px);
-    font-size: rem(16px);
-    line-height: rem(25px);
-
-    @include media(">=sm") {
-      font-size: rem(18px);
     }
   }
 }
