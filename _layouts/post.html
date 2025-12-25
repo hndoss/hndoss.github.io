@@ -6,9 +6,16 @@
         {% include svg-icons.html %}
         {% include header.html %}
 
-        <section class="post {% if site.two_columns_layout %}two-columns{% else %}one-column{% endif %}">
+        <section class="post with-sidebar">
+            <aside class="sidebar-left">
+                {% include sidebar-left.html %}
+            </aside>
             <article role="article" class="post-content">
                 <p class="post-info">
+                    <a href="{{ site.baseurl }}/" class="back-link" title="Back to home">
+                        <svg class="icon-home"><use xlink:href="#icon-home"></use></svg>
+                    </a>
+                    <span class="info-separator">|</span>
                     {% if page.date %}
                         <svg class="icon-calendar" id="date"><use xlink:href="#icon-calendar"></use></svg>
                         <time class="date" datetime="{{ page.date | date_to_xmlschema }}">
@@ -34,31 +41,6 @@
                 {% include pagination-post.html %}
             </article>
 
-            {% if site.two_columns_layout %}
-                <aside class="see-also">
-                    <h2>{{ site.translations.text.see_also | default: "See also" }}</h2>
-                    <ul>
-                        {% assign next_posts = site.posts | where_exp:"post","post.is_generated != true" | where_exp:"post","post.path != page.path" %}
-                        {% assign shuffled_array = next_posts | shuffle %}
-                        {% for post in shuffled_array limit:3 %}
-                            <li>
-                                <a href="{{ post.url | prepend: site.baseurl }}">
-                                    {% if post.optimized_image %}
-                                        <img src="{{ post.optimized_image }}">
-                                    {% elsif post.image %}
-                                        <img src="{{ post.image }}">
-                                    {% else %}
-                                        <img src="/assets/img/off.jpg">
-                                    {% endif %}
-                                    <h3>{{ post.title }}</h3>
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-
-                    {% include subscription.html %}
-                </aside>
-            {% endif %}
 
         </section>
 
@@ -117,6 +99,61 @@
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
         </script>
         {% endif %}
+        <script>
+        // Terminal-style code blocks with copy functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find all code blocks
+            const codeBlocks = document.querySelectorAll('.post-content .highlight, .post-content > pre');
+
+            codeBlocks.forEach(function(block, index) {
+                // Skip if already wrapped
+                if (block.closest('.terminal-window')) return;
+
+                // Get the pre element
+                const pre = block.tagName === 'PRE' ? block : block.querySelector('pre');
+                if (!pre) return;
+
+                // Get code content for copying
+                const code = pre.querySelector('code') || pre;
+                const codeText = code.textContent;
+
+                // Create terminal window wrapper
+                const wrapper = document.createElement('div');
+                wrapper.className = 'terminal-window';
+
+                // Create header with Linux-style prompt and copy button
+                const header = document.createElement('div');
+                header.className = 'terminal-header';
+
+                const prompt = document.createElement('div');
+                prompt.className = 'terminal-prompt';
+
+                const copyBtn = document.createElement('button');
+                copyBtn.className = 'terminal-copy';
+                copyBtn.textContent = 'copy';
+                copyBtn.addEventListener('click', function() {
+                    navigator.clipboard.writeText(codeText).then(function() {
+                        copyBtn.classList.add('copied');
+                        copyBtn.textContent = 'copied';
+                        setTimeout(function() {
+                            copyBtn.classList.remove('copied');
+                            copyBtn.textContent = 'copy';
+                        }, 2000);
+                    }).catch(function(err) {
+                        console.error('Failed to copy:', err);
+                    });
+                });
+
+                header.appendChild(prompt);
+                header.appendChild(copyBtn);
+
+                // Wrap the block
+                block.parentNode.insertBefore(wrapper, block);
+                wrapper.appendChild(header);
+                wrapper.appendChild(block);
+            });
+        });
+        </script>
         <script type="application/ld+json">
         {
             "@context": "http://schema.org",
