@@ -1,9 +1,187 @@
+// Terminal-style post layout
 .post {
   position: relative;
   top: rem(30px);
+  background-color: $terminal-bg;
 
   @include media(">=sm") {
     top: rem(50px);
+  }
+}
+
+// Left sidebar layout
+.post.with-sidebar {
+  display: block;
+  padding-bottom: rem(40px);
+
+  @include media(">=sm") {
+    padding-left: rem(420px);
+  }
+
+  .sidebar-left {
+    display: block;
+    padding: rem(20px);
+
+    @include media(">=sm") {
+      position: fixed;
+      left: 0;
+      top: rem(60px);
+      width: rem(400px);
+      padding: rem(25px);
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      background: $terminal-bg;
+      border-right: 1px solid rgba($terminal-green, 0.2);
+    }
+  }
+
+  .post-content {
+    max-width: rem(900px);
+    margin: 0 auto;
+  }
+
+  .category-content {
+    padding: rem(20px);
+    width: 100%;
+
+    .row {
+      margin: 0;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .flex-grid {
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    .box-item {
+      opacity: 1;
+    }
+  }
+}
+
+// Terminal panel for sidebar
+.terminal-panel {
+  background: $terminal-card-bg;
+  border: 1px solid $terminal-green;
+  margin-bottom: rem(20px);
+
+  .panel-header {
+    background: #1a1a1a;
+    border-bottom: 1px solid $terminal-green;
+    padding: rem(10px) rem(15px);
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: rem(13px);
+    color: #888888;
+
+    .prompt-user {
+      color: $terminal-cyan;
+    }
+
+    .prompt-separator,
+    .prompt-symbol {
+      color: #888888;
+    }
+
+    .prompt-path {
+      color: $terminal-green;
+    }
+  }
+
+  .panel-content {
+    padding: rem(15px);
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: rem(14px) !important;
+    line-height: 1.9;
+  }
+
+  // Tree styles
+  .tree-content {
+    .tree-item {
+      display: flex;
+      align-items: center;
+      padding: rem(3px) 0;
+
+      .tree-branch {
+        color: #888888;
+        margin-right: rem(8px);
+      }
+
+      a {
+        color: $terminal-cyan;
+        text-decoration: none;
+        transition: color 0.2s;
+
+        &:hover {
+          color: $terminal-green;
+          @include glowText($terminal-green);
+        }
+      }
+
+      .tree-count {
+        color: #888888;
+        margin-left: rem(8px);
+      }
+    }
+  }
+
+  // Top styles
+  .top-content {
+    .top-header {
+      display: flex;
+      color: $terminal-green;
+      font-weight: bold;
+      border-bottom: 1px solid rgba($terminal-green, 0.3);
+      padding-bottom: rem(8px);
+      margin-bottom: rem(8px);
+
+      .top-pid {
+        width: rem(35px);
+      }
+
+      .top-cpu {
+        width: rem(45px);
+      }
+
+      .top-cmd {
+        flex: 1;
+      }
+    }
+
+    .top-row {
+      display: flex;
+      padding: rem(6px) 0;
+      transition: background 0.2s;
+      align-items: flex-start;
+
+      &:hover {
+        background: rgba($terminal-green, 0.1);
+      }
+
+      .top-pid {
+        width: rem(35px);
+        color: #888888;
+        flex-shrink: 0;
+      }
+
+      .top-cpu {
+        width: rem(50px);
+        color: $terminal-amber;
+        flex-shrink: 0;
+      }
+
+      .top-cmd {
+        flex: 1;
+        color: #c0c0c0;
+        text-decoration: none;
+        line-height: 1.4;
+
+        &:hover {
+          color: $terminal-green;
+        }
+      }
+    }
   }
 }
 
@@ -32,6 +210,7 @@
 .post-content {
   overflow-x: auto;
   padding: rem(40px) 0;
+  background-color: $terminal-bg;
 
   &.fullwidth {
     padding: rem(60px) rem(10px) 0;
@@ -42,6 +221,7 @@
     margin: rem(0px) auto;
     display: block;
     padding: 10px 0;
+    filter: grayscale(30%) brightness(0.95);
   }
 
   figure {
@@ -51,9 +231,14 @@
   figcaption,
   img + em {
     display: block;
-    color: darken($lightGray, 30%);
+    color: $terminal-dim;
     text-align: center;
-    @include mainFont(300);
+    @include mainFont(400);
+    font-size: rem(13px);
+
+    &::before {
+      content: "// ";
+    }
   }
 
   p,
@@ -68,33 +253,40 @@
   iframe {
     @include center(rem(800px));
     @include mainFont(400);
-    font-size: rem(17px);
-    line-height: rem(30px);
-    letter-spacing: 0.025rem;
+    font-size: rem(16px);
+    line-height: rem(28px);
+    letter-spacing: 0.02rem;
     padding: 0 rem(20px);
     margin: rem(20px) auto 0;
 
     @include media(">=sm") {
-      font-size: rem(20px);
-      line-height: rem(40px);
-      margin: rem(29px) auto 0;
+      font-size: rem(17px);
+      line-height: rem(32px);
+      margin: rem(25px) auto 0;
     }
   }
 
   h1.post-title {
-    line-height: 1.2;
+    line-height: 1.3;
     margin: rem(5px) auto rem(10px);
     padding-top: 0;
+    color: $terminal-green;
+    @include glowText($terminal-green);
+    font-size: rem(28px);
+
+    @include media(">=sm") {
+      font-size: rem(36px);
+    }
   }
 
   p.post-subtitle {
-    color: darken($lightGray, 30%);
-    font-size: rem(17px);
+    color: $texts;
+    font-size: rem(16px);
     margin: rem(10px) auto;
     line-height: 1.6;
 
     @include media(">=sm") {
-      font-size: rem(20px);
+      font-size: rem(18px);
     }
   }
 
@@ -102,6 +294,7 @@
     padding: 0;
     margin-top: rem(20px);
     margin-bottom: rem(20px);
+    border: 1px solid rgba($terminal-green, 0.2);
 
     @include media(">=sm") {
       margin-top: rem(29px);
@@ -110,23 +303,57 @@
   }
 
   p.post-info {
-    @include mainFont(300);
-    font-size: rem(13px);
+    @include mainFont(400);
+    font-size: rem(12px);
     letter-spacing: 0;
-    color: darken($lightGray, 30%);
+    color: #888888;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: rem(8px);
 
     @include media(">=sm") {
-      font-size: rem(15px);
+      font-size: rem(13px);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      transition: all 0.2s;
+
+      .icon-home {
+        width: rem(16px);
+        height: rem(16px);
+        fill: $terminal-cyan;
+        transition: all 0.2s;
+      }
+
+      &:hover .icon-home {
+        fill: $terminal-green;
+        filter: drop-shadow(0 0 5px rgba($terminal-green, 0.7));
+      }
+    }
+
+    .info-separator {
+      color: #888888;
     }
 
     span,
     time {
       vertical-align: middle;
+      color: #888888;
     }
 
     time {
       margin-right: rem(10px);
+      color: $terminal-cyan;
+
+      &::before {
+        content: "timestamp: ";
+        color: #888888;
+      }
 
       @include media(">=sm") {
         margin-right: rem(30px);
@@ -139,21 +366,27 @@
     color: $texts;
 
     code {
-      font-size: rem(15px);
-      background: #282a36;
-      color: #fff;
+      font-size: rem(14px);
+      background: rgba($terminal-green, 0.1);
+      color: $terminal-green;
       word-wrap: break-word;
-      padding: rem(3px) rem(5px);
-      border-radius: 3px;
+      padding: rem(2px) rem(6px);
+      border-radius: 0;
+      border: 1px solid rgba($terminal-green, 0.2);
 
       @include media(">=sm") {
-        font-size: rem(17px);
+        font-size: rem(15px);
       }
     }
   }
 
   li {
-    padding: rem(10px) 0;
+    padding: rem(8px) 0;
+    color: $texts;
+
+    &::marker {
+      color: $terminal-green;
+    }
 
     ul {
       margin-bottom: 0;
@@ -166,17 +399,22 @@
   }
 
   a {
-    color: $themeColor;
+    color: $terminal-cyan;
     text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
 
     &:hover {
-      color: #a9a9a9;
+      color: $terminal-green;
+      border-bottom-color: $terminal-green;
+      @include glowText($terminal-green);
     }
   }
 
   iframe {
     margin-top: rem(30px);
     width: 100%;
+    border: 1px solid rgba($terminal-green, 0.2);
   }
 
   h1,
@@ -185,43 +423,51 @@
   h4,
   h5,
   h6 {
-    @include mainFont(700);
+    @include mainFont(500);
     margin-top: 0;
-    padding-top: rem(50px);
+    padding-top: rem(40px);
+    color: $terminal-green;
 
     @include media(">=sm") {
       margin-top: 0;
-      padding-top: rem(60px);
-    }
-  }
-  h1 {
-    font-size: rem(36px);
-    line-height: 1.4;
-    @include media(">=sm") {
-      font-size: rem(50px);
+      padding-top: rem(50px);
     }
   }
 
-  h2 {
+  h1 {
     font-size: rem(28px);
     line-height: 1.4;
 
     @include media(">=sm") {
-      font-size: rem(37px);
+      font-size: rem(36px);
+    }
+  }
+
+  h2 {
+    font-size: rem(24px);
+    line-height: 1.4;
+
+    @include media(">=sm") {
+      font-size: rem(28px);
     }
   }
 
   h3 {
-    font-size: rem(22px);
+    font-size: rem(20px);
     line-height: 1.4;
 
     @include media(">=sm") {
-      font-size: rem(27px);
+      font-size: rem(22px);
     }
   }
+
+  h4 {
+    font-size: rem(18px);
+  }
+
   ul,
   ol {
-    padding-left: rem(60px);
+    padding-left: rem(50px);
   }
 
   ul.post-list {
@@ -234,58 +480,112 @@
 
   blockquote {
     @include center(rem(730px));
-    border-left: rem(5px) solid $texts;
-    padding: 0 rem(10px);
+    border-left: rem(3px) solid $terminal-green;
+    background-color: rgba($terminal-green, 0.05);
+    padding: rem(15px) rem(20px);
     margin: rem(30px) auto;
     width: 90%;
 
     @include media(">=sm") {
       width: 100%;
-      margin: rem(50px) auto;
-      padding: 0 rem(30px);
+      margin: rem(40px) auto;
+      padding: rem(20px) rem(30px);
     }
 
     p {
-      font-size: rem(17px);
-      color: rgba(0, 0, 0, 0.6);
+      font-size: rem(15px);
+      color: $texts;
       margin: 0;
+      font-style: italic;
+
+      &::before {
+        content: "> ";
+        color: $terminal-dim;
+        font-style: normal;
+      }
+
       @include media(">=sm") {
-        font-size: rem(20px);
+        font-size: rem(16px);
       }
     }
   }
 
   hr {
     @include center(rem(760px));
-    border: 1px solid $lightGray;
+    border: none;
+    border-top: 1px solid rgba($terminal-green, 0.3);
     margin: 50px auto;
+
+    &::after {
+      content: "---";
+      display: block;
+      text-align: center;
+      color: $terminal-dim;
+      margin-top: -12px;
+      background: $terminal-bg;
+      width: 40px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
-  pre {
+  // Code block styling is handled by _highlight.scss
+  // This just ensures standalone pre blocks (not in .highlight) get basic styling
+  > pre:not(.highlight pre) {
+    @include center(rem(800px));
     overflow-x: auto;
+    background-color: #0d0d0d;
+    border: 1px solid rgba($terminal-green, 0.3);
+    border-radius: 8px;
+    padding: rem(15px) rem(20px);
+    margin: rem(20px) auto;
+
+    code {
+      display: block;
+      background: transparent;
+      border: none;
+      padding: 0;
+      font-size: rem(13px);
+      line-height: 1.7;
+      color: $texts;
+      font-family: "JetBrains Mono", "Fira Code", "Monaco", "Consolas", monospace;
+      white-space: pre;
+      overflow-x: auto;
+
+      @include media(">=sm") {
+        font-size: rem(14px);
+      }
+    }
   }
 
   table {
     @include mainFont(400);
-    font-size: rem(17px);
-    line-height: rem(35px);
-    letter-spacing: 0.025rem;
-    margin: rem(50px) auto;
+    font-size: rem(14px);
+    line-height: rem(28px);
+    letter-spacing: 0.02rem;
+    margin: rem(40px) auto;
     border-collapse: collapse;
+    background-color: $terminal-card-bg;
 
     @include media(">=sm") {
-      font-size: rem(20px);
+      font-size: rem(15px);
     }
 
-    th,
-    td {
-      border: rem(1px) solid #ccc;
-      padding: rem(5px) rem(10px);
+    th {
+      background-color: rgba($terminal-green, 0.1);
+      color: $terminal-green;
+      border: 1px solid rgba($terminal-green, 0.3);
+      padding: rem(8px) rem(15px);
+    }
 
-      @include media(">=sm") {
-        border: rem(2px) solid #ccc;
-        padding: rem(10px) rem(20px);
-      }
+    td {
+      border: 1px solid rgba($terminal-green, 0.2);
+      padding: rem(8px) rem(15px);
+      color: $texts;
+    }
+
+    tr:hover td {
+      background-color: rgba($terminal-green, 0.05);
     }
   }
 
@@ -324,6 +624,7 @@
 
       img {
         padding: 0;
+        filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
       }
     }
 
@@ -334,10 +635,10 @@
   }
 }
 
-/* See also */
-
+/* See also - terminal style */
 .see-also {
   padding: 0 rem(20px);
+  background-color: $terminal-bg;
 
   @include media(">=sm") {
     flex-basis: 30%;
@@ -345,10 +646,17 @@
   }
 
   h2 {
-    font-size: rem(24px);
-    font-weight: bold;
-    border-bottom: 1px solid $lightGray;
+    font-size: rem(18px);
+    font-weight: 500;
+    border-bottom: 1px solid rgba($terminal-green, 0.3);
     padding: rem(10px) 0;
+    color: $terminal-green;
+
+    &::before {
+      content: "$ related ";
+      color: $terminal-dim;
+    }
+
     @include media(">=sm") {
       padding: rem(48px) 0 rem(20px);
     }
@@ -360,24 +668,36 @@
     list-style: none;
 
     li {
+      border: 1px solid rgba($terminal-green, 0.2);
+      margin-bottom: rem(15px);
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: $terminal-green;
+        box-shadow: 0 0 10px rgba($terminal-green, 0.2);
+      }
+
       img {
         display: block;
         max-width: 100%;
         height: auto;
         transition: all 0.2s ease-in-out;
+        filter: grayscale(50%) brightness(0.9);
       }
 
       a {
         font-weight: normal;
-        color: $primaryDark;
+        color: $terminal-green;
         text-decoration: none;
         transition: all 0.3s;
+        display: block;
+        padding: rem(10px);
 
         &:hover {
-          color: rgba(0, 0, 0, 0.5);
+          @include glowText($terminal-green);
+
           img {
-            -webkit-filter: grayscale(100%);
-            filter: grayscale(100%);
+            filter: grayscale(100%) brightness(0.8) sepia(100%) hue-rotate(70deg) saturate(500%);
           }
         }
       }
@@ -385,31 +705,30 @@
   }
 }
 
-/* Progress bar */
-
+/* Progress bar - terminal style */
 .progress-bar {
   display: flex;
   align-items: center;
   width: 100%;
   height: 38px;
   padding: rem(30px) 0;
-  border-bottom: 1px solid $themeColor;
-  background-color: #fff;
+  border-bottom: 1px solid $terminal-green;
+  background-color: $terminal-bg;
   transition: bottom 0.5s;
 
   .bar {
     position: relative;
     flex: 1;
-    height: rem(10px);
-    background-color: $themeColor;
-    opacity: 0.2;
+    height: rem(6px);
+    background-color: rgba($terminal-green, 0.2);
   }
 
   .completed {
-    opacity: 1;
+    background-color: $terminal-green;
+    box-shadow: 0 0 10px rgba($terminal-green, 0.5);
 
     &:last-child {
-      border-right: 1px solid #fff;
+      border-right: 1px solid $terminal-bg;
     }
   }
 
@@ -418,6 +737,10 @@
     width: rem(40px);
     height: rem(40px);
     animation: 1s pulse cubic-bezier(0.36, 0.07, 0.19, 0.97) alternate infinite;
+
+    svg {
+      fill: $terminal-green;
+    }
   }
 
   &.finished {
@@ -428,8 +751,7 @@
   }
 }
 
-/* Time bar */
-
+/* Time bar - terminal style */
 .time-bar {
   position: fixed;
   left: 0;
@@ -439,7 +761,8 @@
   width: 100%;
   padding: rem(10px) rem(20px) rem(5px);
   transition: bottom 0.5s;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba($terminal-bg, 0.95);
+  border-top: 1px solid rgba($terminal-green, 0.3);
 
   @include media(">=sm") {
     padding: rem(16px) rem(20px) rem(9px);
@@ -449,6 +772,7 @@
     display: block;
     width: 100%;
     padding: rem(8px) rem(60px);
+
     &:after {
       clear: both;
       display: block;
@@ -459,22 +783,23 @@
   .completed {
     float: left;
     display: block;
-    height: rem(5px);
-    background-color: $themeColor;
+    height: rem(4px);
+    background-color: $terminal-green;
+    box-shadow: 0 0 10px rgba($terminal-green, 0.5);
   }
 
   .remaining {
     float: left;
     display: block;
-    height: rem(5px);
-    background-color: #ccc;
+    height: rem(4px);
+    background-color: rgba($terminal-green, 0.2);
   }
 
   .time-completed,
   .time-remaining {
     @include mainFont(400);
-    font-size: rem(18px);
-    color: #fff;
+    font-size: rem(14px);
+    color: $terminal-green;
   }
 
   .time-completed {
@@ -486,20 +811,19 @@
   }
 }
 
-/* Recommendation */
-
+/* Recommendation - terminal style */
 .recommendation {
   @include mainFont(400);
   position: fixed;
   left: 0;
   right: 0;
   bottom: -100%;
-  display: block;
+  display: flex;
   width: 100%;
   padding: rem(10px);
   transition: bottom 0.5s;
-  background-color: rgba(0, 0, 0, 0.85);
-  display: flex;
+  background-color: rgba($terminal-bg, 0.95);
+  border-top: 1px solid rgba($terminal-green, 0.3);
   justify-content: space-between;
 
   @include media(">=sm") {
@@ -510,12 +834,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: rem(16px);
-    color: #fff;
+    font-size: rem(14px);
+    color: $terminal-green;
     padding-right: rem(20px);
 
     @include media(">=sm") {
-      font-size: rem(20px);
+      font-size: rem(16px);
     }
 
     strong {
@@ -525,26 +849,33 @@
 
     button {
       background-color: transparent;
-      border: 0;
-      color: #fff;
+      border: 1px solid $terminal-green;
+      color: $terminal-green;
       cursor: pointer;
       display: inline-block;
-      font-size: rem(13px);
+      font-size: rem(12px);
       text-decoration: none;
       outline: 0;
+      padding: rem(5px) rem(10px);
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: $terminal-green;
+        color: $terminal-bg;
+      }
 
       @include media(">=sm") {
-        font-size: rem(15px);
+        font-size: rem(13px);
       }
     }
 
     svg {
-      fill: #fff;
+      fill: $terminal-green;
       width: rem(22px);
       height: rem(22px);
       transform: rotate(-90deg);
-      border: 1px solid #fff;
-      border-radius: 50%;
+      border: 1px solid $terminal-green;
+      border-radius: 0;
       padding: 5px;
       margin-right: 10px;
       vertical-align: middle;
@@ -559,14 +890,17 @@
       vertical-align: middle;
     }
   }
+
   .post-preview {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: #000;
+    background-color: $terminal-card-bg;
+    border: 1px solid rgba($terminal-green, 0.2);
     padding: rem(5px);
     max-width: 35%;
     text-decoration: none;
+    transition: all 0.2s ease;
 
     @include media(">=sm") {
       flex-direction: row;
@@ -575,13 +909,14 @@
     }
 
     &:hover {
+      border-color: $terminal-green;
+
       .title {
-        color: rgba(255, 255, 255, 0.5);
+        @include glowText($terminal-green);
       }
 
       .image > img {
-        -webkit-filter: grayscale(100%);
-        filter: grayscale(100%);
+        filter: grayscale(100%) brightness(0.8) sepia(100%) hue-rotate(70deg) saturate(500%);
       }
     }
 
@@ -591,15 +926,17 @@
       width: 100%;
       max-width: rem(200px);
       transition: all 0.3s;
+      filter: grayscale(50%) brightness(0.9);
     }
 
     .title {
-      font-size: rem(16px);
-      color: #fff;
+      font-size: rem(14px);
+      color: $terminal-green;
       margin: rem(5px) 0;
       transition: all 0.3s;
+
       @include media(">=sm") {
-        font-size: rem(23px);
+        font-size: rem(18px);
         margin: 0 0 0 rem(20px);
       }
     }
@@ -610,67 +947,78 @@
 .icon-calendar {
   width: rem(14px);
   height: rem(14px);
-  fill: darken($lightGray, 30%);
+  fill: #888888;
   vertical-align: middle;
   margin-right: rem(3px);
 }
 
-/* Tags */
-
+/* Tags - terminal style */
 .post-content {
   .tags {
     @include center(rem(800px));
     @include mainFont(400);
-    font-size: rem(18px);
+    font-size: rem(14px);
     margin: 0 auto rem(29px);
     margin-top: rem(30px);
-    letter-spacing: 0.025rem;
-    line-height: rem(40px);
+    letter-spacing: 0.02rem;
+    line-height: rem(36px);
     padding: 0 rem(10px);
 
     @include media(">=sm") {
-      font-size: rem(20px);
+      font-size: rem(15px);
       padding: 0;
     }
 
     a {
-      font-size: rem(14px);
-      color: $primaryDark;
+      font-size: rem(12px);
+      color: $terminal-amber;
       display: inline-block;
-      border: 1px solid $primaryDark;
-      border-radius: rem(20px);
+      border: 1px solid $terminal-amber;
+      border-radius: 0;
       padding: 0 rem(10px);
-      margin-right: rem(2px);
+      margin-right: rem(4px);
       margin-bottom: rem(8px);
       text-decoration: none;
+      transition: all 0.2s ease;
+
+      &::before {
+        content: "#";
+      }
 
       @include media(">=sm") {
-        border-width: 2px;
+        font-size: rem(13px);
       }
 
       &:hover {
-        color: $accentDark;
-        background-color: $primaryDark;
+        color: $terminal-bg;
+        background-color: $terminal-amber;
       }
     }
   }
 
   .tag-title {
-    @include mainFont(300);
+    @include mainFont(400);
     @include center(rem(800px));
-    font-size: rem(30px);
+    font-size: rem(24px);
     margin-top: rem(20px);
     padding: 0 rem(10px);
+    color: $terminal-green;
+
+    &::before {
+      content: "$ grep -r ";
+      color: $terminal-dim;
+    }
 
     span {
       padding: rem(3px) rem(10px);
-      background-color: $themeColor;
-      border-radius: rem(5px);
-      color: #fff;
+      background-color: transparent;
+      border: 1px solid $terminal-green;
+      border-radius: 0;
+      color: $terminal-green;
     }
 
     @include media(">=sm") {
-      font-size: rem(22px);
+      font-size: rem(20px);
       margin-top: rem(80px);
       padding: 0;
     }
@@ -697,14 +1045,28 @@
     a {
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px solid darken($lightGray, 10%);
-      padding: rem(10px) 0;
+      border-bottom: 1px solid rgba($terminal-green, 0.2);
+      padding: rem(12px) 0;
       text-decoration: none;
-      font-size: rem(18px);
+      font-size: rem(15px);
+      color: $terminal-green;
+      transition: all 0.2s ease;
+
+      &::before {
+        content: "> ";
+        color: $terminal-dim;
+      }
+
+      &:hover {
+        background-color: rgba($terminal-green, 0.05);
+        padding-left: rem(10px);
+      }
     }
 
     .entry-date {
       float: right;
+      color: $terminal-dim;
+
       @include media("<sm") {
         display: none;
       }
