@@ -1,0 +1,152 @@
+/**
+ * Layout - Global page structure and sticky footer
+ */
+
+// ============================================
+// Sticky Footer Layout
+// ============================================
+
+.site-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $terminal-bg;
+}
+
+.site-content {
+  flex: 1 0 auto;
+  padding-top: $header-height; // Account for fixed header
+}
+
+footer {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+// ============================================
+// Sidebar Layout
+// ============================================
+
+.layout-sidebar {
+  display: block;
+  padding-top: $space-lg;
+  padding-bottom: $space-xl;
+
+  @include media(">=sm") {
+    padding-left: $sidebar-width;
+  }
+
+  .sidebar-left {
+    display: block;
+    padding: $space-md;
+
+    @include media(">=sm") {
+      position: fixed;
+      left: 0;
+      top: $header-height;
+      width: $sidebar-width;
+      height: calc(100vh - #{$header-height});
+      padding: $space-lg;
+      overflow-y: auto;
+      background: $terminal-bg;
+      border-right: 1px solid $terminal-border-subtle;
+      z-index: $z-sidebar;
+
+      // Custom scrollbar
+      &::-webkit-scrollbar {
+        width: rem(6px);
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $terminal-border;
+        border-radius: rem(3px);
+
+        &:hover {
+          background: $terminal-green;
+        }
+      }
+    }
+  }
+
+  .main-content {
+    max-width: $content-max-width;
+    margin: 0 auto;
+    padding: 0 $space-md;
+
+    @include media(">=sm") {
+      padding: 0 $space-lg;
+    }
+  }
+}
+
+// ============================================
+// Fullwidth Layout (no sidebar)
+// ============================================
+
+.layout-fullwidth {
+  max-width: $content-max-width;
+  margin: 0 auto;
+  padding: $space-lg $space-md;
+
+  @include media(">=sm") {
+    padding: $space-xl $space-lg;
+  }
+}
+
+// ============================================
+// Centered Content
+// ============================================
+
+.content-centered {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: $space-lg 0;
+}
+
+// ============================================
+// Category Grid (wider content area, max 4 per row)
+// ============================================
+
+.category-grid {
+  width: 100%;
+  max-width: none;
+
+  .flex-grid {
+    margin: 0;
+  }
+
+  .box-item {
+    opacity: 1;
+
+    // Limit to 4 items per row for category pages
+    @include media(">=sm") {
+      max-width: calc(50% - #{$itemMargin * 2});
+    }
+
+    @include media(">=md") {
+      max-width: calc(33.333% - #{$itemMargin * 2});
+    }
+
+    @include media(">=lg") {
+      max-width: calc(25% - #{$itemMargin * 2});
+      flex: 1 0 calc(25% - #{$itemMargin * 2});
+    }
+  }
+}
+
+// Override main-content max-width when it contains category-grid
+.main-content:has(.category-grid) {
+  max-width: none;
+}
+
+// Footer padding for pages with sidebar
+body:has(.layout-sidebar) footer {
+  @include media(">=sm") {
+    padding-left: calc(#{$sidebar-width} + #{$space-lg});
+  }
+}

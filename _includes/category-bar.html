@@ -1,0 +1,14 @@
+<!-- Category Bar -->
+<nav class="category-bar">
+  <div class="category-bar-inner">
+    {% assign categories = site.categories | sort %}
+    {% for category in categories %}
+      {% assign cat_name = category[0] %}
+      {% assign cat_posts = category[1] %}
+      <a href="{{ site.baseurl }}/category/{{ cat_name | slugify }}/" class="category-pill">
+        {{ cat_name }}
+        <span class="category-count">{{ cat_posts | size }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</nav>

@@ -40,6 +40,9 @@ layout: main
             </div>
         </section>
     {% endif %}
+
+    {% include category-bar.html %}
+
     <!-- Posts -->
     <section id="grid" class="row flex-grid">
         {% for post in posts offset: offset %}

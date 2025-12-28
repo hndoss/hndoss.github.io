@@ -48,7 +48,8 @@
   margin: 0 0 rem(30px);
   display: inline-block;
   min-height: rem(285px);
-  transition: all 0.3s;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
   position: relative;
   z-index: 1;
   background-color: $terminal-card-bg;
@@ -74,10 +75,11 @@
     z-index: 2;
     transform: scale(1.02);
     border-color: $terminal-green;
-    box-shadow: 0 0 20px rgba($terminal-green, 0.3), inset 0 0 20px rgba($terminal-green, 0.05);
+    box-shadow: 0 0 15px rgba($terminal-green, 0.25);
 
     img {
-      filter: grayscale(100%) brightness(0.8) sepia(100%) hue-rotate(70deg) saturate(500%);
+      // Simplified green tint filter (3 filters instead of 5)
+      filter: grayscale(80%) brightness(0.85) sepia(30%) hue-rotate(70deg);
     }
 
     .box-body {
@@ -137,7 +139,7 @@
       width: 100%;
       height: auto;
       margin: 0 auto;
-      transition: all 0.3s ease-in-out;
+      transition: filter 0.3s ease-in-out;
       filter: grayscale(70%) brightness(0.9);
     }
 

@@ -7,13 +7,14 @@
     if (post && progressBar) {
         var lastScrollTop = 0;
         var maxScrollTop = post.scrollHeight;
-        
+        var ticking = false;
+
         var completed = progressBar.querySelector('.completed');
         var remaining = progressBar.querySelector('.remaining');
         var timeCompleted = progressBar.querySelector('.time-completed');
         var timeRemaining = progressBar.querySelector('.time-remaining');
 
-        document.addEventListener('scroll', function() {
+        function updateProgressBar() {
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
             if (scrollTop > lastScrollTop) {
@@ -59,6 +60,14 @@
             }
 
             lastScrollTop = scrollTop;
+            ticking = false;
+        }
+
+        document.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateProgressBar);
+                ticking = true;
+            }
         });
     }
 })();

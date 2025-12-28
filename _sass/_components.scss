@@ -1,0 +1,294 @@
+/**
+ * Components - Reusable UI components
+ */
+
+// ============================================
+// Terminal Panel
+// ============================================
+
+.terminal-panel {
+  background: $terminal-card-bg;
+  border: 1px solid $terminal-green;
+  border-radius: rem(4px);
+  overflow: hidden;
+  margin-bottom: $space-md;
+}
+
+.panel-header {
+  background: $terminal-panel-header;
+  border-bottom: 1px solid $terminal-green;
+  padding: $space-sm $space-md;
+  font-family: $font-monospace;
+  font-size: rem(13px);
+  color: $terminal-text-muted;
+}
+
+.panel-content {
+  padding: $space-md;
+  font-family: $font-monospace;
+  font-size: rem(14px);
+}
+
+// ============================================
+// Terminal Prompt Elements
+// ============================================
+
+.prompt-user {
+  color: $terminal-green;
+}
+
+.prompt-at,
+.prompt-separator {
+  color: $terminal-text-muted;
+}
+
+.prompt-host {
+  color: $terminal-cyan;
+}
+
+.prompt-colon,
+.prompt-symbol,
+.prompt-dollar {
+  color: $terminal-text-muted;
+}
+
+.prompt-path {
+  color: $terminal-cyan;
+}
+
+.prompt-command {
+  color: $terminal-text;
+}
+
+.prompt-arg {
+  color: $terminal-amber;
+}
+
+// ============================================
+// Terminal Form
+// ============================================
+
+.terminal-form {
+  font-family: $font-monospace;
+
+  .form-field {
+    margin-bottom: $space-md;
+
+    label {
+      display: block;
+      color: $terminal-green;
+      font-size: rem(14px);
+      margin-bottom: $space-sm;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid $terminal-border;
+      border-radius: rem(3px);
+      padding: rem(12px);
+      color: $terminal-amber;
+      font-family: $font-monospace;
+      font-size: rem(14px);
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+
+      &:focus {
+        border-color: $terminal-green;
+      }
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      // Prevent iOS zoom
+      @include media("<sm") {
+        font-size: rem(16px);
+      }
+    }
+
+    textarea {
+      min-height: rem(150px);
+      resize: vertical;
+    }
+  }
+
+  .form-submit {
+    margin-top: $space-lg;
+
+    button {
+      background: transparent;
+      border: 1px solid $terminal-green;
+      color: $terminal-green;
+      font-family: $font-monospace;
+      font-size: rem(14px);
+      padding: rem(12px) $space-lg;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background: $terminal-green;
+        color: $terminal-bg;
+        @include glowText($terminal-green);
+      }
+    }
+  }
+}
+
+// ============================================
+// Tree View (for sidebar)
+// ============================================
+
+.tree-content {
+  .tree-item {
+    display: flex;
+    align-items: center;
+    padding: rem(3px) 0;
+
+    .tree-branch {
+      color: $terminal-text-muted;
+      margin-right: $space-sm;
+    }
+
+    a {
+      color: $terminal-cyan;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $terminal-green;
+        @include glowText($terminal-green);
+      }
+    }
+
+    .tree-count {
+      color: $terminal-text-muted;
+      margin-left: $space-sm;
+    }
+
+    &.tree-child {
+      padding-left: rem(16px);
+    }
+  }
+}
+
+// ============================================
+// Top Process View (for sidebar)
+// ============================================
+
+.top-content {
+  .top-header {
+    display: flex;
+    color: $terminal-green;
+    font-weight: bold;
+    border-bottom: 1px solid $terminal-border-subtle;
+    padding-bottom: $space-sm;
+    margin-bottom: $space-sm;
+  }
+
+  .top-row {
+    display: flex;
+    padding: rem(4px) 0;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba($terminal-green, 0.05);
+    }
+  }
+
+  .top-pid {
+    width: rem(50px);
+    color: $terminal-amber;
+  }
+
+  .top-cpu {
+    width: rem(60px);
+    color: $terminal-cyan;
+  }
+
+  .top-cmd {
+    flex: 1;
+    color: $terminal-text;
+    text-decoration: none;
+
+    &:hover {
+      color: $terminal-green;
+    }
+  }
+}
+
+// ============================================
+// Blinking Cursor
+// ============================================
+
+.cursor {
+  color: $terminal-green;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+// ============================================
+// Category Bar
+// ============================================
+
+.category-bar {
+  background: $terminal-card-bg;
+  border-bottom: 1px solid $terminal-border-subtle;
+  padding: $space-sm $space-md;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  // Hide scrollbar but keep functionality
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.category-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  min-width: max-content;
+}
+
+.category-label {
+  color: $terminal-green;
+  font-family: $font-monospace;
+  font-size: rem(14px);
+  flex-shrink: 0;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(6px);
+  padding: rem(6px) rem(12px);
+  background: transparent;
+  border: 1px solid $terminal-border;
+  border-radius: rem(3px);
+  color: $terminal-cyan;
+  font-family: $font-monospace;
+  font-size: rem(13px);
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    border-color: $terminal-green;
+    color: $terminal-green;
+    background: rgba($terminal-green, 0.1);
+    @include glowText($terminal-green);
+  }
+
+  .category-count {
+    color: $terminal-text-muted;
+    font-size: rem(11px);
+  }
+}

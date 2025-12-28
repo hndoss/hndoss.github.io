@@ -10,9 +10,10 @@ body {
   border-bottom: 1px solid rgba($terminal-green, 0.3);
   padding: rem(10px) rem(15px);
   position: fixed;
+  top: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: $z-header;
   transition: top 0.5s, left 0.3s ease, background-color 0.5s, box-shadow 0.5s;
   display: flex;
   align-items: center;
