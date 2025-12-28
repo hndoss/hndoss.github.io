@@ -1,204 +1,190 @@
-<!DOCTYPE html>
-<html lang="{{ site.language }}" class="no-js">
-    {% include head.html %}
-    <body class="has-push-menu">
-        {% include minutes-to-read.html %}
-        {% include svg-icons.html %}
-        {% include header.html %}
+---
+layout: base
+---
+{% include minutes-to-read.html %}
 
-        <section class="post with-sidebar">
-            <aside class="sidebar-left">
-                {% include sidebar-left.html %}
-            </aside>
-            <article role="article" class="post-content">
-                <p class="post-info">
-                    <a href="{{ site.baseurl }}/" class="back-link" title="Back to home">
-                        <svg class="icon-home"><use xlink:href="#icon-home"></use></svg>
-                    </a>
-                    <span class="info-separator">|</span>
-                    {% if page.date %}
-                        <svg class="icon-calendar" id="date"><use xlink:href="#icon-calendar"></use></svg>
-                        <time class="date" datetime="{{ page.date | date_to_xmlschema }}">
-                            {% include date.html date=page.date %}
-                        </time>
-                    {% endif %}
-                    <svg id="clock" class="icon-clock"><use xlink:href="#icon-clock"></use></svg>
-                    <span>{{ minutesText }}</span>
-                </p>
-                <h1 class="post-title">{{ page.title }}</h1>
-                <p class="post-subtitle">{{ page.subtitle }}</p>
+<section class="layout-sidebar">
+    <aside class="sidebar-left">
+        {% include sidebar-left.html %}
+    </aside>
+    <article role="article" class="main-content post-content">
+        <p class="post-info">
+            <a href="{{ site.baseurl }}/" class="back-link" title="Back to home">
+                <svg class="icon-home"><use xlink:href="#icon-home"></use></svg>
+            </a>
+            <span class="info-separator">|</span>
+            {% if page.date %}
+                <svg class="icon-calendar" id="date"><use xlink:href="#icon-calendar"></use></svg>
+                <time class="date" datetime="{{ page.date | date_to_xmlschema }}">
+                    {% include date.html date=page.date %}
+                </time>
+            {% endif %}
+            <svg id="clock" class="icon-clock"><use xlink:href="#icon-clock"></use></svg>
+            <span>{{ minutesText }}</span>
+        </p>
+        <h1 class="post-title">{{ page.title }}</h1>
+        <p class="post-subtitle">{{ page.subtitle }}</p>
 
-                {% if page.image and paginator.activated == nil %}
-                    <img src="{{ page.image }}" alt="Featured image" class="post-cover">
-                {% endif %}
-
-                {% include pagination-post.html progressBar=true %}
-
-                {% include toc.html %}
-
-                {{ content }}
-
-                {% include pagination-post.html %}
-            </article>
-
-
-        </section>
-
-        <!-- Add time bar only for pages without pagination -->
-        {% if paginator.activated == nil and site.show_time_bar == true %}
-            {% include time-bar.html %}
-            {% include recommendation.html %}
+        {% if page.image and paginator.activated == nil %}
+            <img src="{{ page.image }}" alt="Featured image" class="post-cover">
         {% endif %}
 
-        <!-- Show modal if the post is the last one -->
-        {% if paginator.is_last and site.show_modal_on_finish_post %}
-            {% include modal.html title="You made it!" subtitle="Why don't you try another?" %}
-        {% endif %}
+        {% include pagination-post.html progressBar=true %}
 
-        <!-- Show modal before user leaves the page -->
-        {% if site.show_modal_on_exit %}
-            {% include modal.html title="Don't go yet!" subtitle="You may also like..." closed=true showOnExit=true %}
-        {% endif %}
+        {% include toc.html %}
 
-        <!-- {% include subscription.html %} -->
+        {{ content }}
+
+        {% include pagination-post.html %}
+
         {% include share.html %}
         {% include author.html %}
         {% include comments.html %}
-        {% include footer.html %}
+    </article>
+</section>
 
-        {% assign author = site.authors | where: "name", post.author | first %}
+<!-- Add time bar only for pages without pagination -->
+{% if paginator.activated == nil and site.show_time_bar == true %}
+    {% include time-bar.html %}
+    {% include recommendation.html %}
+{% endif %}
 
-        {% assign author_urls = '' %}
-        {% if author.github_username %}
-            {% assign author_urls = author_urls | append: '"https://github.com/' | append: author.github_username | append: '",' %}
-        {% endif %}
-        {% if author.facebook_username %}
-            {% assign author_urls = author_urls | append: '"https://www.facebook.com/' | append: author.facebook_username | append: '",' %}
-        {% endif %}
-        {% if author.twitter_username %}
-            {% assign author_urls = author_urls | append: '"https://twitter.com/' | append: author.twitter_username | append: '",' %}
-        {% endif %}
-        {% if author.medium_username %}
-            {% assign author_urls = author_urls | append: '"https://medium.com/@' | append: author.medium_username | append: '",' %}
-        {% endif %}
-        {% if author.instagram_username %}
-            {% assign author_urls = author_urls | append: '"https://www.instagram.com/' | append: author.instagram_username | append: '",' %}
-        {% endif %}
-        {% if author.linkedin_username %}
-            {% assign author_urls = author_urls | append: '"https://www.linkedin.com/in/' | append: author.linkedin_username | append: '",' %}
-        {% endif %}
-        {% if page.math %}
-        <script>
-            MathJax = {
-                tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']]
-                }
-            };
-        </script>
-        <script type="text/javascript" id="MathJax-script" async
-            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-        </script>
-        {% endif %}
-        <script>
-        // Terminal-style code blocks with copy functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Find all code blocks
-            const codeBlocks = document.querySelectorAll('.post-content .highlight, .post-content > pre');
+<!-- Show modal if the post is the last one -->
+{% if paginator.is_last and site.show_modal_on_finish_post %}
+    {% include modal.html title="You made it!" subtitle="Why don't you try another?" %}
+{% endif %}
 
-            codeBlocks.forEach(function(block, index) {
-                // Skip if already wrapped
-                if (block.closest('.terminal-window')) return;
+<!-- Show modal before user leaves the page -->
+{% if site.show_modal_on_exit %}
+    {% include modal.html title="Don't go yet!" subtitle="You may also like..." closed=true showOnExit=true %}
+{% endif %}
 
-                // Get the pre element
-                const pre = block.tagName === 'PRE' ? block : block.querySelector('pre');
-                if (!pre) return;
+{% assign author = site.authors | where: "name", post.author | first %}
 
-                // Get code content for copying
-                const code = pre.querySelector('code') || pre;
-                const codeText = code.textContent;
+{% assign author_urls = '' %}
+{% if author.github_username %}
+    {% assign author_urls = author_urls | append: '"https://github.com/' | append: author.github_username | append: '",' %}
+{% endif %}
+{% if author.facebook_username %}
+    {% assign author_urls = author_urls | append: '"https://www.facebook.com/' | append: author.facebook_username | append: '",' %}
+{% endif %}
+{% if author.twitter_username %}
+    {% assign author_urls = author_urls | append: '"https://twitter.com/' | append: author.twitter_username | append: '",' %}
+{% endif %}
+{% if author.medium_username %}
+    {% assign author_urls = author_urls | append: '"https://medium.com/@' | append: author.medium_username | append: '",' %}
+{% endif %}
+{% if author.instagram_username %}
+    {% assign author_urls = author_urls | append: '"https://www.instagram.com/' | append: author.instagram_username | append: '",' %}
+{% endif %}
+{% if author.linkedin_username %}
+    {% assign author_urls = author_urls | append: '"https://www.linkedin.com/in/' | append: author.linkedin_username | append: '",' %}
+{% endif %}
 
-                // Create terminal window wrapper
-                const wrapper = document.createElement('div');
-                wrapper.className = 'terminal-window';
+{% if page.math %}
+<script>
+    MathJax = {
+        tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+{% endif %}
 
-                // Create header with Linux-style prompt and copy button
-                const header = document.createElement('div');
-                header.className = 'terminal-header';
+<script>
+// Terminal-style code blocks with copy functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const codeBlocks = document.querySelectorAll('.post-content .highlight, .post-content > pre');
 
-                const prompt = document.createElement('div');
-                prompt.className = 'terminal-prompt';
+    codeBlocks.forEach(function(block, index) {
+        if (block.closest('.terminal-window')) return;
 
-                const copyBtn = document.createElement('button');
-                copyBtn.className = 'terminal-copy';
-                copyBtn.textContent = 'copy';
-                copyBtn.addEventListener('click', function() {
-                    navigator.clipboard.writeText(codeText).then(function() {
-                        copyBtn.classList.add('copied');
-                        copyBtn.textContent = 'copied';
-                        setTimeout(function() {
-                            copyBtn.classList.remove('copied');
-                            copyBtn.textContent = 'copy';
-                        }, 2000);
-                    }).catch(function(err) {
-                        console.error('Failed to copy:', err);
-                    });
-                });
+        const pre = block.tagName === 'PRE' ? block : block.querySelector('pre');
+        if (!pre) return;
 
-                header.appendChild(prompt);
-                header.appendChild(copyBtn);
+        const code = pre.querySelector('code') || pre;
+        const codeText = code.textContent;
 
-                // Wrap the block
-                block.parentNode.insertBefore(wrapper, block);
-                wrapper.appendChild(header);
-                wrapper.appendChild(block);
+        const wrapper = document.createElement('div');
+        wrapper.className = 'terminal-window';
+
+        const header = document.createElement('div');
+        header.className = 'terminal-header';
+
+        const prompt = document.createElement('div');
+        prompt.className = 'terminal-prompt';
+
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'terminal-copy';
+        copyBtn.textContent = 'copy';
+        copyBtn.addEventListener('click', function() {
+            navigator.clipboard.writeText(codeText).then(function() {
+                copyBtn.classList.add('copied');
+                copyBtn.textContent = 'copied';
+                setTimeout(function() {
+                    copyBtn.classList.remove('copied');
+                    copyBtn.textContent = 'copy';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy:', err);
             });
         });
-        </script>
-        <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "BlogPosting",
-            "name": "{{ page.title }}",
-            "headline": "{{ page.subtitle }}",
-            "description": "{{ page.description }}",
-            "image": "{{ page.image }}",
-            "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}",
-            "articleBody": "{{ content | strip_html | xml_escape | textilize }}",
-            "wordcount": "{{ content | number_of_words }}",
-            "inLanguage": "{{ site.language }}",
-            "dateCreated": "{{ page.date | date: '%Y-%m-%d/' }}",
-            "datePublished": "{{ page.date | date: '%Y-%m-%d/' }}",
-            "dateModified": "{{ page.date | date: '%Y-%m-%d/' }}",
-            "author": {
-                "@type": "Person",
-                "name": "{{ author.display_name }}",
-                {% if author.photo %}
-                "image": "{{ author.photo }}",
-                {% else %}
-                "image": {{ "/assets/img/user.jpg" | prepend: site.baseurl | prepend: site.url }},
-                {% endif %}
-                "jobTitle": "{{ author.position }}",
-                "url": "{{ author.url | prepend: site.baseurl | prepend: site.url }}",
-                "sameAs": [
-                    {{ author_urls | split: "," | join: "," }}
-                ]
-            },
-            "publisher": {
-                "@type": "Organization",
-                "name": "{{ site.name }}",
-                "url": "{{ site.url }}{{site.baseurl}}/",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "{{ site.url }}{{site.baseurl}}/assets/img/blog-image.png",
-                    "width": "600",
-                    "height": "315"
-                }
-            },
-            "mainEntityOfPage": "True",
-            "genre": "{{ page.category }}",
-            "articleSection": "{{ page.category }}",
-            "keywords": [{{ page.tags | join: '","' | append: '"' | prepend: '"' }}]
+
+        header.appendChild(prompt);
+        header.appendChild(copyBtn);
+
+        block.parentNode.insertBefore(wrapper, block);
+        wrapper.appendChild(header);
+        wrapper.appendChild(block);
+    });
+});
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "name": "{{ page.title }}",
+    "headline": "{{ page.subtitle }}",
+    "description": "{{ page.description }}",
+    "image": "{{ page.image }}",
+    "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}",
+    "wordcount": "{{ content | number_of_words }}",
+    "inLanguage": "{{ site.language }}",
+    "dateCreated": "{{ page.date | date: '%Y-%m-%d/' }}",
+    "datePublished": "{{ page.date | date: '%Y-%m-%d/' }}",
+    "dateModified": "{{ page.date | date: '%Y-%m-%d/' }}",
+    "author": {
+        "@type": "Person",
+        "name": "{{ author.display_name }}",
+        {% if author.photo %}
+        "image": "{{ author.photo }}",
+        {% else %}
+        "image": {{ "/assets/img/user.jpg" | prepend: site.baseurl | prepend: site.url }},
+        {% endif %}
+        "jobTitle": "{{ author.position }}",
+        "url": "{{ author.url | prepend: site.baseurl | prepend: site.url }}",
+        "sameAs": [
+            {{ author_urls | split: "," | join: "," }}
+        ]
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ site.name }}",
+        "url": "{{ site.url }}{{site.baseurl}}/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ site.url }}{{site.baseurl}}/assets/img/blog-image.png",
+            "width": "600",
+            "height": "315"
         }
-        </script>
-    </body>
-</html>
+    },
+    "mainEntityOfPage": "True",
+    "genre": "{{ page.category }}",
+    "articleSection": "{{ page.category }}",
+    "keywords": [{{ page.tags | join: '","' | append: '"' | prepend: '"' }}]
+}
+</script>

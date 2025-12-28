@@ -12,14 +12,20 @@
     $(".overlay").removeClass("show");
   });
 
-  // Header
+  // Header - throttled with requestAnimationFrame
+  var headerScrollTicking = false;
   $(window).scroll(function () {
-    var top = $(this).scrollTop();
-    if (top > 0) {
-      $("body").addClass("light");
-    }
-    else {
-      $("body").removeClass("light");
+    if (!headerScrollTicking) {
+      window.requestAnimationFrame(function() {
+        var top = $(window).scrollTop();
+        if (top > 0) {
+          $("body").addClass("light");
+        } else {
+          $("body").removeClass("light");
+        }
+        headerScrollTicking = false;
+      });
+      headerScrollTicking = true;
     }
   });
 

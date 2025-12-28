@@ -1,0 +1,15 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="{{ site.language }}" class="no-js">
+{% include head.html %}
+<body class="site-wrapper has-push-menu {% if page.body_class %}{{ page.body_class }}{% endif %}">
+    {% include svg-icons.html %}
+    {% include header.html %}
+    <main class="site-content">
+        {{ content }}
+    </main>
+    {% include footer.html %}
+</body>
+</html>

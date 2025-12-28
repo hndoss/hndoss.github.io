@@ -23,17 +23,17 @@
 
 // Terminal-style footer
 footer {
-  @include center(rem(900px));
+  width: 100%;
   border-top: 1px solid $terminal-green;
   background: #0d0d0d;
   padding: rem(30px) rem(25px);
   margin-top: rem(50px);
-  margin-bottom: rem(80px);
   @include mainFont(400);
 
   @include media(">=sm") {
     margin-top: rem(80px);
   }
+
 
   p {
     text-decoration: none;
@@ -100,31 +100,42 @@ footer {
     }
   }
 
-  ul {
-    padding: 0;
-    list-style-type: none;
+}
 
-    li {
-      margin-bottom: rem(8px);
+// Inline footer navigation
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: rem(8px);
+  margin-top: rem(20px);
+  flex-wrap: wrap;
 
-      &::before {
-        content: "~/ ";
-        color: $terminal-green;
-        font-size: rem(12px);
-      }
-    }
+  a {
+    color: $terminal-dim;
+    text-decoration: none;
+    font-size: rem(13px);
+    font-family: $font-monospace;
+    transition: color 0.2s;
 
-    a {
-      text-decoration: none;
-      font-size: rem(14px);
+    &:hover {
       color: $terminal-cyan;
-
-      &:hover {
-        text-decoration: none;
-        color: $terminal-green;
-      }
     }
   }
+
+  .footer-nav-sep {
+    color: rgba($terminal-dim, 0.5);
+    font-size: rem(12px);
+  }
+}
+
+.footer-sys {
+  text-align: center;
+  color: rgba($terminal-dim, 0.6);
+  font-family: $font-monospace;
+  font-size: rem(11px);
+  margin-top: rem(15px);
+  letter-spacing: 0.5px;
 }
 
 .main-page {

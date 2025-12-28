@@ -28,7 +28,7 @@ body.has-push-menu {
   }
 }
 
-// Terminal-style sidebar menu
+// Terminal-style sidebar menu (hamburger)
 aside.sidebar {
   position: fixed;
   width: rem(280px);
@@ -37,7 +37,7 @@ aside.sidebar {
   left: rem(-280px);
   background-color: $terminal-bg;
   border-right: 1px solid rgba($terminal-green, 0.3);
-  z-index: 20;
+  z-index: $z-dropdown; // Above header when open
 
   @include media(">=sm") {
     padding: rem(10px) 0 0;

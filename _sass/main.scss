@@ -1,9 +1,11 @@
 @import "include-media";
 @import "normalize";
 @import "theme";
-@import "variables";
 @import "functions";
+@import "variables";
 @import "mixins";
+@import "layout";
+@import "components";
 @import "typo";
 @import "animations";
 @import "icons";
@@ -17,7 +19,7 @@
 @import "pagination";
 @import "share";
 @import "highlight";
-@import "form";
+@import "contact";
 @import "author";
 @import "staff";
 @import "modal";

@@ -14,12 +14,12 @@
   }
 
   .env-header {
-    background: #1a1a1a;
+    background: $terminal-panel-header;
     border-bottom: 1px solid $terminal-green;
-    padding: rem(10px) rem(15px);
-    font-family: "JetBrains Mono", "Fira Code", monospace;
+    padding: $space-sm $space-md;
+    font-family: $font-monospace;
     font-size: rem(13px);
-    color: #888888;
+    color: $terminal-text-muted;
 
     .prompt-user {
       color: $terminal-cyan;
@@ -27,7 +27,7 @@
 
     .prompt-separator,
     .prompt-symbol {
-      color: #888888;
+      color: $terminal-text-muted;
     }
 
     .prompt-path {
@@ -35,11 +35,11 @@
     }
 
     .prompt-cmd {
-      color: #888888;
+      color: $terminal-text-muted;
     }
 
     .prompt-arg {
-      color: #888888;
+      color: $terminal-text-muted;
     }
   }
 
@@ -52,24 +52,24 @@
   }
 
   .author-name {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-family: $font-monospace;
     font-size: rem(20px);
     color: $terminal-green;
     @include glowText($terminal-green);
-    margin-bottom: rem(5px);
+    margin-bottom: $space-xs;
   }
 
   .author-role {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-family: $font-monospace;
     font-size: rem(14px);
     color: $terminal-cyan;
-    margin-bottom: rem(10px);
+    margin-bottom: $space-sm;
   }
 
   .author-bio {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-family: $font-monospace;
     font-size: rem(14px);
-    color: #c0c0c0;
+    color: $terminal-text;
     line-height: 1.6;
   }
 

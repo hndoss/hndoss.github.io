@@ -1,14 +1,22 @@
 .flex-grid article {
   opacity: 0;
+  will-change: transform, opacity;
 }
 
 .flex-grid article.shown {
   opacity: 1;
+  will-change: auto;
 }
 
 .flex-grid article.animate {
-  animation: moveUp 0.65s;
+  animation: moveUp 0.65s ease-out;
   opacity: 1;
+}
+
+.flex-grid article.animate,
+.flex-grid article.shown {
+  // Reset will-change after animation to free up resources
+  animation-fill-mode: forwards;
 }
 
 @keyframes moveUp {

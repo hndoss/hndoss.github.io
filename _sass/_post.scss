@@ -1,191 +1,25 @@
 // Terminal-style post layout
-.post {
-  position: relative;
-  top: rem(30px);
-  background-color: $terminal-bg;
+// Note: Sidebar layout moved to _layout.scss
+// Note: Terminal panel components moved to _components.scss
 
-  @include media(">=sm") {
-    top: rem(50px);
-  }
-}
+// Category content grid
+.category-content {
+  padding: $space-md;
+  width: 100%;
 
-// Left sidebar layout
-.post.with-sidebar {
-  display: block;
-  padding-bottom: rem(40px);
-
-  @include media(">=sm") {
-    padding-left: rem(420px);
-  }
-
-  .sidebar-left {
-    display: block;
-    padding: rem(20px);
-
-    @include media(">=sm") {
-      position: fixed;
-      left: 0;
-      top: rem(60px);
-      width: rem(400px);
-      padding: rem(25px);
-      height: calc(100vh - 60px);
-      overflow-y: auto;
-      background: $terminal-bg;
-      border-right: 1px solid rgba($terminal-green, 0.2);
-    }
-  }
-
-  .post-content {
-    max-width: rem(900px);
-    margin: 0 auto;
-  }
-
-  .category-content {
-    padding: rem(20px);
+  .row {
+    margin: 0;
+    max-width: 100%;
     width: 100%;
-
-    .row {
-      margin: 0;
-      max-width: 100%;
-      width: 100%;
-    }
-
-    .flex-grid {
-      display: flex;
-      flex-flow: row wrap;
-    }
-
-    .box-item {
-      opacity: 1;
-    }
-  }
-}
-
-// Terminal panel for sidebar
-.terminal-panel {
-  background: $terminal-card-bg;
-  border: 1px solid $terminal-green;
-  margin-bottom: rem(20px);
-
-  .panel-header {
-    background: #1a1a1a;
-    border-bottom: 1px solid $terminal-green;
-    padding: rem(10px) rem(15px);
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: rem(13px);
-    color: #888888;
-
-    .prompt-user {
-      color: $terminal-cyan;
-    }
-
-    .prompt-separator,
-    .prompt-symbol {
-      color: #888888;
-    }
-
-    .prompt-path {
-      color: $terminal-green;
-    }
   }
 
-  .panel-content {
-    padding: rem(15px);
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: rem(14px) !important;
-    line-height: 1.9;
+  .flex-grid {
+    display: flex;
+    flex-flow: row wrap;
   }
 
-  // Tree styles
-  .tree-content {
-    .tree-item {
-      display: flex;
-      align-items: center;
-      padding: rem(3px) 0;
-
-      .tree-branch {
-        color: #888888;
-        margin-right: rem(8px);
-      }
-
-      a {
-        color: $terminal-cyan;
-        text-decoration: none;
-        transition: color 0.2s;
-
-        &:hover {
-          color: $terminal-green;
-          @include glowText($terminal-green);
-        }
-      }
-
-      .tree-count {
-        color: #888888;
-        margin-left: rem(8px);
-      }
-
-      &.tree-child {
-        padding-left: rem(16px);
-      }
-    }
-  }
-
-  // Top styles
-  .top-content {
-    .top-header {
-      display: flex;
-      color: $terminal-green;
-      font-weight: bold;
-      border-bottom: 1px solid rgba($terminal-green, 0.3);
-      padding-bottom: rem(8px);
-      margin-bottom: rem(8px);
-
-      .top-pid {
-        width: rem(35px);
-      }
-
-      .top-cpu {
-        width: rem(45px);
-      }
-
-      .top-cmd {
-        flex: 1;
-      }
-    }
-
-    .top-row {
-      display: flex;
-      padding: rem(6px) 0;
-      transition: background 0.2s;
-      align-items: flex-start;
-
-      &:hover {
-        background: rgba($terminal-green, 0.1);
-      }
-
-      .top-pid {
-        width: rem(35px);
-        color: #888888;
-        flex-shrink: 0;
-      }
-
-      .top-cpu {
-        width: rem(50px);
-        color: $terminal-amber;
-        flex-shrink: 0;
-      }
-
-      .top-cmd {
-        flex: 1;
-        color: #c0c0c0;
-        text-decoration: none;
-        line-height: 1.4;
-
-        &:hover {
-          color: $terminal-green;
-        }
-      }
-    }
+  .box-item {
+    opacity: 1;
   }
 }
 

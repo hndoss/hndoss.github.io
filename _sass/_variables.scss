@@ -1,24 +1,74 @@
 /**
- * Set up here the general appearance of the theme.
+ * Variables - Centralized design tokens
  */
 
+// Legacy theme map (keep for compatibility)
 $themeColor: map-get($theme, themeColor) !default;
 $primaryDark: map-get($theme, primaryDark) !default;
 $accentDark: map-get($theme, accentDark) !default;
 $lightGray: map-get($theme, lightGray) !default;
 $texts: map-get($theme, texts) !default;
 
+// ============================================
+// Terminal Color Palette (extended)
+// ============================================
+
+// These extend the colors in _theme.scss
+$terminal-panel-header: #1a1a1a;
+$terminal-text: #c0c0c0;
+$terminal-text-muted: #888888;
+$terminal-error: #ff6b6b;
+$terminal-success: $terminal-green;
+$terminal-border: rgba($terminal-green, 0.3);
+$terminal-border-subtle: rgba($terminal-green, 0.2);
+
+// ============================================
+// Spacing Scale
+// ============================================
+
+$space-xs: rem(5px);
+$space-sm: rem(10px);
+$space-md: rem(20px);
+$space-lg: rem(30px);
+$space-xl: rem(50px);
+$space-2xl: rem(80px);
+
+// ============================================
+// Layout Widths
+// ============================================
+
+$content-max-width: rem(900px);
+$sidebar-width: rem(400px);
+$form-max-width: rem(500px);
+$header-height: rem(60px);
+
+// ============================================
 // Breakpoints
+// ============================================
+
 $breakpoints: (
-  sm: 37.5rem
+  sm: 37.5rem,    // 600px - mobile/tablet
+  md: 56.25rem,   // 900px - tablet/desktop
+  lg: 75rem       // 1200px - large desktop
 );
 
-// Margins
+// ============================================
+// Grid Settings (legacy)
+// ============================================
+
 $rowMargin: 10px;
 $itemMargin: 15px;
-
-// Sizes
 $itemMinWidth: 300px;
-
-// Settings
 $maxItemsPerRow: 6;
+
+// ============================================
+// Z-index Scale
+// ============================================
+
+$z-sidebar: 100;
+$z-header: 200;
+$z-search-overlay: 250;
+$z-search: 260;
+$z-dropdown: 300;
+$z-modal: 400;
+$z-overlay: 500;
