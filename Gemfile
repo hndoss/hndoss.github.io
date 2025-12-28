@@ -18,3 +18,6 @@ gem "bigdecimal"
 gem "erb"
 gem "mutex_m"
 gem "drb"
+
+# CI/CD validation
+gem "html-proofer", "~> 5.0"
