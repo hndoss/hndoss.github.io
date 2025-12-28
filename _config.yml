@@ -18,6 +18,7 @@ menu:
     url: /contact
   - title: Feed
     url: /feed.xml
+    target: _blank
 
 # Social Media Settings
 github_username: hndoss
@@ -92,6 +93,8 @@ exclude:
     "gulpfile.js",
     "README.md",
     "vendor",
+    "docker-compose.yml",
+    "_config_dev.yml",
   ]
 
 # Theme
