@@ -17,17 +17,12 @@ docker compose up
 # Native Ruby
 bundle install
 bundle exec jekyll serve
-
-# Gulp-based development with BrowserSync
-npm install
-gulp          # builds and serves with watch
-gulp build    # build only, no server
 ```
 
 ## Architecture
 
 ### Jekyll Structure
-- `_config.yml` - Main site configuration (generated from `src/yml/` via Gulp)
+- `_config.yml` - Main site configuration
 - `_layouts/` - Page templates (post.html, home.html, category.html, etc.)
 - `_includes/` - Reusable HTML components (header, footer, sidebar, etc.)
 - `_sass/` - SCSS stylesheets (main.scss imports all partials)
@@ -37,17 +32,11 @@ gulp build    # build only, no server
 
 ### Assets
 - `assets/js/` - JavaScript files
-  - `scripts.min.js` - Bundled main JS (from `src/js/main/`)
+  - `scripts.min.js` - Bundled main JS
   - `terminal-nav.js` - Terminal-style navigation component
   - `navigation.json` - Site navigation structure
 - `assets/css/` - Compiled CSS
-- `assets/img/` - Images (optimized via Gulp from `src/img/`)
-
-### Source Files (Gulp Build)
-- `src/yml/` - Modular YAML configs merged into `_config.yml`
-- `src/js/main/` - JavaScript source files
-- `src/js/preview/` - Preview-specific JS
-- `src/img/` - Source images before optimization
+- `assets/img/` - Images
 
 ### Key Custom Components
 - Terminal-style sidebar navigation (`_includes/sidebar-left.html`, `terminal-nav.js`)
@@ -68,15 +57,6 @@ tags: [tag1, tag2]
 ```
 
 Categories are defined in `category/` directory with their own front matter.
-
-## Gulp Tasks
-
-The gulpfile handles:
-- YAML config merging (`src/yml/*.yml` → `_config.yml`)
-- Theme SCSS generation from `src/yml/theme.yml`
-- JavaScript minification and bundling
-- Image optimization
-- BrowserSync live reload
 
 ## Plugins
 
