@@ -1,15 +1,12 @@
 ---
 layout: page
-title: About
-description: Some description.
+title: About This Blog
+description: Practical DevOps guides and lessons learned.
 permalink: /about/
 ---
 
-<img itemprop="image" class="img-rounded" src="/assets/img/uploads/profile.png" alt="Hndoss">
+A collection of practical DevOps guides, automation tips, and lessons learned from real-world infrastructure projects. Written by Héctor Rosales, a DevOps engineer.
 
-## About Me
-Welcome! I'm Héctor Rosales, a DevOps engineer from Honduras with a passion for technology and automation. This blog is my way of sharing valuable insights, practical experiences, and the principles I've learned throughout my career in the world of DevOps.
+The goal is simple: share what works, document what doesn't, and hopefully save someone a few hours of debugging.
 
-I work closely with teams to build efficient, scalable automation workflows across various cloud platforms, ensuring robust and secure operations. My aim is to provide a reliable reference for anyone interested in technology, automation, and best practices in DevOps.
-
-Thank you for visiting, and I hope you find the content here both useful and inspiring.
+Browse by [category](/category/devops/) or check out the [latest posts](/).

@@ -5,7 +5,7 @@
     <h1 class="logo terminal-prompt">
         <!-- Static version for mobile -->
         <a href="{{ site.baseurl }}/" class="terminal-static">
-            <span class="prompt-user">visitor</span><span class="prompt-at">@</span><span class="prompt-host">{{ site.name | downcase | replace: '.', '' }}</span><span class="prompt-colon">:</span><span class="prompt-path">~</span><span class="prompt-dollar">$</span>{% if page.layout == 'post' %}<span class="prompt-command"> cd</span><span class="prompt-arg"> ./{{ page.category | default: 'posts' }}/{{ page.title | slugify }}</span>{% elsif page.layout == 'category' %}<span class="prompt-command"> ls -la</span><span class="prompt-arg"> ./{{ page.slug }}/</span>{% elsif page.layout == 'contact' %}<span class="prompt-command"> cd</span><span class="prompt-arg"> ./contact/</span>{% endif %}<span class="cursor">|</span>
+            <span class="prompt-user">visitor</span><span class="prompt-at">@</span><span class="prompt-host">{{ site.name | downcase | replace: '.', '' }}</span><span class="prompt-colon">:</span><span class="prompt-path">~</span><span class="prompt-dollar">$</span>{% if page.layout == 'post' %}<span class="prompt-command"> cd</span><span class="prompt-arg"> ./{{ page.category | default: 'posts' }}/{{ page.title | slugify }}</span>{% elsif page.layout == 'category' %}<span class="prompt-command"> ls -la</span><span class="prompt-arg"> ./{{ page.slug }}/</span>{% elsif page.layout == 'contact' %}<span class="prompt-command"> cd</span><span class="prompt-arg"> ./contact/</span>{% elsif page.layout == 'page' %}<span class="prompt-command"> cd</span><span class="prompt-arg"> ./{{ page.title | slugify }}/</span>{% endif %}<span class="cursor">|</span>
         </a>
         <!-- Interactive version for desktop -->
         <div class="terminal-interactive">
@@ -15,9 +15,9 @@
                    class="terminal-input"
                    autocomplete="off"
                    spellcheck="false"
-                   data-current-path="{% if page.layout == 'post' %}{{ page.category | default: 'posts' }}/{{ page.title | slugify }}{% elsif page.layout == 'category' %}{{ page.slug }}{% elsif page.layout == 'contact' %}contact{% else %}~{% endif %}"
+                   data-current-path="{% if page.layout == 'post' %}{{ page.category | default: 'posts' }}/{{ page.title | slugify }}{% elsif page.layout == 'category' %}{{ page.slug }}{% elsif page.layout == 'contact' %}contact{% elsif page.layout == 'page' %}{{ page.title | slugify }}{% else %}~{% endif %}"
                    data-current-category="{% if page.layout == 'post' %}{{ page.category | default: 'posts' }}{% elsif page.layout == 'category' %}{{ page.slug }}{% else %}{% endif %}"
-                   value="{% if page.layout == 'post' %}cd ./{{ page.category | default: 'posts' }}/{{ page.title | slugify }}{% elsif page.layout == 'category' %}ls ./{{ page.slug }}/{% elsif page.layout == 'contact' %}cd ./contact/{% endif %}"><span class="cursor terminal-cursor">|</span>
+                   value="{% if page.layout == 'post' %}cd ./{{ page.category | default: 'posts' }}/{{ page.title | slugify }}{% elsif page.layout == 'category' %}ls ./{{ page.slug }}/{% elsif page.layout == 'contact' %}cd ./contact/{% elsif page.layout == 'page' %}cd ./{{ page.title | slugify }}/{% endif %}"><span class="cursor terminal-cursor">|</span>
             <!-- Dropdown for fuzzy suggestions -->
             <div id="terminal-dropdown" class="terminal-dropdown"></div>
             <!-- Inline ls output -->

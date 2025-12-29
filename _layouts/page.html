@@ -1,11 +1,17 @@
 ---
-layout: default
+layout: base
 ---
 
-<div class="post">
+<section class="layout-sidebar">
+    <aside class="sidebar-left">
+        {% include sidebar-left.html %}
+    </aside>
+    <article role="article" class="main-content post-content">
+        <h1 class="post-title">{{ page.title }}</h1>
+        {% if page.description %}
+        <p class="post-subtitle">{{ page.description }}</p>
+        {% endif %}
 
-  <article class="post-content fullwidth">
-    {{ content }}
-  </article>
-
-</div>
+        {{ content }}
+    </article>
+</section>
