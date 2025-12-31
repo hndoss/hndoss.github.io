@@ -38,6 +38,10 @@ layout: base
         {% include pagination-post.html %}
 
         {% include share.html %}
+        {% if site.show_related_posts %}
+        {% include related-posts.html limit=3 %}
+        {% endif %}
+        {% include subscription.html %}
         {% include author.html %}
         {% include comments.html %}
     </article>

@@ -1,12 +1,24 @@
-<!-- Add your newsletter subscription form here -->
-<!-- <a href="https://feedburner.google.com/fb/a/mailverify?uri=codewizardly&amp;loc=en_US">Subscribe to codewizardly.com | DevOps. by Email</a> -->
-
-<!-- <form style="border:1px solid #ccc;padding:3px;text-align:center;"
-    action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow"
-    onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=codewizardly', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
-    <p>Enter your email address:</p>
-    <p><input type="text" style="width:140px" name="email" /></p><input type="hidden" value="codewizardly"
-        name="uri" /><input type="hidden" name="loc" value="en_US" /><input type="submit" value="Subscribe" />
-</form>
-
-<a href="https://feedburner.google.com/fb/a/mailverify?uri=codewizardly&amp;loc=en_US">Subscribe to codewizardly.com | DevOps. by Email</a> -->
+{% if site.newsletter_url or site.show_rss_subscription %}
+<section class="subscription">
+  <div class="env-terminal">
+    <div class="env-header">
+      <span class="prompt-user">user@linux</span><span class="prompt-separator">:</span><span class="prompt-path">~</span><span class="prompt-symbol">$</span> <span class="prompt-cmd">subscribe</span> <span class="prompt-arg">--updates</span>
+    </div>
+    <div class="env-output">
+      <p class="subscription-text">Stay updated with new posts</p>
+      <div class="subscription-options">
+        {% if site.newsletter_url %}
+        <a href="{{ site.newsletter_url }}" class="subscription-btn subscription-email" target="_blank" rel="noopener">
+          <svg class="icon-email"><use xlink:href="#icon-email"></use></svg>
+          Newsletter
+        </a>
+        {% endif %}
+        <a href="{{ '/feed.xml' | prepend: site.baseurl }}" class="subscription-btn subscription-rss" target="_blank" rel="noopener">
+          <svg class="icon-rss"><use xlink:href="#icon-rss"></use></svg>
+          RSS Feed
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}

@@ -1,0 +1,183 @@
+// Related Posts and Subscription sections (terminal style)
+
+.related-posts,
+.subscription {
+  @include center(rem(800px));
+  margin: rem(40px) auto;
+  padding: 0 rem(20px);
+
+  @include media(">=sm") {
+    padding: 0;
+  }
+
+  .env-terminal {
+    background: $terminal-card-bg;
+    border: 1px solid $terminal-green;
+  }
+
+  .env-header {
+    background: $terminal-panel-header;
+    border-bottom: 1px solid $terminal-green;
+    padding: $space-sm $space-md;
+    font-family: $font-monospace;
+    font-size: rem(13px);
+    color: $terminal-text-muted;
+
+    .prompt-user {
+      color: $terminal-cyan;
+    }
+
+    .prompt-separator,
+    .prompt-symbol {
+      color: $terminal-text-muted;
+    }
+
+    .prompt-path {
+      color: $terminal-green;
+    }
+
+    .prompt-cmd {
+      color: $terminal-text-muted;
+    }
+
+    .prompt-arg {
+      color: $terminal-text-muted;
+    }
+  }
+
+  .env-output {
+    padding: rem(20px);
+  }
+}
+
+// Related Posts List
+.related-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.related-item {
+  margin-bottom: rem(12px);
+  padding-bottom: rem(12px);
+  border-bottom: 1px solid rgba($terminal-green, 0.15);
+
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.related-link {
+  display: flex;
+  flex-direction: column;
+  gap: rem(4px);
+  text-decoration: none;
+  transition: all 0.2s;
+
+  @include media(">=sm") {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &:hover {
+    .related-title {
+      color: $terminal-green;
+      @include glowText($terminal-green);
+    }
+  }
+}
+
+.related-title {
+  font-family: $font-monospace;
+  font-size: rem(14px);
+  color: $terminal-text;
+  transition: all 0.2s;
+
+  &::before {
+    content: "→ ";
+    color: $terminal-cyan;
+  }
+}
+
+.related-meta {
+  font-family: $font-monospace;
+  font-size: rem(12px);
+  color: $terminal-text-muted;
+  display: flex;
+  gap: rem(10px);
+
+  time {
+    color: $terminal-dim;
+  }
+}
+
+.related-tags {
+  color: $terminal-cyan;
+
+  &::before {
+    content: "#";
+  }
+}
+
+// Subscription Section
+.subscription-text {
+  font-family: $font-monospace;
+  font-size: rem(14px);
+  color: $terminal-text;
+  margin: 0 0 rem(15px) 0;
+}
+
+.subscription-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(12px);
+}
+
+.subscription-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(8px);
+  padding: rem(10px) rem(16px);
+  font-family: $font-monospace;
+  font-size: rem(13px);
+  text-decoration: none;
+  border: 1px solid;
+  transition: all 0.2s;
+
+  svg {
+    width: rem(16px);
+    height: rem(16px);
+    transition: all 0.2s;
+  }
+
+  &.subscription-email {
+    color: $terminal-cyan;
+    border-color: $terminal-cyan;
+
+    svg {
+      fill: $terminal-cyan;
+    }
+
+    &:hover {
+      background: rgba($terminal-cyan, 0.1);
+      box-shadow: 0 0 10px rgba($terminal-cyan, 0.3);
+    }
+  }
+
+  &.subscription-rss {
+    color: $terminal-amber;
+    border-color: $terminal-amber;
+
+    svg {
+      fill: $terminal-amber;
+    }
+
+    &:hover {
+      background: rgba($terminal-amber, 0.1);
+      box-shadow: 0 0 10px rgba($terminal-amber, 0.3);
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{% assign max_related = include.limit | default: 3 %}
+{% assign current_tags = page.tags | default: empty %}
+{% assign current_category = page.category | default: page.categories.first %}
+
+{% assign related_posts = "" | split: "" %}
+
+{% for post in site.posts %}
+  {% if post.url != page.url and post.is_generated != true %}
+    {% assign match_score = 0 %}
+
+    {% if post.category == current_category or post.categories contains current_category %}
+      {% assign match_score = match_score | plus: 2 %}
+    {% endif %}
+
+    {% for tag in current_tags %}
+      {% if post.tags contains tag %}
+        {% assign match_score = match_score | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+
+    {% if match_score > 0 %}
+      {% assign related_posts = related_posts | push: post %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% assign related_posts = related_posts | slice: 0, max_related %}
+
+{% if related_posts.size > 0 %}
+<section class="related-posts">
+  <div class="env-terminal">
+    <div class="env-header">
+      <span class="prompt-user">user@linux</span><span class="prompt-separator">:</span><span class="prompt-path">~</span><span class="prompt-symbol">$</span> <span class="prompt-cmd">ls</span> <span class="prompt-arg">./related</span>
+    </div>
+    <div class="env-output">
+      <ul class="related-list">
+        {% for post in related_posts %}
+        <li class="related-item">
+          <a href="{{ post.url | prepend: site.baseurl }}" class="related-link">
+            <span class="related-title">{{ post.title }}</span>
+            <span class="related-meta">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+              {% if post.tags.size > 0 %}
+                <span class="related-tags">{{ post.tags | first }}</span>
+              {% endif %}
+            </span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endif %}
