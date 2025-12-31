@@ -8,7 +8,7 @@ category: devops
 tags:
   - devops
 author: hector
-paginate: true
+# paginate: true
 ---
 
 A [Smoke test](https://softwaretestingfundamentals.com/smoke-testing) is a type of software testing that comprises of a non-exhaustive set of tests that aim at ensuring that the most important functions work. Ideally, smoke tests should be triggered after a deployment is complete and the cache not interfere with the process.

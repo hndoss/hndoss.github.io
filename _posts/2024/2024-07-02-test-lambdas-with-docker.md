@@ -11,7 +11,7 @@ tags:
   - lambda
   - golang
 author: hector
-paginate: true
+# paginate: true
 ---
 
 AWS Lambda is a powerful serverless compute service that allows you to run code without provisioning or managing servers. However, testing Lambda functions in a cloud environment can be cumbersome and time-consuming. Fortunately, Docker provides a seamless way to simulate AWS Lambda locally, making the development and testing process much more efficient.

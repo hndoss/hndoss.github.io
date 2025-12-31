@@ -8,7 +8,7 @@ category: devops
 tags:
   - devops
 author: hector
-paginate: true
+# paginate: true
 ---
 
 Managing multiple user accounts can be a challenging task. A simple use-case scenario is to have an account for a job, and a separate account for personal purposes. Jumping back and forth between these accounts can be a pain, and you are prone to forget which account you are using and causing a lot of confusion. In general, it is recommended to use a single account for all your work, according to [GitHub]((https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-user-account-settings/merging-multiple-user-accounts)). But when it is not possible, you can have separate directories to host your git repositories for each account, so that you can easily switch between them by loading specific configuration files depending on the directory you are in.

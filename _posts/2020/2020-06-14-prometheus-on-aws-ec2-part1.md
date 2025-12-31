@@ -8,7 +8,7 @@ category: devops
 tags:
   - monitoring
 author: hector
-paginate: true
+# paginate: true
 ---
 
 Let's face it, there will be something wrong at some point, and you need to know when it is happening. That awesome application you have been working on for 6 months and you treat as your child is going to be in trouble someday. Therefore, how to be there exactly when something needs to be fixed? How do you tell that something is crashing? Obviously, it is not possible for us to be there all the time, so we need something else do that for us. [Prometheus](https://prometheus.io) is an awesome open-source tool for monitoring, designed for reliability, and meant to be the system you look for during an outage to allow you to quickly diagnose problems.

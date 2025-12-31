@@ -8,7 +8,7 @@ category: devops
 tags:
   - monitoring
 author: hector
-paginate: true
+# paginate: true
 ---
 
 Let's recap, we have a Prometheus instance on an AWS EC2 instance configured to discover services on port 9100 in the same network and one Node Exporter instance collecting OS metrics that can be easily upgraded to many Node Exporter instances as desired. 

@@ -9,7 +9,7 @@ tags:
  - monitoring
 
 author: hector
-paginate: true
+# paginate: true
 ---
 
 In the [previous topic](https://codewizardly.com/prometheus-on-aws-ec2-part1) we installed Prometheus and now is ready to receive metrics. The next step is to launch a second AWS EC2 instance, install Prometheus Node Exporter in it and finally, configure Prometheus to collect its metrics.

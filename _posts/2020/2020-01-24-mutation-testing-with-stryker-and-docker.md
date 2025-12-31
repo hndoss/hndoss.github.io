@@ -8,7 +8,7 @@ category: devops
 tags:
   - test
 author: hector
-paginate: true
+# paginate: true
 ---
 
 How do we know that we are writing quality code? Mostly we rely on unit tests or integration tests to answer that question. But then, the question repeats itself. How do we know that we are writing good tests? Let me introduce you Stryker, it allows you to test your tests with mutation testing. Stryker guys have a complete explanation and got mostly everything covered on [their official site](https://stryker-mutator.io/) which you should visit.
