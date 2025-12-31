@@ -33,11 +33,15 @@ show_time_bar: false
 show_modal_on_exit: true
 show_modal_on_finish_post: false
 two_columns_layout: false
+show_related_posts: true
+show_rss_subscription: true
+# newsletter_url: "https://buttondown.email/your-newsletter"  # Optional: Add your newsletter URL
 
 # Advanced Settings
 baseurl: ""
 url: "https://codewizardly.com"
 google_analytics: "UA-144580764-1"
+# google_site_verification: "your-verification-code"  # Get from Google Search Console
 language: "en"
 categories_folder: category
 sent_message_url: "/contact/message-sent/"

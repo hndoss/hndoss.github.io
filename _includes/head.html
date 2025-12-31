@@ -3,6 +3,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {% if site.google_site_verification %}
+    <meta name="google-site-verification" content="{{ site.google_site_verification }}">
+    {% endif %}
+
     {% assign title = '' %}
     {% if page.layout == 'author' %}
         {% assign title = page.display_name %}
