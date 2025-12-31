@@ -9,7 +9,7 @@ tags:
   - devops
   - aws
 author: hector
-paginate: true
+# paginate: true
 ---
 
 Most of us have heard about [Terraform](https://www.terraform.io) and [AWS ECS](https://aws.amazon.com/ecs). One of the situations in which I have found myself using both is not being able to deploy the latest changes when using the same docker tag. The pipeline builds a new docker image with no errors but when applying the changes with Terraform it literally does nothing even though a new docker image is ready. Terraform won't recognize a change because the same docker tag is being used. Terraform only makes changes to the infrastructure if needed, for this, it compares the infrastructure described in a [state](https://www.terraform.io/docs/language/state/index.html) and checks if it is necessary to add, update or delete something, otherwise, nothing is executed. 

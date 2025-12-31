@@ -8,7 +8,7 @@ category: devops
 tags:
   - kubernetes
 author: hector
-paginate: true
+# paginate: true
 ---
 
 

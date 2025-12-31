@@ -8,7 +8,7 @@ category: devops
 tags:
   - iac
 author: hector
-paginate: true
+# paginate: true
 ---
 
 > Drift is the term for when the real-world state of your infrastructure differs from the state defined in your configuration

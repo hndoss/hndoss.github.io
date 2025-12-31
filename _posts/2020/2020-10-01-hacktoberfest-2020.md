@@ -8,7 +8,7 @@ category: code
 tags:
   - code
 author: hector
-paginate: true
+# paginate: true
 ---
 
 > **Note:** This post covers Hacktoberfest 2020. For current event information, visit [hacktoberfest.com](https://hacktoberfest.com).

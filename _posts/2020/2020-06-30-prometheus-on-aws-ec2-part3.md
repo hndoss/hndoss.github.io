@@ -8,7 +8,7 @@ category: devops
 tags:
   - monitoring
 author: hector
-paginate: true
+# paginate: true
 ---
 
 Follow the complete story:
