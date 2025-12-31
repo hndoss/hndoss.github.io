@@ -1,3 +1,10 @@
 # robotstxt.org/
 
 User-agent: *
+Allow: /
+
+# Disallow admin and development paths
+Disallow: /assets/js/navigation.json
+
+# Sitemap location
+Sitemap: https://codewizardly.com/sitemap.xml
