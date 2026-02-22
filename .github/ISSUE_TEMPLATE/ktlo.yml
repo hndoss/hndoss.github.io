@@ -1,0 +1,36 @@
+name: Maintenance Task
+description: Report a bug, request an enhancement, or log a chore
+title: "[KTLO] "
+labels: []
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      description: What kind of task is this?
+      options:
+        - bug
+        - enhancement
+        - chore
+        - security
+        - dependencies
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be done?
+      placeholder: Describe the issue or task clearly
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: How do we know this is done?
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+    validations:
+      required: false
