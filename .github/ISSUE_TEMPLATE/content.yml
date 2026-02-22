@@ -1,0 +1,59 @@
+name: Blog Post Idea
+description: Propose a new blog post for codewizardly.com
+title: "[Content] "
+labels: ["content"]
+body:
+  - type: dropdown
+    id: pillar
+    attributes:
+      label: Pillar
+      description: Which content pillar does this belong to?
+      options:
+        - ai-devops
+        - cloud-native
+        - devsecops
+        - platform-eng
+        - linux
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Blog category for this post
+      options:
+        - devops
+        - code
+        - tutorial
+        - security
+        - life
+        - work
+    validations:
+      required: true
+  - type: textarea
+    id: outline
+    attributes:
+      label: Outline
+      description: Key points or rough outline for the post
+      placeholder: |
+        - Point 1
+        - Point 2
+        - Point 3
+    validations:
+      required: true
+  - type: input
+    id: audience
+    attributes:
+      label: Target Audience
+      description: Who is this post for?
+      placeholder: "e.g., Mid-level DevOps engineers working with Kubernetes"
+    validations:
+      required: false
+  - type: input
+    id: target-date
+    attributes:
+      label: Target Date
+      description: When do you want to publish this? (optional)
+      placeholder: "e.g., 2026-03-15"
+    validations:
+      required: false

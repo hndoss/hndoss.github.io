@@ -77,3 +77,28 @@ Posts go in `_posts/YYYY/` organized by year. Categories are defined in `categor
 - `show_modal_on_exit: true` - Newsletter modal
 - `two_columns_layout: false` - Post grid style
 - `paginate_content.separator: "--page-break--"` - Multi-page posts
+
+## Content Workflow
+
+Two workflows documented in `docs/plans/2026-02-22-content-workflow-design.md`:
+
+### Content Creation (blog posts)
+
+```
+Obsidian (ideation) → GitHub Issue (commitment) → Branch + PR (writing) → Merge (publish)
+```
+
+- Branch naming: `content/<issue-number>-<slug>`
+- Scaffold with: `./scripts/new-post.sh <issue-number>` or `/new-post` command
+- Posts go directly in `_posts/YYYY/` on the branch
+- PR body includes `Closes #<issue-number>`
+- Project board stages: Idea, Outline, Draft, Review, Published
+
+### KTLO (maintenance)
+
+```
+GitHub Issue → Feature branch → Tasks → Single PR → Merge
+```
+
+- Branch naming: `fix/<issue-number>-<slug>` or `feat/<issue-number>-<slug>`
+- Issue templates: use "Blog Post Idea" for content, "Maintenance Task" for KTLO
