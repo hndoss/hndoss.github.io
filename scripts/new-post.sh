@@ -93,6 +93,15 @@ is_pillar_label() {
     return 1
 }
 
+# Extract a form field value from a GitHub issue body.
+# GitHub issue forms render dropdown values as:
+#   ### Field Name\n\nvalue\n\n### Next Field
+extract_form_field() {
+    local body="$1"
+    local field="$2"
+    echo "$body" | sed -n "/^### ${field}$/,/^### /{/^### /d;/^$/d;p;}" | head -1 | tr -d '[:space:]'
+}
+
 # --------------------------------------------------------------------------
 # Argument validation
 # --------------------------------------------------------------------------
@@ -121,7 +130,7 @@ check_dependency jq
 
 echo "Fetching issue #${ISSUE_NUMBER}..."
 
-if ! ISSUE_JSON="$(gh issue view "$ISSUE_NUMBER" --json title,labels 2>&1)"; then
+if ! ISSUE_JSON="$(gh issue view "$ISSUE_NUMBER" --json title,labels,body 2>&1)"; then
     die "Failed to fetch issue #${ISSUE_NUMBER}. Is the gh CLI authenticated and are you in the correct repo?
 gh output: $ISSUE_JSON"
 fi
@@ -152,26 +161,41 @@ fi
 echo "  Slug:   $SLUG"
 
 # --------------------------------------------------------------------------
-# Detect category from labels
+# Parse category and pillar from issue body (GitHub form fields)
 # --------------------------------------------------------------------------
+
+ISSUE_BODY="$(echo "$ISSUE_JSON" | jq -r '.body // ""')"
 
 CATEGORY="$DEFAULT_CATEGORY"
 
-# Read labels into a bash array
-mapfile -t LABELS < <(echo "$LABELS_JSON" | jq -r '.[]')
-
-for label in "${LABELS[@]}"; do
-    if is_valid_category "$label"; then
-        CATEGORY="$label"
-        break
-    fi
-done
+# Try to extract category from the issue body (set by the form dropdown)
+BODY_CATEGORY="$(extract_form_field "$ISSUE_BODY" "Category")"
+if [[ -n "$BODY_CATEGORY" ]] && is_valid_category "$BODY_CATEGORY"; then
+    CATEGORY="$BODY_CATEGORY"
+else
+    # Fallback: scan labels for a valid category (for issues not created from template)
+    mapfile -t LABELS < <(echo "$LABELS_JSON" | jq -r '.[]')
+    for label in "${LABELS[@]}"; do
+        if is_valid_category "$label"; then
+            CATEGORY="$label"
+            break
+        fi
+    done
+fi
 
 echo "  Category: $CATEGORY"
 
 # --------------------------------------------------------------------------
-# Collect tags from labels (exclude content + pillar labels)
+# Detect pillar from issue body, collect tags from labels
 # --------------------------------------------------------------------------
+
+# Read labels into array if not already done
+if [[ -z "${LABELS+x}" ]]; then
+    mapfile -t LABELS < <(echo "$LABELS_JSON" | jq -r '.[]')
+fi
+
+# Try to extract pillar from the issue body
+BODY_PILLAR="$(extract_form_field "$ISSUE_BODY" "Pillar")"
 
 TAGS=()
 for label in "${LABELS[@]}"; do
@@ -179,6 +203,21 @@ for label in "${LABELS[@]}"; do
         TAGS+=("$label")
     fi
 done
+
+# Add the pillar as a tag if detected from body and not already in tags
+if [[ -n "$BODY_PILLAR" ]] && ! is_valid_category "$BODY_PILLAR"; then
+    # Check it's not already in TAGS
+    pillar_in_tags=false
+    for tag in "${TAGS[@]}"; do
+        if [[ "$tag" == "$BODY_PILLAR" ]]; then
+            pillar_in_tags=true
+            break
+        fi
+    done
+    if [[ "$pillar_in_tags" == false ]]; then
+        TAGS+=("$BODY_PILLAR")
+    fi
+fi
 
 echo "  Tags:   ${TAGS[*]:-<none>}"
 
