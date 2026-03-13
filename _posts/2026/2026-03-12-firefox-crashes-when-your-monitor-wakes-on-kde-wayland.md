@@ -15,15 +15,20 @@ paginate: true
 
 ## The fix
 
-If you're running Firefox on KDE Plasma Wayland and it crashes every time your monitor wakes from sleep, add this to `~/.config/environment.d/ddcutil.conf`:
+If you're running Firefox on KDE Plasma Wayland and it crashes every time your monitor wakes from sleep, create `~/.config/ddcutil/ddcutilrc` with this content:
 
+```ini
+[libddcutil]
+options: --disable-watch-displays
 ```
-DDCUTIL_WATCH_MODE=none
+
+Then restart PowerDevil to pick it up without rebooting:
+
+```bash
+systemctl --user restart plasma-powerdevil.service
 ```
 
-Log out and back in. That's it.
-
-This stops libddcutil from monitoring display connections, which is what triggers the crash. You keep DDC brightness control, and there's zero impact on power management or DPMS.
+This stops libddcutil from watching for display connection changes, which is what triggers the crash. You keep DDC brightness control for external monitors, and there's zero impact on power management or DPMS.
 
 ## The symptom
 
@@ -61,12 +66,14 @@ Firefox wasn't the only casualty. `kded6` crashed at the same moment with "The W
 
 ## What the fix does
 
-`DDCUTIL_WATCH_MODE=none` disables libddcutil's display watching thread. This is the thread that monitors the DDC/CI bus for connection changes via udev events. When it's off, libddcutil stops interpreting DPMS sleep as a disconnect.
+The `--disable-watch-displays` option in `ddcutilrc` blocks libddcutil's `ddca_start_watch_displays()` call from starting the threads that monitor the DDC/CI bus for connection changes. When those threads aren't running, libddcutil can't misinterpret DPMS sleep as a disconnect.
 
-Everything else keeps working. KWin still handles DPMS directly. Your monitor still sleeps and wakes. PowerDevil still manages power profiles. If you use the KDE brightness slider for external monitors over DDC, that still works too. The only thing that stops is the continuous polling for display connect/disconnect events, which is the thing that was triggering the crash in the first place.
+Everything else keeps working. KWin still handles DPMS directly. Your monitor still sleeps and wakes. PowerDevil still manages power profiles. The KDE brightness slider for external monitors over DDC still works too. The only thing that stops is the continuous watching for display connect/disconnect events, which is the part that was triggering the crash.
+
+You might also want to check your kernel parameters. If you have `amdgpu.dc_dpms_off=0` in your GRUB config, that prevents the GPU from actually powering down the display signal during DPMS, which can contribute to the problem. Removing it lets the GPU behave normally.
 
 ## The real bugs
 
 Two things should be fixed upstream. libddcutil should not treat a monitor entering DPMS off as a physical disconnection. The display is sleeping, not unplugged. And Firefox should handle output removal without segfaulting. Other Wayland clients survive this scenario. A destroyed `wl_output` should produce a graceful error, not a crash.
 
-Until those get fixed, `DDCUTIL_WATCH_MODE=none` keeps everything working.
+Until those get fixed, `--disable-watch-displays` in ddcutilrc keeps everything working.
